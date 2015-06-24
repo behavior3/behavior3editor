@@ -1,0 +1,63 @@
+.node-list {
+  .empty {
+    padding: 0px @padding-small;
+    color: @color-light2;
+  }
+
+  &-content {
+    padding: 0px @padding-small;
+  }
+
+  &-title {
+    cursor: pointer;
+    display: block;
+    margin-top: 10px;
+    padding: 2px 5px;
+    // text-transform: uppercase;
+    text-transform: capitalize;
+    color: @color-light3;
+    // border-bottom: 1px solid @color-dark4;
+    .font-base;
+  }
+
+  &-category {
+    padding: 0px 0px @padding-small-2x 0px;
+
+    ul {
+      list-style: none;
+      margin: 0px;
+      padding: 0px;
+
+      li {
+        .edit {
+          float: right;
+          color: @color-light1;
+          &:hover {
+            text-decoration: none;
+            background-color: @color-yellow;
+          }
+        }
+        .remove {
+          float: right;
+          color: @color-light1;
+          &:hover {
+            text-decoration: none;
+            background-color: @color-red;
+          }
+        }
+        a {
+          padding: 2px @padding-small;
+          display: block;
+          color: @color-light1;
+          &:hover {
+            background-color: @color-dark2;
+          }
+          &.active {
+            color: @color-blue;
+            // font-weight: 600;
+          }
+        }
+      }
+    }
+  }
+}

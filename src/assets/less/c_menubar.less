@@ -1,0 +1,145 @@
+.menubar {
+  position: absolute;
+  top: 0px;
+  width: 100%;
+  height: @size-menubar;
+  z-index: @z-menubar;
+  color: @color-light1;
+  font-size: 14px;
+  background-color: @color-dark4;
+  border-bottom: 1px solid @color-dark2;
+
+  .box-shadow(0px 0px 16px 5px);
+
+  &-left, &-right {
+    display: inline;
+  }
+
+  &-right {
+    float: right;
+  }
+}
+
+.menubar ul {
+  padding: 0px;
+  margin: 0px;
+  list-style: none;
+  // position: relative;
+  display: inline-table;
+}
+.menubar ul:after {
+  content: "";
+  clear: both;
+  display: block;
+}
+.menubar ul li {
+  float: left;
+}
+.menubar ul li:hover {
+  background-color: @color-dark1;
+}
+.menubar ul li a {
+  color: #FFFFFF;
+  display: block;
+  height: 35px;
+  padding: 0px 10px;
+  line-height: 35px;
+  text-decoration: none;
+  .no-select;
+
+  .shortcut {
+    color: #999;
+    float: right;
+    font-style: italic;
+  }
+}
+.menubar .side {
+  // width: @size-sidebar;
+  text-align: left;
+  display: inline-block;
+
+  a {
+    display: inline-block;
+
+    &.fastlink {
+      color: @color-light1;
+      padding: 0px 6px 0px 7px !important;
+      border-right: 1px solid @color-dark2;
+    }
+  }
+
+  .logo {
+    color: #4BB2FD;
+    background-color: #333333;
+    // border-left: 1px solid @color-dark2;
+    // border-right: 1px solid @color-dark2;
+    font-weight: bold;
+
+    .animation-slow;
+
+    &:hover {
+      color: @color-dark2;
+      background-color: @color-light2;
+    }
+  }
+}
+
+.menubar li.disabled {
+  a {
+    color: @color-light3;
+    cursor: default;
+  }
+  &:hover {
+    background-color: inherit;
+  }
+}
+
+.menubar ul li:hover > ul {
+  display: block;
+}
+.menubar ul ul {
+  display: none;
+  background: #454545;
+  position: absolute;
+  top: 100%;
+  min-width: 235px;
+  border: 1px solid #333333;
+}
+.menubar .menubar-right ul ul {
+  right: 0;
+}
+.menubar ul ul li {
+  float: none;
+  position: relative;
+}
+.menubar ul ul li a {
+  height: 35px;
+  padding: 0px 10px;
+  line-height: 35px;
+  color: #fff;
+  text-align: left;
+}
+.menubar ul ul ul {
+  position: absolute;
+  top: 0;
+}
+.menubar .menubar-left ul ul ul { left: 100%; }
+.menubar .menubar-right ul ul ul { right: 100%; }
+.menubar .divider { border-top: 1px solid #555; }
+
+.arrow-right {
+  width: 0;
+  height: 0;
+  margin-top: 12px;
+  border-top: 5px solid transparent;
+  border-bottom: 5px solid transparent;
+  border-left: 5px solid #FFF;
+}
+
+
+[ui-view].ng-enter .menubar,
+[ui-view].ng-leave .menubar { .animation-fast; }
+[ui-view].ng-enter .menubar { top: -@size-menubar; }
+[ui-view].ng-enter-active .menubar { top: 0; }
+[ui-view].ng-leave .menubar { top: 0; }
+[ui-view].ng-leave-active .menubar { top: -@size-menubar; }

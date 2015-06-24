@@ -1,0 +1,73 @@
+/**
+ * APP GLOBALS
+ */
+
+html, body {
+  padding: 0px;
+  margin: 0px;
+  overflow: hidden;
+  font-size: 16px;
+  color: @color-light1;
+  background: @color-dark1;
+
+  .font-base;
+}
+
+.grabbing {
+  cursor: url(../imgs/closedhand.cur);
+  cursor: url(../imgs/closedhand.cur) 8 8, move;
+}
+.no-margin { margin: 0px; }
+.no-padding { padding: 0px; }
+.sweet-alert input { color: @color-dark1; }
+.full-height { height: 100%; }
+.no-select{
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  -khtml-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+a, .btn, .btn-success, .btn-default, .btn-warning, .btn-info, .btn-danger {
+  .no-select;
+}
+
+.form-control[disabled], 
+.form-control[readonly], 
+fieldset[disabled] .form-control {
+  cursor: inherit;
+}
+
+// LINKS ======================================================================
+a {
+  color: @color-blue-dark;
+  transition: color 100ms ease-in-out;
+  outline: none;
+
+  &:hover, &:visited, &:link, &:active, &:focus {
+    text-decoration: none;
+    outline: none;
+  }
+  &:hover {
+    cursor: pointer;
+    color: @color-blue;
+  }
+}
+
+// SCROLLBAR ==================================================================
+::-webkit-scrollbar {
+  width: 10px;
+  background: none;
+}
+::-webkit-scrollbar-track {
+  background: none;
+}
+::-webkit-scrollbar-thumb {
+  background: @color-blue-light;
+}
+::-webkit-scrollbar-thumb:window-inactive {
+  background: @color-blue-light; 
+}
+

@@ -1,0 +1,37 @@
+.tabset {
+  height: 100%;
+
+  ul.tabset-header {
+    list-style: none;
+    margin: 0px;
+    padding: @padding-medium 0px;
+    text-align: center;
+    font-size: 1.3em;
+    .font-header;
+
+    li {
+      display: inline;
+      margin: 0px 10px;
+
+      a {
+        color: @color-light2;
+        &:hover {
+          color: @color-light1;
+        }
+      }
+
+      &.active {
+        a {
+          color: @color-blue;
+          &:hover {
+            color: @color-blue;
+          }
+        }
+      }
+    }
+  }
+}
+
+.tab-panel {
+  height: 100%;
+}

@@ -1,0 +1,166 @@
+
+<form name="settingsForm" class="form-horizontal" ng-submit="settings.saveSettings()">
+
+<div class="page">
+  <h1 class="header">Settings</h1>
+
+  <nav class="page-operations">
+    <div class="page-operations-content">
+      <ul>
+        <li><a class="btn-danger" ng-click="settings.resetSettings();"><i class="fa fa-fw fa-eraser"></i> Reset</a></li>
+        <li><button class="btn-success" type="submit"><i class="fa fa-fw fa-check"></i> Save</button></li>
+      </ul>
+    </div>
+  </nav>
+
+  <div class="content">
+      
+      <h2>Editor</h2>
+
+      <div class="form-group" ng-class="{'has-error':settingsForm.snap_x.$invalid}">
+        <label for="snap_x" class="col-sm-3 control-label">Snap X</label>
+        <div class="col-sm-9">
+          <input type="number" 
+                 class="form-control"
+                 name="snap_x"
+                 ng-model="settings.settings.snap_x"
+                 min="1",
+                 required>
+        </div>
+      </div>
+
+      <div class="form-group" ng-class="{'has-error':settingsForm.snap_y.$invalid}">
+        <label for="snap_y" class="col-sm-3 control-label">Snap Y</label>
+        <div class="col-sm-9">
+          <input type="number"
+                 class="form-control"
+                 name="snap_y"
+                 ng-model="settings.settings.snap_y"
+                 min="1",
+                 required>
+        </div>
+      </div>
+
+      <div class="form-group" ng-class="{'has-error':settingsForm.anchor_radius.$invalid}">
+        <label for="anchor_radius" class="col-sm-3 control-label">Anchor radius</label>
+        <div class="col-sm-9">
+          <input type="number"
+                 class="form-control"
+                 name="anchor_radius"
+                 ng-model="settings.settings.anchor_radius"
+                 min="5",
+                 required>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label for="layout" class="col-sm-3 control-label">Layout</label>
+        <div class="col-sm-9">
+          <label class="radio-inline">
+            <input type="radio" name="layout" id="layout-horizontal" value="horizontal" ng-model="settings.settings.layout"> Horizontal
+          </label>
+          <label class="radio-inline">
+            <input type="radio" name="layout" id="layout-vertical" value="vertical" ng-model="settings.settings.layout"> Vertical
+          </label>
+        </div>
+      </div>
+
+      <h2>Colors</h2>
+
+      <div class="form-group">
+        <label class="col-sm-3 control-label" for="background_color">Background</label>
+        <div class="col-sm-9">
+          <input type="color" class="form-control" name="background_color" ng-model="settings.settings.background_color">
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label class="col-sm-3 control-label" for="selection_color">Selection</label>
+        <div class="col-sm-9">
+          <input type="color" class="form-control" name="selection_color" ng-model="settings.settings.selection_color">
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label class="col-sm-3 control-label" for="connection_color">Connection</label>
+        <div class="col-sm-9">
+          <input type="color" class="form-control" name="connection_color" ng-model="settings.settings.connection_color">
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label class="col-sm-3 control-label" for="block_border_color">Border</label>
+        <div class="col-sm-9">
+          <input type="color" class="form-control" name="block_border_color" ng-model="settings.settings.block_border_color">
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label class="col-sm-3 control-label" for="block_symbol_color">Symbol</label>
+        <div class="col-sm-9">
+          <input type="color" class="form-control" name="block_symbol_color" ng-model="settings.settings.block_symbol_color">
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label class="col-sm-3 control-label" for="anchor_background_color">Anchor</label>
+        <div class="col-sm-9">
+          <input type="color" class="form-control" name="anchor_background_color" ng-model="settings.settings.anchor_background_color">
+        </div>
+      </div>
+
+      
+      <div class="form-group">
+        <label class="col-sm-3 control-label" for="root_color">Root</label>
+        <div class="col-sm-9">
+          <input type="color" class="form-control" name="root_color" ng-model="settings.settings.root_color">
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label class="col-sm-3 control-label" for="decorator_color">Decorator</label>
+        <div class="col-sm-9">
+          <input type="color" class="form-control" name="decorator_color" ng-model="settings.settings.decorator_color">
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label class="col-sm-3 control-label" for="composite_color">Composite</label>
+        <div class="col-sm-9">
+          <input type="color" class="form-control" name="composite_color" ng-model="settings.settings.composite_color">
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label class="col-sm-3 control-label" for="tree_color">Tree</label>
+        <div class="col-sm-9">
+          <input type="color" class="form-control" name="tree_color" ng-model="settings.settings.tree_color">
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label class="col-sm-3 control-label" for="action_color">Action</label>
+        <div class="col-sm-9">
+          <input type="color" class="form-control" name="action_color" ng-model="settings.settings.action_color">
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label class="col-sm-3 control-label" for="condition_color">Condition</label>
+        <div class="col-sm-9">
+          <input type="color" class="form-control" name="condition_color" ng-model="settings.settings.condition_color">
+        </div>
+      </div>
+      
+      <br>
+
+      <div class="form-group">
+        <div class="col-sm-offset-3 col-sm-9">
+          <button type="submit" class="btn btn-success"><i class="fa fa-fw fa-check"></i> Save</button>
+        </div>
+      </div>
+
+  </div>
+</div>
+
+</form>

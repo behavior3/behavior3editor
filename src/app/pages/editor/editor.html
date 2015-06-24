@@ -1,0 +1,17 @@
+<ng-include src="'app/pages/editor/components/menubar.html'"></ng-include>
+
+<div class="sidebar left">
+  <div class="content has-menubar">
+    <ng-include src="'app/pages/editor/components/nodespanel.html'"/>
+  </div>
+</div>
+
+<div class="sidebar right">
+  <div class="content has-menubar">
+    <ng-include src="'app/pages/editor/components/propertiespanel.html'"/>
+  </div>
+</div>
+
+<div class="editor-page">
+  <div ui-view class="editor-anim"></div>
+</div>

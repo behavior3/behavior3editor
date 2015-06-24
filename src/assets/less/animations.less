@@ -1,0 +1,59 @@
+@import "variables";
+
+// NGVIEW
+[ui-view].ng-enter, [ui-view].ng-leave {
+  position:absolute;
+  height:100%;
+  width:100%;
+  .animation-fast;
+}
+
+// APP 
+[ui-view].app-anim.ng-enter { opacity: 0; }
+[ui-view].app-anim.ng-enter-active { opacity: 1; }
+[ui-view].app-anim.ng-leave { opacity: 1; }
+[ui-view].app-anim.ng-leave-active { opacity: 0; }
+
+[ui-view].app-anim.ng-enter .sidebar.right, 
+[ui-view].app-anim.ng-leave .sidebar.right { .animation-fast; }
+[ui-view].app-anim.ng-enter .sidebar.right { right: -@size-sidebar; }
+[ui-view].app-anim.ng-enter-active .sidebar.right { right: 0; }
+[ui-view].app-anim.ng-leave .sidebar.right { right: 0; }
+[ui-view].app-anim.ng-leave-active .sidebar.right { right: -@size-sidebar; }
+
+// DASH
+[ui-view].dash-anim.ng-enter { opacity: 0; }
+[ui-view].dash-anim.ng-enter-active { opacity: 1; }
+[ui-view].dash-anim.ng-leave { opacity: 1; }
+[ui-view].dash-anim.ng-leave-active { opacity: 0; }
+
+// EDITOR
+[ui-view].editor-anim.ng-enter .b3modal, 
+[ui-view].editor-anim.ng-leave .b3modal { .animation-fast; }
+[ui-view].editor-anim.ng-enter { opacity: 0; z-index: @z-modal; }
+[ui-view].editor-anim.ng-enter-active { opacity: 1; }
+[ui-view].editor-anim.ng-leave { opacity: 1; }
+[ui-view].editor-anim.ng-leave-active { opacity: 0; }
+
+[ui-view].editor-anim.ng-enter .b3modal-window,
+[ui-view].editor-anim.ng-leave .b3modal-window { 
+  .animation-fast;
+  transform-origin: left top;
+}
+// [ui-view].editor-anim.ng-enter .b3modal-window { transform: scale(0.1, 1); }
+// [ui-view].editor-anim.ng-enter-active .b3modal-window { transform: scale(1, 1); }
+// [ui-view].editor-anim.ng-leave .b3modal-window { transform: scale(1, 1); }
+// [ui-view].editor-anim.ng-leave-active .b3modal-window { transform: scale(0.1, 1); }
+
+
+
+
+// // HIDE
+// .anim { .animation }
+// .anim.ng-hide { opacity:0; }
+
+// // INVISIBLE
+// .invisible-add, .invisible-remove { .animation-fast }
+
+// .invisible, .invisible-add.invisible-add-active { opacity: 0; }
+// .invisible-remove.css-class-remove-active { opacity: 1; }

@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8"/>
+  <title>Behavior3 Editor - http://behavior3.com</title>
+
+  <link rel="stylesheet" type="text/css" href="css/load.css">
+  <script type="text/javascript" src="js/load.js"></script>
+    
+  <script>
+  var MANIFEST = [
+    // 'css/app.css',
+    // 'js/libs.js',
+    // 'js/editor.js',
+    // 'js/app.js',
+  ];
+  </script>
+</head>
+
+<body ng-controller="AppController as app">
+  
+  <!-- PRELOAD PAGE -->
+  <div id="prld" class="preloading">
+    <p class="loader-text"><a href="http://behavior3.com">Behavior3</a></p>
+    <p id="prgs" class="loader-progress">loading</p>
+  </div>
+  <!-- END PRELOAD PAGE -->
+  
+  <!-- APP PAGE -->
+  <div class="app">
+    <div ui-view class="app-anim"></div>
+    <!-- <div class="sidebar-stub"></div> -->
+  </div>
+  <!-- END APP PAGE -->
+
+  <link rel="stylesheet" type="text/css" href="css/app.css">
+  <script type="text/javascript" src="js/libs.js"></script>
+  <script type="text/javascript" src="js/editor.js"></script>
+  <script type="text/javascript" src="js/app.js"></script>
+  <script type="text/javascript" src="main.js"></script>
+</body>
+</html>

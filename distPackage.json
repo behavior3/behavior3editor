@@ -1,0 +1,26 @@
+{
+  "author": "Renato de Pontes Pereira",
+  "name": "behavior3editor",
+  "version": "0.2.0",
+  "homepage": "http://behavior3.com",
+  "licenses": {
+    "type": "MIT",
+    "url": "https://raw.github.com/renatopp/behavior3editor/master/LICENSE"
+  },
+  "bugs": "https://github.com/renatopp/behavior3editor/issues",
+  "repository": {
+    "type": "git",
+    "url": "git@github.com:renatopp/behavior3editor.git"
+  },
+  "main": "index.html",
+  "window": {
+    "title": "Behavior3 Editor - http://behavior3.com",
+    "toolbar": false,
+    "frame": true,
+    "width": 900,
+    "height": 800,
+    "position": "center",
+    "min_width": 600,
+    "min_height": 400
+  }
+}

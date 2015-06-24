@@ -1,0 +1,35 @@
+.keytable {
+  
+  input[type=button] {
+    width: 40px;
+  }
+
+  th {
+    margin: 0px;
+    padding: 0px 2px !important;
+
+    label {
+      padding-bottom: 0px;
+    }
+  }
+
+  td {
+    border: 0px !important;
+    padding: 2px 2px !important;
+
+    input:not([type=button]) {
+      padding: 0px @padding-small;
+      margin: 0px;
+    }
+  }
+
+  .form-control {
+    height: 25px;
+  }
+
+  &.no-border {
+    th {
+      border: 0px;
+    }
+  }
+}

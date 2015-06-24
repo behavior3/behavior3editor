@@ -1,0 +1,42 @@
+{
+  "author": "Renato de Pontes Pereira",
+  "name": "behavior3editor",
+  "version": "0.2.0",
+  "homepage": "http://behavior3.com",
+  "licenses": {
+    "type": "MIT",
+    "url": "https://raw.github.com/renatopp/behavior3editor/master/LICENSE"
+  },
+  "bugs": "https://github.com/renatopp/behavior3editor/issues",
+  "repository": {
+    "type": "git",
+    "url": "git@github.com:renatopp/behavior3editor.git"
+  },
+  "main": "src/index.html",
+  "window": {
+    "title": "Behavior3 Editor - http://behavior3.com",
+    "toolbar": true,
+    "frame": true,
+    "width": 900,
+    "height": 800,
+    "position": "center",
+    "min_width": 600,
+    "min_height": 400
+  },
+  "dependencies": {},
+  "devDependencies": {
+    "grunt": "~0.4.1",
+    "grunt-contrib-copy": "^0.8.0",
+    "grunt-contrib-clean": "^0.6.0",
+    "grunt-contrib-connect": "~0.10.1",
+    "grunt-contrib-watch": "^0.4.4",
+    "grunt-contrib-less": "~0.11.0",
+    "grunt-contrib-cssmin": "~0.12.3",
+    "grunt-contrib-uglify": "^0.9.1",
+    "grunt-node-webkit-builder": "^1.0.2"
+  },
+  "todo": {
+    "grunt-contrib-concat": "^0.3.0",
+    "grunt-contrib-jshint": "^0.4.3"
+  }
+}

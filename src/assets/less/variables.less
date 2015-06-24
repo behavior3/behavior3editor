@@ -1,0 +1,84 @@
+// COLORS =====================================================================
+@color-dark1        : #0B0B0B;
+@color-dark2        : #333333;
+@color-dark3        : #2F2F2F;
+@color-dark4        : #454545;
+@color-light1       : #FFFFFF;
+@color-light2       : #CECECE;
+@color-light3       : #999999;
+@color-light4       : #545454;
+@color-blue         : #5bc0de;
+@color-red          : #D9534F;
+@color-yellow       : #D58512;
+@color-green        : #398439;
+@color-blue-light   : lighten(@color-blue, 10%);
+@color-blue-dark    : darken(@color-blue, 30%);
+@color-red-light    : lighten(@color-red, 10%);
+@color-red-dark     : darken(@color-red, 30%);
+@color-yellow-light : lighten(@color-yellow, 10%);
+@color-yellow-dark  : darken(@color-yellow, 30%);
+@color-green-light  : lighten(@color-green, 10%);
+@color-green-dark   : darken(@color-green, 30%);
+
+// LAYER DEPTH ================================================================
+@z-editor: 0;
+@z-page: 10;
+@z-sidebar: 20;
+@z-menubar: 30;
+@z-modal: 40;
+@z-notification: 50;
+
+// SIZES ======================================================================
+@size-sidebar: 250px;
+@size-menubar: 35px;
+@size-page-content: 700px+@size-sidebar;
+
+@size-header: 100px;
+
+// PADDING ====================================================================
+@padding-small: 5px;
+@padding-small-2x: 10px;
+@padding-medium: 15px;
+@padding-large: 25px;
+@padding-huge: 35px;
+@padding-large-2x: 25px;
+@padding-huge-2x: 70px;
+
+
+// FONTS ======================================================================
+.font-base {
+  font-family: 'Open Sans', sans-serif;
+  font-weight: 400;
+}
+
+.font-header {
+  font-family: 'Raleway', sans-serif;
+  font-weight: 300;
+}
+
+.box-shadow(@style) {
+  -webkit-box-shadow: @style @color-dark1;
+  box-shadow:         @style @color-dark1;
+}
+
+// ANIMATIONS =================================================================
+.animation-slow {
+  -webkit-transition : all .50s ease-in-out;
+  -moz-transition    : all .50s ease-in-out;
+  -o-transition      : all .50s ease-in-out;
+  transition         : all .50s ease-in-out;
+} 
+
+.animation {
+  -webkit-transition : all .30s ease-in-out;
+  -moz-transition    : all .30s ease-in-out;
+  -o-transition      : all .30s ease-in-out;
+  transition         : all .30s ease-in-out;
+} 
+
+.animation-fast {
+  -webkit-transition : all .15s ease-in-out;
+  -moz-transition    : all .15s ease-in-out;
+  -o-transition      : all .15s ease-in-out;
+  transition         : all .15s ease-in-out;
+} 

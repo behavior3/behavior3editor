@@ -1,0 +1,69 @@
+.b3modal-top {
+  position: fixed;
+  top: 0px;
+  left: 0px;
+  right: 0px;
+  bottom: 0px;
+}
+
+.b3modal {
+  z-index: @z-modal;
+
+  &-background {
+    .b3modal-top;
+    z-index: @z-modal;
+    background: @color-dark1;
+    opacity: 0.9;
+  }
+  
+  &-window {
+    .b3modal-top;
+    top: @size-menubar;
+    left: @size-sidebar;
+    right: @size-sidebar;
+    bottom: @size-menubar;
+    z-index: @z-modal+1;
+
+    background-color: @color-light1;
+    color: @color-dark1;
+    overflow: hidden;
+    padding-bottom: 75px;
+
+    .box-shadow(0px 0px 16px 0px);
+  }
+
+  &-wrap {
+    overflow-y: auto;
+    height: 100%;
+  }
+
+  &-title {
+    color: @color-light3;
+    margin: 0px;
+    padding: @padding-large;
+    padding-bottom: 0px;
+    font-size: 2.5em;
+    .font-header;
+  }
+
+  &-content {
+    padding: @padding-large;
+  }
+
+  &-buttons {
+    position: absolute;
+    bottom: 0px;
+    height: 75px;
+    width: 100%;
+    text-align: right;
+    padding: @padding-medium @padding-large;
+    background-color: @color-light2;
+  }
+}
+
+.serialize-result {
+  overflow: auto;
+  border: 1px solid @color-light3;
+  height: 100%;
+  padding: @padding-medium;
+}

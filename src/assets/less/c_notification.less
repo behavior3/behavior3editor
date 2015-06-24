@@ -1,0 +1,96 @@
+@icon-size : 35px;
+
+.notification {
+  position: fixed;
+  bottom: 20px;
+  right: -@size-sidebar+-@icon-size;
+  z-index: @z-notification;
+  opacity: 0;
+  
+  width: @size-sidebar+@icon-size;
+  color: @color-dark1;
+  transition: all 0.5s ease;
+  
+  &:hover {
+    opacity: 0.7;
+  }
+  &.started {
+    right: 0px;
+    opacity: 1;
+  }
+  &.killed {
+    opacity: 0;
+    right: -@size-sidebar+-@icon-size;
+  }
+
+  &.default {
+    background-color: @color-light4;
+    border: 1px solid @color-light4;
+    border-right: 0px;
+    .notification-content {
+      background-color: @color-light2;
+    }
+  }
+  &.error {
+    background-color: @color-red-dark;
+    border: 1px solid @color-red-dark;
+    border-right: 0px;
+    .notification-content {
+      background-color: @color-red-light;
+    }
+  }
+  &.success {
+    background-color: @color-green-dark;
+    border: 1px solid @color-green-dark;
+    border-right: 0px;
+    .notification-content {
+      background-color: @color-green-light;
+    }
+  }
+  &.warning {
+    background-color: @color-yellow-dark;
+    border: 1px solid @color-yellow-dark;
+    border-right: 0px;
+    .notification-content {
+      background-color: @color-yellow-light;
+    }
+  }
+  &.info {
+    background-color: @color-blue-dark;
+    border: 1px solid @color-blue-dark;
+    border-right: 0px;
+    .notification-content {
+      background-color: @color-blue-light;
+    }
+  }
+
+
+
+  &-icon {
+    color: @color-light1;
+    position: absolute;
+    top: 50%;
+    left: 18px;
+    margin-top: -15px;
+    font-size: 1.3em;
+  }
+
+  &-content {
+    padding: @padding-small @padding-large @padding-small @padding-large;
+    min-height: 30px;
+    
+    &.has-icon {
+      margin-left: @padding-large+@icon-size;
+    }
+  }
+
+  &-title {
+    font-size: 1em;
+    font-weight: bold;
+    margin-bottom: 5px;
+  }
+
+  &-message {
+    font-size: 0.85em;
+  }
+}

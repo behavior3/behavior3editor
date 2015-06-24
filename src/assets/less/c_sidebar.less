@@ -1,0 +1,111 @@
+.sidebar-stub {
+  position: absolute;
+  top: 0px;
+  width: @size-sidebar;
+  height: 100%;
+  z-index: 1;
+  background-color: @color-dark3;
+}
+
+.sidebar {
+  overflow-y: auto;
+  position: absolute;
+  top: 0px;
+  width: @size-sidebar;
+  height: 100%;
+  z-index: @z-sidebar;
+  color: @color-light3;
+  background-color: @color-dark3;
+  .box-shadow(0px 0px 16px 0px);
+
+  &.left { left: 0px; }
+  &.right { right: 0px; }
+  &::-webkit-scrollbar {
+    width: 3px;
+    background: none;
+
+    &-track { background: none; }
+    &-thumb { background: @color-blue; }
+    &-thumb:window-inactive { background: @color-blue; }
+  }
+
+  .title {
+    color: @color-dark1;
+    list-style: none;
+    background-color: @color-dark2+#222;
+    margin: @padding-medium 0px @padding-small-2x 0px;
+    padding: 0px @padding-small-2x;
+    text-align: left;
+    text-transform: capitalize;
+    font-size: 1.2em;
+    .font-base;
+
+    .new {
+      margin-top: 3px;
+      float: right;
+      color: @color-light1;
+      &:hover {
+        text-decoration: none;
+        background-color: @color-green;
+      }
+    }
+
+    a {
+      color: @color-dark1;
+      display: block;
+    }
+  }
+
+  .header-button {
+    color: @color-light3;
+    padding-left: @padding-large;
+    height: @size-header;
+    line-height: @size-header*1.1;
+    font-size: 1.5em;
+    background-color: @color-dark2;
+    border-bottom: 1px solid @color-dark4;
+    .font-header;
+
+    a {
+      display: block;
+      color: @color-light2;
+    }
+  }
+
+  .content {
+    padding: @padding-medium 0px;
+
+    &.content.no-header { padding-top: @size-header; }
+    &.content.has-menubar { padding-top: @size-menubar; }
+
+  }
+}
+
+.side-panel {
+  .panel-operations {
+    border-top: 1px solid @color-light4;
+    border-bottom: 1px solid @color-light4;
+    position: absolute;
+    width:100%;
+    bottom: 0px;
+    background-color: @color-dark2;
+
+    &-content {
+      width: 100%;
+      text-align: right;
+      ul {
+        margin: 0px;
+        padding: 0px;
+        list-style: none;
+        li {
+          display: inline;
+          a {
+            display: inline-block;
+            padding: 3.5px 12px;
+            cursor: pointer;
+          }
+        }
+      }
+    }
+  }
+}

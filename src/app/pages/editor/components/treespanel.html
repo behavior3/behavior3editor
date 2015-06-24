@@ -1,0 +1,31 @@
+<div ng-controller="TreespanelController as treespanel" class="full-height side-panel">
+  
+  <nav class="panel-operations">
+    <div class="panel-operations-content">
+      <ul>
+        <li><a class="btn-success" ng-click="treespanel.newTree();"><i class="fa fa-plus"></i> New tree</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <div class="tree-list">
+    <div class="tree-list-content">
+      <ul>
+        <li ng-repeat="tree in treespanel.trees">
+          <a class="remove btn btn-link btn-xs" 
+             style="display:none"
+             onmouseover="this.style.display='inline-block';"
+             onmouseout="this.style.display='none'"
+             ng-click="treespanel.remove(tree.id)">Remove</a>
+
+          <a onmouseover="this.parentElement.firstElementChild.style.display='inline-block';"
+             onmouseout="this.parentElement.firstElementChild.style.display='none';"
+             ng-class="{active:tree.active}" 
+             ng-click="treespanel.select(tree.id)">
+             {{tree.name}}
+          </a>
+        </li>
+      </ul>
+    </div>
+  </div>
+</div>

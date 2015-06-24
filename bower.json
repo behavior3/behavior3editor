@@ -1,0 +1,17 @@
+{
+  "name": "behavior3editor",
+  "version": "0.2.0dev",
+  "directory": "src/vendor/",
+  "devDependencies": {
+    "angular": "~1.4",
+    "bootstrap": "~3.1.1",
+    "angular-animate": "~1.4",
+    "angular-bootstrap": "~0.13.0",
+    "angular-ui-router": "~0.2.14",
+    "fontawesome": "~4.3.0",
+    "less": "~2.5.0",
+    "normalize.css": "~3.0.3",
+    "sweetalert": "~1.0.0-beta"
+  },
+  "dependencies": {}
+}

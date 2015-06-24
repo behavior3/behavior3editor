@@ -1,0 +1,169 @@
+<nav class="menubar" ng-controller="MenubarController as menubar">
+  <div class="menubar-left">
+    <div class="side">
+      <ul>
+        <li><a class="logo" title="behavior3.com" href="http://behavior3.com" target="_blank">Behavior3</a></li>
+        <li><a class="fastlink" title="All projects" ui-sref="dash.projects"><i class="fa fa-fw fa-arrow-circle-o-left"></i></a></li>
+        <li><a class="fastlink" title="Settings" ui-sref="dash.settings"><i class="fa fa-fw fa-cog"></i></a></li>
+        <li><a class="fastlink" title="Save project" ng-click="menubar.onSaveProject()"><i class="fa fa-fw fa-save"></i></a></li>
+        <li><a class="fastlink" title="Undo" ng-click="menubar.onUndo()"><i class="fa fa-fw fa-undo"></i></a></li>
+        <li><a class="fastlink" title="Redo" ng-click="menubar.onRedo()"><i class="fa fa-fw fa-repeat"></i></a></li>
+      </ul>
+    </div>
+
+    <ul class="">
+      <li><a>Project</a>
+        <ul>
+          <li><a ui-sref="dash.projects">
+            All projects
+            <span class="shortcut"></span>
+          </a></li>
+          <li><a ng-click="menubar.onCloseProject()">
+            Close project
+            <span class="shortcut">ctrl+q</span>
+          </a></li>
+          <li><a ng-click="menubar.onSaveProject()">
+            Save project
+            <span class="shortcut">ctrl+s</span>
+          </a></li>
+
+          <li class="divider"></li>
+
+          <li><a>Export<span class="shortcut arrow-right"></span></a>
+            <ul>
+              <li><a ng-click="menubar.onExportProjectJson()">Project as JSON</a></li>
+              <li><a ng-click="menubar.onExportTreeJson()">Tree as JSON</a></li>
+              <li><a ng-click="menubar.onExportNodesJson()">Nodes as JSON</a></li>
+            </ul>
+          </li>
+          <li><a>Import<span class="shortcut arrow-right"></span></a>
+            <ul>
+              <li><a ng-click="menubar.onImportProjectJson()">Project as JSON</a></li>
+              <li><a ng-click="menubar.onImportTreeJson()">Tree as JSON</a></li>
+              <li><a ng-click="menubar.onImportNodesJson()">Nodes as JSON</a></li>
+            </ul>
+          </li>
+
+          <li class="divider"></li>
+
+          <li><a ui-sref="dash.settings">
+            Settings
+            <span class="shortcut"></span>
+          </a></li>
+
+          <li class="divider"></li>
+
+          <li><a ng-click="menubar.onNewTree()">
+            New tree<span class="shortcut">{{key_new_tree}}</span>
+          </a></li>
+          <li><a ui-sref="editor.editnode">
+            New node<span class="shortcut">{{key_new_node}}</span>
+          </a></li>
+        </ul>
+      </li>
+
+
+
+      <li><a>Edit</a>
+        <ul>
+          <li><a ng-click="menubar.onUndo()">
+            Undo
+            <span class="shortcut">ctrl+z</span>
+          </a></li>
+          <li><a ng-click="menubar.onRedo()">
+            Redo
+            <span class="shortcut">ctrl+shift+z</span>
+          </a></li>
+          <li class="divider"></li>
+          <li><a ng-click="menubar.onCopy()">
+            Copy
+            <span class="shortcut">ctrl+c</span>
+          </a></li>
+          <li><a ng-click="menubar.onCut()">
+            Cut
+            <span class="shortcut">ctrl+x</span>
+          </a></li>
+          <li><a ng-click="menubar.onPaste()">
+            Paste
+            <span class="shortcut">ctrl+v</span>
+          </a></li>
+          <li><a ng-click="menubar.onDuplicate()">
+            Duplicate
+            <span class="shortcut">ctrl+d</span>
+          </a></li>
+          <li><a ng-click="menubar.onRemove()">
+            Remove
+            <span class="shortcut">delete</span>
+          </a></li>
+          <li class="divider"></li>
+          <li><a ng-click="menubar.onRemoveAllConns()">
+            Remove all conns
+          </a></li>
+          <li><a ng-click="menubar.onRemoveInConns()">
+            Remove all in-conns
+          </a></li>
+          <li><a ng-click="menubar.onRemoveOutConns()">
+            Remove all out-conns
+          </a></li>
+        </ul>
+      </li>
+
+      <li><a>View</a>
+        <ul>
+          <li><a ng-click="menubar.onAutoOrganize()">
+            Auto organize
+            <span class="shortcut">a</span>
+          </a></li>
+          <li class="divider"></li>
+          <li><a ng-click="menubar.onZoomIn()">
+            Zoom in
+            <span class="shortcut">ctrl+up</span>
+          </a></li>
+          <li><a ng-click="menubar.onZoomOut()">
+            Zoom out
+            <span class="shortcut">ctrl+down</span>
+          </a></li>
+        </ul>
+      </li>
+
+      <li><a>Selection</a>
+        <ul>
+          <li><a ng-click="menubar.onSelectAll()">
+            Select all
+            <span class="shortcut">ctrl+a</span>
+          </a></li>
+          <li><a ng-click="menubar.onDeselectAll()">
+            Deselect all
+            <span class="shortcut">shift+ctrl+a</span>
+          </a></li>
+          <li><a ng-click="menubar.onInvertSelection()">
+            Invert selection
+            <span class="shortcut">ctrl+i</span>
+          </a></li>
+          <li class="disabled"><a>
+            Select subtree
+            <span class="shortcut">alt+click</span>
+          </a></li>
+        </ul>
+      </li>
+
+    </ul>
+  </div>
+<!-- 
+  <div class="menubar-right">
+    <ul>
+      <li><a>Help</a>
+        <ul>
+          <li><a href="https://github.com/renatopp/behavior3js/wiki" target="_blank">Editor guide</a></li>
+          <li class="divider"></li>
+          <li><a href="https://github.com/renatopp/behavior3js/wiki" target="_blank">Behavior3JS guide</a></li>
+          <li><a href="http://docs.guineashots.com/behavior3js/" target="_blank">API</a></li>
+          <li><a href="https://github.com/renatopp/behavior3js/issues" target="_blank">Issues</a></li>
+          <li class="divider"></li>
+          <li><a href="http://guineashots.com/projects/" target="_blank">Other projects</a></li>
+          <li><a href="http://guineashots.com" target="_blank">Guineashots</a></li>
+        </ul>
+      </li>
+    </ul>
+  </div> -->
+</nav>

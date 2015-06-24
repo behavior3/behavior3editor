@@ -1,0 +1,44 @@
+<div ng-controller="PropertiespanelController as propertiespanel" class="full-height side-panel">
+
+  <div class="title">Properties</div>
+
+  <div ng-hide="propertiespanel.block" class="properties">
+    <p class="text-center">Select a <strong>single</strong> block to change its properties.</p>
+    <p class="text-center"><em>NOTE: The root node represents a tree. Therefore, changes applied to this node will persist on the tree object.</em></p>
+  </div>
+  
+  <div ng-show="propertiespanel.block" class="properties">
+    <form>
+      <div class="form-group">
+        <label for="title">Title</label>
+        <input type="text" 
+               class="form-control"
+               name="title"
+               placeholder="Title"
+               ng-model="propertiespanel.block.title"
+               ng-change="propertiespanel.update()">
+      </div>
+
+      <div class="form-group">
+        <label for="description">Description</label>
+        <textarea name="description"
+                  rows="4"
+                  class="form-control"
+                  placeholder="Description"
+                  ng-model="propertiespanel.block.description"
+                  ng-change="propertiespanel.update()">
+
+        </textarea>
+      </div>
+
+      <div class="form-group">
+        <b3-key-table heading="Properties" 
+                      ng-model="propertiespanel.block.properties"
+                      ng-change="propertiespanel.update()"
+                      class="no-border">
+        </b3-key-table>
+      </div>
+    </form>
+  </div>
+  
+</div>

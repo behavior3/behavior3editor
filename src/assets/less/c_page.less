@@ -1,0 +1,60 @@
+
+.page {
+  color: @color-dark1;
+  overflow-y: auto;
+  padding-bottom: 100px;
+  min-width: 850px;
+
+  h1.header {
+    color: @color-light3;
+    margin: 0px;
+    overflow-y: hidden;
+    padding: 0px;
+    min-width: @size-sidebar+350px;
+    padding-left: @padding-large+@size-sidebar;
+    height: @size-header;
+    line-height: @size-header*1.1;
+    font-size: 2.5em;
+    .font-header;
+  }
+
+  .content {
+    max-width: @size-page-content;
+    min-width: @size-sidebar+350px;
+    width: 100%;
+    padding: @padding-large;
+    padding-left: @padding-large+@size-sidebar;
+
+    &.no-header { padding-top: @size-header; }
+    .current-project { margin-top: 10px; }
+  }
+
+  &-operations {
+    background-color: @color-light1;
+    border: 1px solid #E7E7E7;
+
+    &-content {
+      max-width: @size-page-content;
+      min-width: @size-sidebar+350px;
+      width: 100%;
+      padding-right: @padding-large;
+      padding-left: @size-sidebar;
+      text-align: right;
+      ul {
+        margin: 0px;
+        padding: 0px;
+        list-style: none;
+        li {
+          display: inline;
+          a, button {
+            border: 0px;
+            display: inline;
+            // height: 22px;
+            padding: 3.5px 13px;
+            cursor: pointer;
+          }
+        }
+      }
+    }
+  }
+}

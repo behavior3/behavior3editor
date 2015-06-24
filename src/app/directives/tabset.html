@@ -1,0 +1,9 @@
+<div class="tabset">
+  <ul class="tabset-header">
+    <li ng-repeat="tab in tabset.tabs" ng-class="{'active':tab.active}">
+      <a ng-click="tabset.select(tab);">{{tab.heading}}</a>
+    </li>
+  </ul>
+
+  <ng-transclude></ng-transclude>
+</div>

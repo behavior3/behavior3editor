@@ -1,0 +1,39 @@
+.tree-list {
+  overflow-y: auto;
+  height: 80%;
+
+  &-content {
+    padding: 0px @padding-small;
+
+    ul {
+      list-style: none;
+      margin: 0px;
+      padding: 0px;
+      
+      li {
+        .remove {
+          float: right;
+          color: @color-light1;
+          &:hover {
+            text-decoration: none;
+            background-color: @color-red;
+          }
+        }
+        a {
+          padding: 2px @padding-small;
+          display: block;
+          color: @color-light1;
+          &:hover {
+            background-color: @color-dark2;
+          }
+          &.active {
+            color: @color-blue;
+            font-weight: 600;
+          }
+        }
+      }
+    }
+  }
+
+
+}
