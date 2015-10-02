@@ -33,9 +33,11 @@ html, body {
 .preloading-body-title {
   font-size : 2.0em;
   margin    : 0px;
+  display : block;
 }
 
 .preloading-body-subtitle {
   font-size : 0.9em;
   opacity   : 0.8;
+  display : block;
 }
