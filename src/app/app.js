@@ -39,7 +39,7 @@ angular.module('app', [
         
         function closePreload() {
           $timeout(function() {
-            var element = angular.element(document.getElementById('prld'));
+            var element = angular.element(document.getElementById('page-preload'));
             $animate.addClass(element, 'preload-fade')
               .then(function() {
                 element.remove();

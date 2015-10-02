@@ -31,7 +31,9 @@ node_modules
 .idea
 
 # Custom
+bower_components
 dist
+build
 src/vendor
 cache
 teste.py

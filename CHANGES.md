@@ -1,7 +1,13 @@
-Version [NEXT]
-==============
 
-[editor]
+## Version 0.3.0 [NEXT]
+
+- mod: new building system and dependence organization.
+
+
+
+## Version 0.2.0 [Not released]
+
+**editor**:
 
 - add: editor import and export custom_node property (see #9/b3js).
 - add: editor create custom nodes automatically when importing (see #9/b3js).
@@ -24,7 +30,6 @@ Version [NEXT]
 - rem: dependence on JQuery and other libraries is removed.
 
 
-Version 0.1.0 [Out 27, 2014]
-============================
+## Version 0.1.0 [Out 27, 2014]
 
 - initial release.
