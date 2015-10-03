@@ -3,16 +3,16 @@
 
   angular
     .module('app')
-    .factory('settingsService', settingsService);
+    .factory('settingsModel', settingsModel);
 
-  settingsService.$inject = [
+  settingsModel.$inject = [
     '$q',
     'storageService',
     'systemService',
     'editorService'
   ];
 
-  function settingsService($q,
+  function settingsModel($q,
                            storageService, 
                            systemService,
                            editorService) {

@@ -15,14 +15,14 @@ angular.module('app', [
   }
 ])
 
-.run(['$window', '$animate', '$location', '$document', '$timeout', 'settingsService', 'projectService',
+.run(['$window', '$animate', '$location', '$document', '$timeout', 'settingsModel', 'projectModel',
   function Execute($window,
                    $animate,
                    $location,
                    $document,
                    $timeout,
-                   settingsService, 
-                   projectService) {
+                   settingsModel, 
+                   projectModel) {
 
     // reset path
     $location.path('/');
@@ -33,8 +33,8 @@ angular.module('app', [
       .attr('b3-drop-node', true);
 
     // initialize editor
-    settingsService.getSettings();
-    projectService
+    settingsModel.getSettings();
+    projectModel
       .getRecentProjects()
       .then(function(projects) {
         
@@ -49,7 +49,7 @@ angular.module('app', [
         }
 
         if (projects.length > 0 && projects[0].isOpen) {
-          projectService
+          projectModel
             .openProject(projects[0].path)
             .then(function() {
               closePreload();

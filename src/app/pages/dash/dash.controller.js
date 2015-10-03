@@ -7,16 +7,16 @@
 
   DashController.$inject = [
     '$scope',
-    'projectService'
+    'projectModel'
   ];
 
-  function DashController($scope, projectService) {
+  function DashController($scope, projectModel) {
     var vm = this;
     vm.project = null;
     _activate();
 
     function _activate() {
-      vm.project = projectService.getProject();
+      vm.project = projectModel.getProject();
     }
     $scope.$on('dash-projectchanged', function() {
       _activate();

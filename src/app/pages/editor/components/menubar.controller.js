@@ -10,7 +10,7 @@
     '$window',
     '$state',
     'dialogService',
-    'projectService',
+    'projectModel',
     'notificationService'
   ];
 
@@ -18,7 +18,7 @@
                              $window,
                              $state,
                              dialogService,
-                             projectService,
+                             projectModel,
                              notificationService) {
     var vm = this;
     vm.onNewTree           = onNewTree;
@@ -136,7 +136,7 @@
 
     function onCloseProject() {
       function doClose() {
-        projectService.closeProject();
+        projectModel.closeProject();
         $state.go('dash.projects');
       }
 
@@ -154,7 +154,7 @@
       return false;
     }
     function onSaveProject() {
-      projectService
+      projectModel
         .saveProject()
         .then(function() {
           notificationService.success(

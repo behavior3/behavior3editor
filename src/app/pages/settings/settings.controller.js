@@ -7,12 +7,12 @@
 
   SettingsController.$inject = [
     'notificationService',
-    'settingsService',
+    'settingsModel',
     'dialogService',
   ];
 
   function SettingsController(notificationService,
-                              settingsService,
+                              settingsModel,
                               dialogService) {
 
     // HEADER //
@@ -25,7 +25,7 @@
 
     // BODY //
     function _activate() {
-      settingsService
+      settingsModel
         .getSettings()
         .then(function(settings) {
           vm.settings = settings;
@@ -33,7 +33,7 @@
     }
 
     function saveSettings() {
-      settingsService
+      settingsModel
         .saveSettings(vm.settings)
         .then(function() {
           notificationService.success(
@@ -48,7 +48,7 @@
         'Reset Settings?',
         'Are you sure you want to reset to the default settings?'
       ).then(function() {
-        settingsService
+        settingsModel
           .resetSettings()
           .then(function() {
             notificationService.success(

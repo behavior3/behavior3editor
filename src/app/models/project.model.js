@@ -3,9 +3,9 @@
 
   angular
     .module('app')
-    .factory('projectService', projectService);
+    .factory('projectModel', projectModel);
 
-  projectService.$inject = [
+  projectModel.$inject = [
     '$q',
     '$rootScope',
     '$window',
@@ -15,7 +15,7 @@
     'editorService'
   ];
 
-  function projectService($q,
+  function projectModel($q,
                           $rootScope,
                           $window,
                           storageService,

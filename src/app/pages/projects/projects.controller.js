@@ -11,7 +11,7 @@
     'dialogService',
     'systemService', 
     'notificationService',
-    'projectService'
+    'projectModel'
   ];
 
   function ProjectsController($state,
@@ -19,7 +19,7 @@
                               dialogService, 
                               systemService,
                               notificationService,
-                              projectService) {
+                              projectModel) {
 
     // HEAD //
     var vm = this;
@@ -38,7 +38,7 @@
     // BODY //
     function _activate() {
       vm.isDesktop = systemService.isDesktop;
-      projectService
+      projectModel
         .getRecentProjects()
         .then(function(recents) {
           vm.recentProjects = recents;
@@ -46,7 +46,7 @@
     }
 
     function _newProject(path, name) {
-      projectService
+      projectModel
         .newProject(path, name)
         .then(function() {
           $state.go('editor');
@@ -97,7 +97,7 @@
     }
 
     function _openProject(path) {
-      projectService
+      projectModel
         .openProject(path)
         .then(function() {
           $state.go('editor');
@@ -133,7 +133,7 @@
     }
 
     function editProject() {
-      var project = projectService.getProject();
+      var project = projectModel.getProject();
 
       dialogService
         .prompt('Rename project', null, 'input', project.name)
@@ -148,7 +148,7 @@
           }
 
           project.name = name;
-          projectService
+          projectModel
             .saveProject(project)
             .then(function() {
               _activate();
@@ -161,7 +161,7 @@
     }
 
     function saveProject() {
-      projectService
+      projectModel
         .saveProject()
         .then(function() {
           notificationService.success(
@@ -178,7 +178,7 @@
 
     function closeProject() {
       function doClose() {
-        projectService.closeProject();
+        projectModel.closeProject();
       }
 
       if ($window.editor.isDirty()) {
@@ -199,7 +199,7 @@
           'Remove project?', 
           'Are you sure you want to remove this project?'
         ).then(function() {
-          projectService
+          projectModel
             .removeProject(path)
             .then(function() {
               _activate();
