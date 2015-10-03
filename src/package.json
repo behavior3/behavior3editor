@@ -1,7 +1,7 @@
 {
-  "name"       : "behavior3editor",
-  "version"    : "0.3.0",
-  "main": "index.html",
+  "name"    : "behavior3editor",
+  "version" : "0.3.0",
+  "main"    : "index.html",
   "window": {
     "title"      : "Behavior3 Editor (v0.3.0) - http://behavior3.com",
     "position"   : "center",

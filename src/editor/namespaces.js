@@ -32,4 +32,4 @@ window.b3e.project = window.b3e.project || {};
 window.b3e.tree    = window.b3e.tree || {};
 
 
-window.b3e.VERSION = '0.2.0';
+window.b3e.VERSION = '0.3.0';
