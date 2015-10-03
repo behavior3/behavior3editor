@@ -1,14 +1,17 @@
 // GULP MODULES ===============================================================
-var gulp        = require('gulp');
-var concat      = require('gulp-concat');
-var uglify      = require('gulp-uglify');
-var minify      = require('gulp-minify-css');
-var connect     = require('gulp-connect');
-var less        = require('gulp-less');
-var jshint      = require('gulp-jshint');
-var stylish     = require('jshint-stylish');
-var exec        = require('child_process').exec;
-var merge       = require('merge-stream');
+var gulp          = require('gulp');
+var concat        = require('gulp-concat');
+var uglify        = require('gulp-uglify');
+var minifyCSS     = require('gulp-minify-css');
+var minifyHTML    = require('gulp-minify-html');
+var connect       = require('gulp-connect');
+var less          = require('gulp-less');
+var jshint        = require('gulp-jshint');
+var templateCache = require('gulp-angular-templatecache');
+var stylish       = require('jshint-stylish');
+var exec          = require('child_process').exec;
+var merge         = require('merge-stream');
+
 
 // FILES ======================================================================
 var vendor_js = [
@@ -74,7 +77,7 @@ gulp.task('_vendor_js', function() {
 
 gulp.task('_vendor_css', function() {
   return gulp.src(vendor_css)
-             .pipe(minify())
+             .pipe(minifyCSS())
              .pipe(concat('vendor.min.css'))
              .pipe(gulp.dest('build/css'))
 });
@@ -98,7 +101,7 @@ gulp.task('_preload_js', function() {
 
 gulp.task('_preload_css', function() {
   return gulp.src(preload_css)
-             .pipe(minify())
+             .pipe(minifyCSS())
              .pipe(concat('preload.min.css'))
              .pipe(gulp.dest('build/css'))
              .pipe(connect.reload())
@@ -121,7 +124,7 @@ gulp.task('_app_js', function() {
 gulp.task('_app_less', function() {
   return gulp.src(app_less)
              .pipe(less())
-             .pipe(minify())
+             .pipe(minifyCSS())
              .pipe(concat('app.min.css'))
              .pipe(gulp.dest('build/css'))
              .pipe(connect.reload())
@@ -129,12 +132,15 @@ gulp.task('_app_less', function() {
 
 gulp.task('_app_html', function() {
   return gulp.src(app_html)
-             .pipe(gulp.dest('build/app'))
+             .pipe(minifyHTML({empty:true})) 
+             .pipe(templateCache('templates.min.js', {standalone:true}))
+             .pipe(gulp.dest('build/js'))
              .pipe(connect.reload())
 });
 
 gulp.task('_app_entry', function() {
   return gulp.src(app_entry)
+             .pipe(minifyHTML({empty:true})) 
              .pipe(gulp.dest('build'))
              .pipe(connect.reload())
 });

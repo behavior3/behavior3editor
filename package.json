@@ -7,16 +7,18 @@
   "bugs"       : "https://github.com/behavior3/behavior3editor/issues",
   "repository" : "github:behavior3/behavior3editor",
 
-  "devDependencies": {
-    "gulp"            : "*",
-    "gulp-concat"     : "*",
-    "gulp-jshint"     : "*",
-    "gulp-uglify"     : "*",
-    "gulp-connect"    : "*",
-    "gulp-less"       : "*",
-    "gulp-minify-css" : "*",
-    "jshint-stylish"  : "*",
-    "merge-stream"    : "*"
+  "devDependencies" : {
+    "gulp"                       : "*",
+    "gulp-concat"                : "*",
+    "gulp-jshint"                : "*",
+    "gulp-uglify"                : "*",
+    "gulp-connect"               : "*",
+    "gulp-less"                  : "*",
+    "gulp-angular-templatecache" : "*",
+    "gulp-minify-css"            : "*",
+    "gulp-minify-html"           : "*",
+    "jshint-stylish"             : "*",
+    "merge-stream"               : "*"
   },
   "dependencies": {
 

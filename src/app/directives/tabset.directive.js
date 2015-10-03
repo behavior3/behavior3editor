@@ -11,7 +11,7 @@
       transclude       : true,
       replace          : true,
       scope            : {},
-      templateUrl      : 'app/directives/tabset.html',
+      templateUrl      : 'directives/tabset.html',
       bindToController : true,
       controllerAs     : 'tabset',
       controller       : tabsetController,

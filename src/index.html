@@ -18,7 +18,7 @@
         <i class="fa fa-gear fa-spin"></i> 
         <strong>Behavior3</strong> Editor
       </span>
-      <span class="preloading-body-subtitle">
+      <span id="page-preload-progress" class="preloading-body-subtitle">
         Loading...
       </span>
       
@@ -35,8 +35,22 @@
 </body>
 </html>
 
+
+
+<script>preloadProgress('Loading vendor styles...');</script>
 <link rel="stylesheet" href="css/vendor.min.css">
+
+<script>preloadProgress('Loading app styles...');</script>
 <link rel="stylesheet" href="css/app.min.css">
+
+<script>preloadProgress('Loading vendor libraries...');</script>
 <script type="text/javascript" src="js/vendor.min.js"></script>
+
+<script>preloadProgress('Loading app libraries...');</script>
 <script type="text/javascript" src="js/app.min.js"></script>
+
+<script>preloadProgress('Loading templates...');</script>
+<script type="text/javascript" src="js/templates.min.js"></script>
+
+<script>preloadProgress('Starting application...');</script>
 <script>startApp();</script>
