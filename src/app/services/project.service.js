@@ -58,12 +58,12 @@
           description : project.description,
           path        : project.path,
           isOpen      : true,
-        }
+        };
         
         recentCache.splice(0, 0, data);
       } else {
-        for (var i=0; i<recentCache.length; i++) {
-          recentCache[i].isOpen = false;
+        for (var j=0; j<recentCache.length; j++) {
+          recentCache[j].isOpen = false;
         }
       }
       _saveRecentProjects();
@@ -73,14 +73,16 @@
       //   during intialization
       currentProject = project;
       _updateRecentProjects(project);
-      $rootScope.$broadcast('dash-projectchanged')
+      $rootScope.$broadcast('dash-projectchanged');
     }
 
     function getRecentProjects() {
       return $q(function(resolve, reject) {
         if (!recentCache) {
+          var data;
+
           try {
-            var data = storageService.load(recentPath);
+            data = storageService.load(recentPath);
           } catch (e) {}
 
           if (!data) {
@@ -90,7 +92,7 @@
           recentCache = data;
         }
         resolve(recentCache);
-      })
+      });
     }
     function newProject(path, name) {
       return $q(function(resolve, reject) {
@@ -108,7 +110,7 @@
             _setProject(project);
             resolve();
           });
-      })
+      });
     }
     function getProject() {
       return currentProject;
@@ -122,7 +124,7 @@
         storageService.save(project.path, project);
         _updateRecentProjects(project);
         resolve();
-      })
+      });
     }
     function openProject(path) {
       return $q(function(resolve, reject) {
@@ -149,13 +151,13 @@
         for (var i=0; i<recentCache.length; i++) {
           if (recentCache[i].path === path) {
             recentCache.splice(i, 1);
-            break
+            break;
           }
         }
 
         _saveRecentProjects();
         resolve();
-      })
+      });
     }
   }
 })();

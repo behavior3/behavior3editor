@@ -13,9 +13,9 @@
     this._root = null;
 
     // Layers
-    this._blocks = new createjs.Container(),
-    this._connections = new createjs.Container(),
-    this._overlay = new createjs.Container()
+    this._blocks = new createjs.Container();
+    this._connections = new createjs.Container();
+    this._overlay = new createjs.Container();
 
     // Managers
     this.blocks = null;
@@ -26,7 +26,7 @@
     this.organizer = null;
 
     this._initialize();
-  }
+  };
   var p = createjs.extend(Tree, createjs.Container);
 
   p._initialize = function() {
@@ -37,9 +37,9 @@
     this.view = new b3e.tree.ViewManager(this._editor, this._project, this);
     this.organize = new b3e.tree.OrganizeManager(this._editor, this._project, this);
 
-    this.addChild(this._connections)
-    this.addChild(this._blocks)
-    this.addChild(this._overlay)
+    this.addChild(this._connections);
+    this.addChild(this._blocks);
+    this.addChild(this._overlay);
 
     this._selectionBox = new b3e.SelectionBox();
     this._overlay.addChild(this._selectionBox);
@@ -48,7 +48,7 @@
     this._applySettings(this._editor._settings);
 
     this.view.center();
-  }
+  };
 
   p._applySettings = function(settings) {
     this._selectionBox._applySettings(settings);
@@ -59,7 +59,7 @@
     this.selection._applySettings(settings);
     this.view._applySettings(settings);
     this.organize._applySettings(settings);
-  }
+  };
 
   b3e.tree.Tree = createjs.promote(Tree, 'Container');
 })();

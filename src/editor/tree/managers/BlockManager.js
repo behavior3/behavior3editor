@@ -13,15 +13,17 @@ b3e.tree.BlockManager = function(editor, project, tree) {
     for (var j=0; j<block._outConnections.length; j++) {
       block._outConnections[j]._redraw();
     }
-  }
+  };
 
   /**
    * Add a block.
    */
   this.add = function(name, x, y) {
     // If name is a block
+    var block;
+
     if (name instanceof b3e.Block) {
-      var block = name;
+      block = name;
       block._snap();
       tree._blocks.addChild(block);
       editor.trigger('blockadded', block);
@@ -34,10 +36,10 @@ b3e.tree.BlockManager = function(editor, project, tree) {
 
       var node = name;
       if (typeof name === 'string') {
-        var node = project.nodes.get(name);
+        node = project.nodes.get(name);
       }
 
-      var block = new b3e.Block(node);
+      block = new b3e.Block(node);
       block._applySettings(editor._settings);
       block.x = x;
       block.y = y;
@@ -55,7 +57,7 @@ b3e.tree.BlockManager = function(editor, project, tree) {
     project.history._add(new b3e.Command(_old, _new));
 
     return block;
-  }
+  };
 
   this.get = function(block) {
     if (typeof block === 'string') {
@@ -69,7 +71,7 @@ b3e.tree.BlockManager = function(editor, project, tree) {
     }
 
     return block;
-  }
+  };
   this.getUnderPoint = function(x, y) {
     if (!x || !y) {
       var point = tree.view.getLocalPoint();
@@ -83,16 +85,16 @@ b3e.tree.BlockManager = function(editor, project, tree) {
 
       if (block._hitTest(x, y)) return block;
     }
-  }
+  };
   this.getSelected = function() {
     return tree._selectedBlocks.slice();
-  }
+  };
   this.getAll = function() {
     return tree._blocks.children;
-  }
+  };
   this.getRoot = function() {
     return tree._root;
-  }
+  };
   this.update = function(block, template, merge) {
     var mustSave = !!template;
 
@@ -101,7 +103,7 @@ b3e.tree.BlockManager = function(editor, project, tree) {
       title       : block.title,
       description : block.description,
       properties  : block.properties,
-    }
+    };
 
     template = template || {};
     var node = block.node;
@@ -132,7 +134,7 @@ b3e.tree.BlockManager = function(editor, project, tree) {
       title       : block.title,
       description : block.description,
       properties  : block.properties,
-    }
+    };
 
     // redraw connections linked to the entity
     if (block._inConnection) {
@@ -144,7 +146,7 @@ b3e.tree.BlockManager = function(editor, project, tree) {
     
     if (!mustSave) project.history._lock();
 
-    project.history._beginBatch()
+    project.history._beginBatch();
 
     if (block.category === 'root') {
       project.nodes.update(tree._id, {title: block.title||'A behavior tree'});
@@ -153,12 +155,12 @@ b3e.tree.BlockManager = function(editor, project, tree) {
     var _old = [this, this.update, [block, _oldValues]];
     var _new = [this, this.update, [block, _newValues]];
     project.history._add(new b3e.Command(_old, _new));
-    project.history._endBatch()
+    project.history._endBatch();
     
     if (!mustSave) project.history._unlock();
 
     editor.trigger('blockchanged', block);
-  }
+  };
   this.remove = function(block) {
     project.history._beginBatch();
     tree._blocks.removeChild(block);
@@ -183,7 +185,7 @@ b3e.tree.BlockManager = function(editor, project, tree) {
 
     project.history._endBatch();
     editor.trigger('blockremoved', block);
-  }
+  };
   this.cut = function(block) {
     project.history._beginBatch();
     tree._blocks.removeChild(block);
@@ -212,14 +214,14 @@ b3e.tree.BlockManager = function(editor, project, tree) {
 
     editor.trigger('blockremoved', block);
     project.history._endBatch();
-  }
+  };
   this.each = function(callback, thisarg) {
     tree._blocks.children.forEach(callback, thisarg);
-  }
+  };
 
   this._applySettings = function(settings) {
     this.each(function(block) {
       block._applySettings(settings);
-    })
-  }
-}
+    });
+  };
+};

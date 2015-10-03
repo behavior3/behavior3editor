@@ -79,9 +79,9 @@
               notificationService.success(
                 'File saved',
                 'The file has been saved successfully.'
-              )
-            })
-        })
+              );
+            });
+        });
     }
 
     function showCompact() {
@@ -92,4 +92,4 @@
     }
   }
 
-})()
+})();

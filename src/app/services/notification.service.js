@@ -47,7 +47,7 @@ function notificationService($window, $timeout, $compile, $rootScope, $sce) {
       message : '',
       icon    : false,
       delay   : 3000,
-    }
+    };
 
     // Default parameters
     config = tine.merge({}, DEFAULT, config);

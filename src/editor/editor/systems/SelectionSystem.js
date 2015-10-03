@@ -8,7 +8,7 @@ b3e.editor.SelectionSystem = function(editor) {
   var x0 = 0;
   var y0 = 0;
 
-  this.update = function(delta) {}
+  this.update = function(delta) {};
 
   this.onMouseDown = function(e) {
     var project = editor.project.get();
@@ -58,7 +58,7 @@ b3e.editor.SelectionSystem = function(editor) {
 
       if (!ctrl) tree.selection.deselectAll();
     }
-  }
+  };
 
   this.onMouseMove = function(e) {
     if (!isSelecting) return;
@@ -70,12 +70,12 @@ b3e.editor.SelectionSystem = function(editor) {
     if (!tree) return;
 
     var point = tree.view.getLocalPoint();
-    var x = point.x
-    var y = point.y
+    var x = point.x;
+    var y = point.y;
 
     tree._selectionBox.visible = true;
     tree._selectionBox._redraw(x0, y0, x, y);
-  }
+  };
 
   this.onMouseUp = function(e) {
     if (e.nativeEvent.which !== 1 || !isSelecting) return;
@@ -99,13 +99,13 @@ b3e.editor.SelectionSystem = function(editor) {
       if (block._isContainedIn(x1, y1, x2, y2)) {
         tree.selection.select(block);
       }
-    })
+    });
 
     tree._selectionBox.visible = false;
     isSelecting = false;
-  }
+  };
 
   editor._game.stage.on('stagemousedown', this.onMouseDown, this);
   editor._game.stage.on('stagemousemove', this.onMouseMove, this);
   editor._game.stage.on('stagemouseup', this.onMouseUp, this);
-}
+};

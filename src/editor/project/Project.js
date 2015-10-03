@@ -17,7 +17,7 @@
     this.history = null;
 
     this._initialize();
-  }
+  };
   var p = createjs.extend(Project, createjs.Container);
 
   p._initialize = function() {
@@ -45,13 +45,13 @@
     this._applySettings(this._editor._settings);
     this.history.clear();
     this._editor.clearDirty();
-  }
+  };
 
   p._applySettings = function(settings) {
     this.trees._applySettings(settings);
     this.nodes._applySettings(settings);
     this.history._applySettings(settings);
-  }
+  };
 
   b3e.project.Project = createjs.promote(Project, 'Container');
 })();

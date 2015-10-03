@@ -10,7 +10,7 @@ b3e.project.HistoryManager = function(editor, project) {
   this.clear = function() {
     queue = [];
     index = 0;
-  }
+  };
   this.undo = function() {
     this._lock();
     if (this.canUndo()) {
@@ -21,7 +21,7 @@ b3e.project.HistoryManager = function(editor, project) {
     this._unlock();
 
     editor._dirty--;
-  }
+  };
   this.redo = function() {
     this._lock();
     if (this.canRedo()) {
@@ -32,13 +32,13 @@ b3e.project.HistoryManager = function(editor, project) {
     this._unlock();
 
     editor._dirty++;
-  }
+  };
   this.canUndo = function() {
     return index>0;
-  }
+  };
   this.canRedo = function() {
     return index<queue.length;
-  }
+  };
 
   /**
    * Add commands to the historic.
@@ -50,7 +50,7 @@ b3e.project.HistoryManager = function(editor, project) {
 
     // Crear all after index
     if (queue.length > index) {
-      queue.splice(index, queue.length-index)
+      queue.splice(index, queue.length-index);
     }
 
     // Add instruction
@@ -70,26 +70,26 @@ b3e.project.HistoryManager = function(editor, project) {
     if (queue.length > max) {
       queue.splice(0, 1);
     }
-  }
+  };
 
   /**
    * Lock the manager, so it can't receive more commands.
    */
   this._lock = function() {
     // if (lockRequests===0) console.log('------- LOCK -------');
-    lockRequests++
-  }
+    lockRequests++;
+  };
   this._unlock = function() {
     lockRequests--;
     // if (lockRequests===0) console.log('------- UNLOCK -------');
-  }
+  };
 
   /**
    * While in batch, merges all added commands to a single command
    */
   this._beginBatch = function() {
     batchRequests++;
-  }
+  };
   this._endBatch = function() {
     batchRequests = Math.max(0, batchRequests-1);
 
@@ -101,7 +101,7 @@ b3e.project.HistoryManager = function(editor, project) {
       }
       commandBuffer = [];
     }
-  }
+  };
 
 
   this._applySettings = function(settings) {
@@ -109,6 +109,5 @@ b3e.project.HistoryManager = function(editor, project) {
     if (queue.length > max) {
       queue.splice(0, queue.length-max);
     }
-
-  }
-}
+  };
+};

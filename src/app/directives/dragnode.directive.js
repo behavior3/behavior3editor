@@ -7,7 +7,7 @@
 
   dragNode.$inject = [
     '$window'
-  ]
+  ];
 
   function dragNode($window) {
     var directive = {
@@ -23,7 +23,7 @@
         var img = $window.editor.preview(attrs.name);
         e.dataTransfer.setData('name', attrs.name);
         e.dataTransfer.setDragImage(img, img.width/2, img.height/2);
-      })
+      });
     }
   }
 

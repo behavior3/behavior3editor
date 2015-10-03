@@ -42,7 +42,7 @@
         .getRecentProjects()
         .then(function(recents) {
           vm.recentProjects = recents;
-        })
+        });
     }
 
     function _newProject(path, name) {
@@ -50,7 +50,7 @@
         .newProject(path, name)
         .then(function() {
           $state.go('editor');
-        })
+        });
     }
 
     function newProject() {
@@ -64,7 +64,7 @@
               notificationService.error(
                 'Invalid name',
                 'You must provide a name for the project.'
-              )
+              );
               return;
             }
 
@@ -76,7 +76,7 @@
                 .saveAs(placeholder, ['.b3', '.json'])
                 .then(function(path) {
                   _newProject(path, name);
-                })
+                });
             } else {
               var path = 'b3projects-'+b3.createUUID();  
               _newProject(path, name);
@@ -90,7 +90,7 @@
             'Leave without saving?', 
             'If you proceed you will lose all unsaved modifications.', 
             null, {closeOnConfirm: false})
-          .then(doNew)
+          .then(doNew);
       } else {
         doNew();
       }
@@ -105,8 +105,8 @@
           notificationService.error(
             'Invalid file',
             'Couldn\'t open the project file.'
-          )
-        })
+          );
+        });
     }
     function openProject(path) {
       function doOpen() {
@@ -126,7 +126,7 @@
           .confirm(
             'Leave without saving?', 
             'If you proceed you will lose all unsaved modifications.')
-          .then(doOpen)
+          .then(doOpen);
       } else {
         doOpen();
       }
@@ -143,7 +143,7 @@
             notificationService.error(
               'Invalid name',
               'You must provide a name for the project.'
-            )
+            );
             return;
           }
 
@@ -155,8 +155,8 @@
               notificationService.success(
                 'Project renamed',
                 'The project has been renamed successfully.'
-              )
-            })
+              );
+            });
         });
     }
 
@@ -167,13 +167,13 @@
           notificationService.success(
             'Project saved',
             'The project has been saved'
-          )
+          );
         }, function() {
           notificationService.error(
             'Error',
             'Project couldn\'t be saved'
-          )
-        })
+          );
+        });
     }
 
     function closeProject() {
@@ -187,7 +187,7 @@
             'Leave without saving?', 
             'If you proceed you will lose all unsaved modifications.', 
             null)
-          .then(doClose)
+          .then(doClose);
       } else {
         doClose();
       }
@@ -207,8 +207,8 @@
                 'Project removed',
                 'The project has been removed from editor.'
               );
-            })
-        })
+            });
+        });
     }
   }
 })();

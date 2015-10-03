@@ -12,6 +12,7 @@ b3e.tree.OrganizeManager = function(editor, project, tree) {
   var blocks               = []; // to reposition blocks
 
   function stepH(block) {
+    var x, y;
     blocks.push(block);
 
     // leaf
@@ -19,8 +20,8 @@ b3e.tree.OrganizeManager = function(editor, project, tree) {
       leafCount++;
 
       // leaf nodes have the position accord. to the depth and leaf cont.
-      var x = depth*horizontalSpacing;
-      var y = leafCount*verticalSpacing;
+      x = depth*horizontalSpacing;
+      y = leafCount*verticalSpacing;
     }
 
     // internal node
@@ -28,15 +29,16 @@ b3e.tree.OrganizeManager = function(editor, project, tree) {
       // internal nodes have the position acord. to the depth and the
       //    mean position of its children
       var ySum = 0;
+      var conns;
 
       if (orderByIndex) {
-        var conns = block._outConnections;
+        conns = block._outConnections;
       } else {
         // get connections ordered by y position
-        var conns = block._outConnections.slice(0);
+        conns = block._outConnections.slice(0);
         conns.sort(function(a, b) {
           return a._outBlock.y - b._outBlock.y;
-        })
+        });
       }
 
       for (var i=0; i<conns.length; i++) {
@@ -46,8 +48,8 @@ b3e.tree.OrganizeManager = function(editor, project, tree) {
         depth--;
       }
 
-      var x = depth*horizontalSpacing;
-      var y = ySum/block._outConnections.length;
+      x = depth*horizontalSpacing;
+      y = ySum/block._outConnections.length;
     }
 
     block.x = x;
@@ -57,6 +59,7 @@ b3e.tree.OrganizeManager = function(editor, project, tree) {
   }
 
   function stepV(block) {
+    var x, y;
     blocks.push(block);
 
     // leaf
@@ -64,8 +67,8 @@ b3e.tree.OrganizeManager = function(editor, project, tree) {
       leafCount++;
 
       // leaf nodes have the position accord. to the depth and leaf cont.
-      var x = leafCount*horizontalSpacing;
-      var y = depth*(verticalSpacing+verticalCompensation);
+      x = leafCount*horizontalSpacing;
+      y = depth*(verticalSpacing+verticalCompensation);
     }
 
     // internal node
@@ -73,15 +76,16 @@ b3e.tree.OrganizeManager = function(editor, project, tree) {
       // internal nodes have the position acord. to the depth and the
       //    mean position of its children
       var xSum = 0;
+      var conns;
 
       if (orderByIndex) {
-        var conns = block._outConnections;
+        conns = block._outConnections;
       } else {
         // get connections ordered by y position
-        var conns = block._outConnections.slice(0);
+        conns = block._outConnections.slice(0);
         conns.sort(function(a, b) {
           return a._outBlock.x - b._outBlock.x;
-        })
+        });
       }
 
       for (var i=0; i<conns.length; i++) {
@@ -91,8 +95,8 @@ b3e.tree.OrganizeManager = function(editor, project, tree) {
         depth--;
       }
 
-      var x = xSum/block._outConnections.length;
-      var y = depth*(verticalSpacing+verticalCompensation);
+      x = xSum/block._outConnections.length;
+      y = depth*(verticalSpacing+verticalCompensation);
     }
 
     block.x = x;
@@ -116,9 +120,8 @@ b3e.tree.OrganizeManager = function(editor, project, tree) {
     var _olds = [];
     root.traversal(function(block) {
       _olds.push([block, block.x, block.y]);
-    })
+    });
 
-    var root = root;
     if (editor._settings.get('layout') === 'horizontal') {
       stepH(root);
     } else {
@@ -128,29 +131,30 @@ b3e.tree.OrganizeManager = function(editor, project, tree) {
     offsetX -= root.x;
     offsetY -= root.y;
 
-    for (var i=0; i<blocks.length; i++) {
+    var i;
+    for (i=0; i<blocks.length; i++) {
       blocks[i].x += offsetX;
       blocks[i].y += offsetY;
       blocks[i]._snap();
     }
 
-    for (var i=0; i<connections.length; i++) {
+    for (i=0; i<connections.length; i++) {
       connections[i]._redraw();
     }
 
     var _news = [];
     root.traversal(function(block) {
       _news.push([block, block.x, block.y]);
-    })
+    });
 
     project.history._beginBatch();
-    for (var i=0; i<blocks.length; i++) {
+    for (i=0; i<blocks.length; i++) {
       var _old = [tree.blocks, tree.blocks._move, _olds[i]];
       var _new = [tree.blocks, tree.blocks._move, _news[i]];
       project.history._add(new b3e.Command(_old, _new));
     }
     project.history._endBatch();
-  }
+  };
 
   this._applySettings = function(settings) {
     var layout = settings.get('layout');
@@ -158,5 +162,5 @@ b3e.tree.OrganizeManager = function(editor, project, tree) {
       this.organize();
     }
     lastLayout = layout;
-  }
-}
+  };
+};

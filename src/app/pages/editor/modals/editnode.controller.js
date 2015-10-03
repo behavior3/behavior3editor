@@ -48,7 +48,7 @@
         if (node.name !== vm.node.name) {
           blacklist.push(node.name);
         }
-      })
+      });
       vm.blacklist = blacklist.join(',');
     }
 
@@ -63,7 +63,7 @@
 
       $state.go('editor');
       notificationService
-        .success('Node created', 'Node has been created successfully.')
+        .success('Node created', 'Node has been created successfully.');
     }
 
     function remove() {
@@ -79,8 +79,8 @@
             'The node has been removed from this project.'
           );
           $state.go('editor');
-        })
+        });
     }
   }
 
-})()
+})();

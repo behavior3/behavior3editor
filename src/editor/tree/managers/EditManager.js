@@ -8,10 +8,10 @@ b3e.tree.EditManager = function(editor, project, tree) {
       var block = tree._selectedBlocks[i];
 
       if (block.category != 'root') {
-        project._clipboard.push(block)
+        project._clipboard.push(block);
       }
     }
-  }
+  };
 
   this.cut = function() {
     project._clipboard = [];
@@ -21,34 +21,35 @@ b3e.tree.EditManager = function(editor, project, tree) {
 
       if (block.category != 'root') {
         tree.blocks.remove(block);
-        project._clipboard.push(block)
+        project._clipboard.push(block);
       }
     }
     project.history._endBatch();
     // tree._selectedBlocks = [];
-  }
+  };
 
   this.paste = function() {
     project.history._beginBatch();
+    var i, newBlock;
     var newBlocks = [];
-    for (var i=0; i<project._clipboard.length; i++) {
+    for (i=0; i<project._clipboard.length; i++) {
       var block = project._clipboard[i];
 
       // Copy the block
-      var newBlock = block._copy();
+      newBlock = block._copy();
       newBlock.x += 50;
       newBlock.y += 50;
-+
+
       // Add block to container
-      tree.blocks.add(newBlock)
+      tree.blocks.add(newBlock);
       newBlocks.push(newBlock);
     }
 
     // Copy connections
     // TODO: cubic complexity here! How to make it better?
-    for (var i=0; i<project._clipboard.length; i++) {
+    for (i=0; i<project._clipboard.length; i++) {
       var oldBlock = project._clipboard[i];
-      var newBlock = newBlocks[i];
+      newBlock = newBlocks[i];
 
       for (var j=0; j<oldBlock._outConnections.length; j++) {
         for (var k=0; k<project._clipboard.length; k++) {
@@ -62,11 +63,11 @@ b3e.tree.EditManager = function(editor, project, tree) {
 
     // Deselect old blocks and select the new ones
     tree.selection.deselectAll();
-    for (var i=0; i<newBlocks.length; i++) {
+    for (i=0; i<newBlocks.length; i++) {
       tree.selection.select(newBlocks[i]);
     }
     project.history._endBatch();
-  }
+  };
 
   this.duplicate = function() {
     project.history._beginBatch();
@@ -75,7 +76,7 @@ b3e.tree.EditManager = function(editor, project, tree) {
     this.paste();
     project._clipboard = tempClipboard;
     project.history._endBatch();
-  }
+  };
 
   this.remove = function() {
     project.history._beginBatch();
@@ -93,7 +94,7 @@ b3e.tree.EditManager = function(editor, project, tree) {
     //   tree.selection.select(root);
     // }
     project.history._endBatch();
-  }
+  };
 
   this.removeConnections = function() {
     project.history._beginBatch();
@@ -111,7 +112,7 @@ b3e.tree.EditManager = function(editor, project, tree) {
       }
     }
     project.history._endBatch();
-  }
+  };
 
   this.removeInConnections = function() {
     project.history._beginBatch();
@@ -123,7 +124,7 @@ b3e.tree.EditManager = function(editor, project, tree) {
       }
     }
     project.history._endBatch();
-  }
+  };
 
   this.removeOutConnections = function() {
     project.history._beginBatch();
@@ -137,7 +138,7 @@ b3e.tree.EditManager = function(editor, project, tree) {
       }
     }
     project.history._endBatch();
-  }
+  };
 
-  this._applySettings = function(settings) {}
-}
+  this._applySettings = function(settings) {};
+};

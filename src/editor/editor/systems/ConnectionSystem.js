@@ -4,7 +4,7 @@ b3e.editor.ConnectionSystem = function(editor) {
   var connection = null;
   var lastOutBlock = null;
 
-  this.update = function(delta) {}
+  this.update = function(delta) {};
 
   this.onMouseDown = function(e) {
     if (e.nativeEvent.which !== 1) return;
@@ -17,8 +17,8 @@ b3e.editor.ConnectionSystem = function(editor) {
 
     // if clicked on block
     var point = tree.view.getLocalPoint();
-    var x = point.x
-    var y = point.y
+    var x = point.x;
+    var y = point.y;
     var block = tree.blocks.getUnderPoint(x, y);
 
     if (connection || !block) return;
@@ -39,7 +39,7 @@ b3e.editor.ConnectionSystem = function(editor) {
 
       connection = c;
     }
-  }
+  };
 
   this.onMouseMove = function(e) {
     // if no connection, return
@@ -52,12 +52,12 @@ b3e.editor.ConnectionSystem = function(editor) {
     if (!tree) return;
 
     var point = tree.view.getLocalPoint();
-    var x = point.x
-    var y = point.y
+    var x = point.x;
+    var y = point.y;
 
     // redraw
     connection._redraw(null, null, x, y);
-  }
+  };
 
   this.onMouseUp = function(e) {
     if (e.nativeEvent.which !== 1) return;
@@ -87,11 +87,12 @@ b3e.editor.ConnectionSystem = function(editor) {
       }
       tree.connections.remove(connection);
     } else {
+      var c;
 
       // if double parent on node
       if (block._inConnection) {
 
-        var c = block._inConnection;
+        c = block._inConnection;
         tree.connections.remove(c);
       }
 
@@ -100,7 +101,7 @@ b3e.editor.ConnectionSystem = function(editor) {
            connection._inBlock.category === 'decorator') &&
            connection._inBlock._outConnections.length > 1) {
 
-        var c = connection._inBlock._outConnections[0];
+        c = connection._inBlock._outConnections[0];
         tree.connections.remove(c);
       }
 
@@ -116,9 +117,9 @@ b3e.editor.ConnectionSystem = function(editor) {
     project.history._endBatch();
 
     connection = null;
-  }
+  };
 
   editor._game.stage.on('stagemousedown', this.onMouseDown, this);
   editor._game.stage.on('stagemousemove', this.onMouseMove, this);
   editor._game.stage.on('stagemouseup', this.onMouseUp, this);
-}
+};

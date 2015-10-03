@@ -34,7 +34,7 @@ b3e.project.NodeManager = function(editor, project) {
     project.history._add(new b3e.Command(_old, _new));
 
     return node;
-  }
+  };
 
   /**
    * 
@@ -42,13 +42,13 @@ b3e.project.NodeManager = function(editor, project) {
   this.get = function(node) {
     if (typeof node !== 'string') return node;
     return project._nodes[node];
-  }
+  };
 
   /**
    * 
    */
   this.update = function(node, template) {
-    var node = this.get(node);
+    node = this.get(node);
     var oldName = node.name;
 
     delete project._nodes[node.name];
@@ -62,7 +62,7 @@ b3e.project.NodeManager = function(editor, project) {
       description : node.description,
       category    : node.category,
       properties  : node.properties,
-    }
+    };
 
     if (typeof template.name !== 'undefined') {
       node.name = template.name;
@@ -86,9 +86,9 @@ b3e.project.NodeManager = function(editor, project) {
       description : node.description,
       category    : node.category,
       properties  : node.properties,
-    }
+    };
 
-    project.history._beginBatch()
+    project.history._beginBatch();
 
     project.trees.each(function(tree) {
       var blocks = tree.blocks.getAll();
@@ -97,17 +97,17 @@ b3e.project.NodeManager = function(editor, project) {
           tree.blocks.update(blocks[i]);
         }
       }
-    })
+    });
 
     project._nodes[node.name] = node;
 
     var _old = [this, this.update, [node, _oldValues]];
     var _new = [this, this.update, [node, _newValues]];
     project.history._add(new b3e.Command(_old, _new));
-    project.history._endBatch()
+    project.history._endBatch();
 
     editor.trigger('nodechanged', node);
-  }
+  };
 
   /**
    * 
@@ -125,7 +125,7 @@ b3e.project.NodeManager = function(editor, project) {
           tree.blocks.remove(blocks[i]);
         }
       }
-    })
+    });
 
     var _old = [this, this.add, [node]];
     var _new = [this, this.remove, [node]];
@@ -134,7 +134,7 @@ b3e.project.NodeManager = function(editor, project) {
     project.history._endBatch();
 
     editor.trigger('noderemoved', node);
-  }
+  };
 
   /**
    * Iterates over node list.
@@ -142,8 +142,8 @@ b3e.project.NodeManager = function(editor, project) {
   this.each = function(callback, thisarg) {
     Object.keys(project._nodes).forEach(function(key) {
       callback.call(thisarg, project._nodes[key]);
-    })
-  }
+    });
+  };
 
-  this._applySettings = function(settings) {}
-}
+  this._applySettings = function(settings) {};
+};

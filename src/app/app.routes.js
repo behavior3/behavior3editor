@@ -56,6 +56,6 @@ angular.module('app')
         templateUrl: 'app/pages/editor/modals/import.html',
         controller: 'ImportController',
         controllerAs: 'import',
-      })
+      });
     }
 ]);

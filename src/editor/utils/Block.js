@@ -34,7 +34,7 @@
     this._displayShape = new createjs.Shape();
     this._displaySymbol = null;
     this._displayShadow = null;
-  }
+  };
   var p = createjs.extend(Block, createjs.Container);
   
   /**
@@ -50,7 +50,7 @@
     var color = this._settings.get('selection_color');
     this._displayShadow = new createjs.Shadow(color, 0, 0, 5);
     this._redraw();
-  }
+  };
 
   /**
    * Redraw the block.
@@ -74,7 +74,7 @@
 
     this.addChild(this._displayShape);
     this.addChild(this._displaySymbol);
-  }
+  };
 
   /**
    * Copy this block.
@@ -97,7 +97,7 @@
 
 
     return block;
-  }
+  };
 
   /**
    * Snap the block according to the snap settings.
@@ -116,7 +116,7 @@
 
     this.x -= dx;
     this.y -= dy;
-  }
+  };
 
   /**
    * Returns the center position of the in anchor.
@@ -129,8 +129,8 @@
     return {
       x: this.x-this._width/2-this._settings.get('anchor_offset_x'),
       y: this.y-this._height/2-this._settings.get('anchor_offset_x')
-    }
-  }
+    };
+  };
 
   /**
    * Returns the center position of the out anchor.
@@ -143,8 +143,8 @@
     return {
       x: this.x+this._width/2+this._settings.get('anchor_offset_x'),
       y: this.y+this._height/2+this._settings.get('anchor_offset_x')
-    }
-  }
+    };
+  };
 
   /**
    * Select a block, adding a shadow effect to it.
@@ -155,7 +155,7 @@
   p._select = function() {
     this._isSelected = true;
     this._displayShape.shadow = this._displayShadow;
-  }
+  };
 
   /**
    * Deselect a block, removing the shadow effect.
@@ -166,10 +166,10 @@
   p._deselect = function() {
     this._isSelected = false;
     this._displayShape.shadow = null;
-  }
+  };
 
-  p._collapse = function() {}
-  p._expand = function() {}
+  p._collapse = function() {};
+  p._expand = function() {};
 
   /**
    * Verifies if the position (x, y) hits any part of the block. This is 
@@ -185,7 +185,7 @@
    */
   p._hitTest = function(x, y) {
     return this._displayShape.hitTest(x-this.x, y-this.y);
-  }
+  };
 
   /**
    * Verifies if the position (x, y) hits the body of the block.
@@ -201,7 +201,7 @@
       return (Math.abs(x-this.x) < this._width/2);
     }
     return (Math.abs(y-this.y) < this._height/2);
-  }
+  };
 
   /**
    * Verifies if the position (x, y) hits the in anchor of the block.
@@ -219,7 +219,7 @@
     }
     var dy = y-this.y;
     return (Math.abs(dy) > this._height/2 && dy < 0);
-  }
+  };
 
   /**
    * Verifies if the position (x, y) hits the out anchor of the block.
@@ -237,7 +237,7 @@
     }
     var dy = y-this.y;
     return (Math.abs(dy) > this._height/2 && dy > 0);
-  }
+  };
 
   /**
    * Verifies if this block is contained inside a given rectangle.
@@ -259,7 +259,7 @@
     }
 
     return false;
-  }
+  };
 
 
   /**
@@ -284,7 +284,7 @@
       else
         return match;
     });
-  }
+  };
 
   /**
    * Runs a traversal over the subtree which this block is root.
@@ -310,7 +310,7 @@
         if (c._outBlock) blocks.push(c._outBlock);
       }
     }
-  }
+  };
 
   b3e.Block = createjs.promote(Block, 'Container');
 })();

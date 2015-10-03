@@ -116,7 +116,7 @@
             'Tree removed',
             'The tree has been removed from this project.'
           );
-        })
+        });
     }
   }
 })();

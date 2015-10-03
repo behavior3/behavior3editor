@@ -19,7 +19,7 @@ function dialogService($window, $q, $document) {
     return $q(function(resolve) {
       dialog.addEventListener('change', function() {
         resolve(dialog.value);
-      })
+      });
       dialog.click();
     });
   }
@@ -31,7 +31,7 @@ function dialogService($window, $q, $document) {
     options.type = type;
     options.customClass = type;
 
-    return $q(function(resolve) { swal(options, function() {resolve()}); });
+    return $q(function(resolve) { swal(options, function() { resolve(); }); });
   }
   function confirm(title, text, type, options) {
     options = options || {};
@@ -42,7 +42,13 @@ function dialogService($window, $q, $document) {
     options.showCancelButton = true;
 
     return $q(function(resolve, reject) {
-      $window.swal(options, function(ok) { ok?resolve():reject(); });
+      $window.swal(options, function(ok) {
+        if (ok) {
+          resolve();
+        } else {
+          reject();
+        }
+      });
     });
   }
   function prompt(title, text, type, placeholder, options) {
@@ -55,7 +61,13 @@ function dialogService($window, $q, $document) {
     options.showCancelButton = true;
 
     return $q(function(resolve, reject) {
-      swal(options, function(val) { val!==false?resolve(val):reject(val); });
+      swal(options, function(val) { 
+        if (val!==false) {
+          resolve(val);
+        } else {
+          reject(val);
+        }
+      });
     });
   }
   function saveAs(placeholder, types) {

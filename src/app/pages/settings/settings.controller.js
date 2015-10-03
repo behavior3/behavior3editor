@@ -21,7 +21,7 @@
     vm.saveSettings = saveSettings;
     vm.resetSettings = resetSettings;
 
-    _activate()
+    _activate();
 
     // BODY //
     function _activate() {
@@ -29,7 +29,7 @@
         .getSettings()
         .then(function(settings) {
           vm.settings = settings;
-        })
+        });
     }
 
     function saveSettings() {
@@ -40,7 +40,7 @@
             'Settings saved',
             'The editor settings has been updated.'
           );
-        })
+        });
     }
 
     function resetSettings() {
@@ -56,7 +56,7 @@
               'The editor settings has been updated to default values.'
             );
             _activate();
-          })
+          });
       });
     }
   }

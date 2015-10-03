@@ -11,7 +11,7 @@
    */
   var SettingsManager = function() {
     this._dict = {};
-  }
+  };
   var p = SettingsManager.prototype;
   
   /**
@@ -21,7 +21,7 @@
    */
   p.clear = function() {
     this._dict = {};
-  }
+  };
 
   /**
    * Stores a value into the settings.
@@ -32,7 +32,7 @@
    */
   p.set = function(key, value) {
     this._dict[key] = value;
-  }
+  };
 
   /**
    * Retrieves a value from the settings.
@@ -42,8 +42,8 @@
    * @return {Object} The value.
    */
   p.get = function(key) {
-    return this._dict[key]
-  }
+    return this._dict[key];
+  };
 
   /**
    * Stores a set of values into the settings.
@@ -55,7 +55,7 @@
     for (var key in data) {
       this.set(key, data[key]);
     }
-  }
+  };
  
   b3e.SettingsManager = SettingsManager;
 })();

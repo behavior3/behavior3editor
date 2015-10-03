@@ -8,7 +8,7 @@
     shape.graphics.drawCircle(x, y, radius);
     shape.graphics.endStroke();
     shape.graphics.endFill();
-  }
+  };
 
   var makeRect = function(shape, w, h, radius, bg_color, border_width, border_color) {
     shape.graphics.beginFill(bg_color);
@@ -17,7 +17,7 @@
     shape.graphics.drawRoundRect(-w/2, -h/2, w, h, radius);
     shape.graphics.endStroke();
     shape.graphics.endFill();
-  }
+  };
 
   var makeTree = function(shape, w, h, radius, bg_color, border_width, border_color) {
     shape.graphics.beginFill(bg_color);
@@ -32,7 +32,7 @@
     shape.graphics.lineTo(-w/2, 0);
     shape.graphics.endStroke();
     shape.graphics.endFill();
-  }
+  };
 
   var makeEllipse = function(shape, w, h, bg_color, border_width, border_color) {
     shape.graphics.beginFill(bg_color);
@@ -41,7 +41,7 @@
     shape.graphics.drawEllipse(-w/2, -h/2, w, h);
     shape.graphics.endStroke();
     shape.graphics.endFill();
-  }
+  };
 
   var makeRhombus = function(shape, w, h, bg_color, border_width, border_color) {
     shape.graphics.beginFill(bg_color);
@@ -54,7 +54,7 @@
     shape.graphics.lineTo(0, h/2);
     shape.graphics.endStroke();
     shape.graphics.endFill();
-  }
+  };
 
   b3e.draw.rootShape = function(block, settings) {
     var w = block._width;
@@ -65,9 +65,9 @@
     var x = 0;
     var y = 0;
     if (settings.get('layout') === 'horizontal') {
-      var x = w/2+anchorOffsetX;
+      x = w/2+anchorOffsetX;
     } else {
-      var y = h/2+anchorOffsetX;
+      y = h/2+anchorOffsetX;
     }
 
     makeAnchor(shape, x, y, 
@@ -82,7 +82,7 @@
         settings.get('block_border_color')
     );
     return shape;
-  }
+  };
 
   b3e.draw.compositeShape = function(block, settings) {
     var bounds = block._displaySymbol.getBounds();
@@ -100,29 +100,29 @@
     var x = 0;
     var y = 0;
     if (settings.get('layout') === 'horizontal') {
-      var x = w/2+anchorOffsetX;
+      x = w/2+anchorOffsetX;
     } else {
-      var y = h/2+anchorOffsetX;
+      y = h/2+anchorOffsetX;
     }
     makeAnchor(shape, x, y, 
         settings.get('anchor_radius'),
         settings.get('anchor_background_color'),
         settings.get('anchor_border_width'),
         settings.get('block_border_color')
-    )
+    );
     makeAnchor(shape, -x, -y, 
         settings.get('anchor_radius'),
         settings.get('anchor_background_color'),
         settings.get('anchor_border_width'),
         settings.get('block_border_color')
-    )
+    );
     makeRect(shape, w, h, 15,
         settings.get('composite_color'),
         settings.get('block_border_width'),
         settings.get('block_border_color')
-    )
+    );
     return shape;
-  }
+  };
 
   b3e.draw.decoratorShape = function(block, settings) {
     var bounds = block._displaySymbol.getBounds();
@@ -137,30 +137,30 @@
     var x = 0;
     var y = 0;
     if (settings.get('layout') === 'horizontal') {
-      var x = w/2+anchorOffsetX;
+      x = w/2+anchorOffsetX;
     } else {
-      var y = h/2+anchorOffsetX;
+      y = h/2+anchorOffsetX;
     }
     makeAnchor(shape, x, y, 
         settings.get('anchor_radius'),
         settings.get('anchor_background_color'),
         settings.get('anchor_border_width'),
         settings.get('block_border_color')
-    )
+    );
     makeAnchor(shape, -x, -y, 
         settings.get('anchor_radius'),
         settings.get('anchor_background_color'),
         settings.get('anchor_border_width'),
         settings.get('block_border_color')
-    )
+    );
     
     makeRhombus(shape, w, h,
         settings.get('decorator_color'),
         settings.get('block_border_width'),
         settings.get('block_border_color')
-    )
+    );
     return shape;
-  }
+  };
 
   b3e.draw.actionShape = function(block, settings) {
 
@@ -175,23 +175,23 @@
     var x = 0;
     var y = 0;
     if (settings.get('layout') === 'horizontal') {
-      var x = w/2+anchorOffsetX;
+      x = w/2+anchorOffsetX;
     } else {
-      var y = h/2+anchorOffsetX;
+      y = h/2+anchorOffsetX;
     }
     makeAnchor(shape, -x, -y, 
         settings.get('anchor_radius'),
         settings.get('anchor_background_color'),
         settings.get('anchor_border_width'),
         settings.get('block_border_color')
-    )
+    );
     makeRect(shape, w, h, 15,
         settings.get('action_color'),
         settings.get('block_border_width'),
         settings.get('block_border_color')
     );
     return shape;
-  }
+  };
 
   b3e.draw.conditionShape = function(block, settings) {
     var bounds = block._displaySymbol.getBounds();
@@ -208,7 +208,7 @@
         settings.get('anchor_background_color'),
         settings.get('anchor_border_width'),
         settings.get('block_border_color')
-    )
+    );
     makeEllipse(shape, w, h, 
         settings.get('condition_color'),
         settings.get('block_border_width'),
@@ -229,23 +229,23 @@
     var x = 0;
     var y = 0;
     if (settings.get('layout') === 'horizontal') {
-      var x = w/2+anchorOffsetX;
+      x = w/2+anchorOffsetX;
     } else {
-      var y = h/2+anchorOffsetX;
+      y = h/2+anchorOffsetX;
     }
     makeAnchor(shape, -x, -y, 
         settings.get('anchor_radius'),
         settings.get('anchor_background_color'),
         settings.get('anchor_border_width'),
         settings.get('block_border_color')
-    )
+    );
     makeTree(shape, w, h, 15,
         settings.get('tree_color'),
         settings.get('block_border_width'),
         settings.get('block_border_color')
     );
     return shape;
-  }
+  };
 
   b3e.draw.SHAPES = {
     'root'      : b3e.draw.rootShape,
@@ -254,6 +254,6 @@
     'decorator' : b3e.draw.decoratorShape,
     'action'    : b3e.draw.actionShape,
     'condition' : b3e.draw.conditionShape,
-  }
+  };
 
 }());

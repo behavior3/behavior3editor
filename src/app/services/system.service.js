@@ -22,7 +22,7 @@ function systemService($window, nodejsService) {
   }
   function getDataPath() {
     if (isDesktop) {
-      var path = join(process.env['APPDATA'], 'b3editor');
+      var path = join(process.env.APPDATA, 'b3editor');
       _createIfNonExist(path);
       return path;
     } else {

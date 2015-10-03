@@ -47,7 +47,7 @@
     function _event(e) {
       if (e.type !== 'blockchanged' || e._target.category === 'root') {
         if (!$scope.$$phase) { 
-          $scope.$apply(function() { _activate(); })
+          $scope.$apply(function() { _activate(); });
         } else {
           _activate();
         }
@@ -90,7 +90,7 @@
             'Tree removed',
             'The tree has been removed from this project.'
           );
-        })
+        });
 
     }
   }

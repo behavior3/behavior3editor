@@ -4,7 +4,7 @@
   angular
     .module('app')
     .directive('b3KeyTable', keytable)
-    .controller('KeyTableController', KeyTableController)
+    .controller('KeyTableController', KeyTableController);
 
   keytable.$inject = ['$parse'];
   function keytable($parse) {
@@ -22,13 +22,13 @@
 
     function link(scope, element, attrs) {
       // get the value of the `ng-model` attribute
-      scope.keytable.heading = attrs['heading'];
-      scope.keytable._onChange = $parse(attrs['ngChange']);
+      scope.keytable.heading = attrs.heading;
+      scope.keytable._onChange = $parse(attrs.ngChange);
 
-      var variable = attrs['ngModel'];
+      var variable = attrs.ngModel;
       scope.$watch(variable, function(model) {
         scope.keytable.reset(model);
-      })
+      });
     }
   }
 

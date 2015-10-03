@@ -7,12 +7,12 @@ b3e.editor.ExportManager = function(editor) {
       conns.sort(function(a, b) {
         return a._outBlock.y - 
                b._outBlock.y;
-      })
+      });
     } else {
       conns.sort(function(a, b) {
         return a._outBlock.x - 
                b._outBlock.x;
-      })
+      });
     }
 
     var nodes = [];
@@ -35,16 +35,16 @@ b3e.editor.ExportManager = function(editor) {
       selectedTree : (tree?tree._id:null),
       trees        : [],
       custom_nodes : this.nodesToData()
-    }
+    };
 
     project.trees.each(function(tree) {
       var d = this.treeToData(tree, true);
       d.id = tree._id;
       data.trees.push(d);
-    }, this)
+    }, this);
 
     return data;
-  }
+  };
   
   this.treeToData = function(tree, ignoreNodes) {
     var project = editor.project.get();
@@ -75,10 +75,10 @@ b3e.editor.ExportManager = function(editor) {
         x        : root.x,
         y        : root.y,
       },
-    }
+    };
 
     if (!ignoreNodes) {
-      data['custom_nodes'] = this.nodesToData();
+      data.custom_nodes = this.nodesToData();
     }
 
     tree.blocks.each(function(block) {
@@ -90,7 +90,7 @@ b3e.editor.ExportManager = function(editor) {
           description : block.description,
           properties  : block.properties,
           display     : {x:block.x, y:block.y}
-        }
+        };
 
         var children = getBlockChildrenIds(block);
         if (block.category === 'composite') {
@@ -101,10 +101,10 @@ b3e.editor.ExportManager = function(editor) {
 
         data.nodes[block.id] = d;
       }
-    })
+    });
 
     return data;
-  }
+  };
 
   this.nodesToData = function() {
     var project = editor.project.get();
@@ -121,14 +121,14 @@ b3e.editor.ExportManager = function(editor) {
           title       : node.title,
           description : node.description,
           properties  : node.properties,
-        })
+        });
       }
-    })
+    });
 
     return data;
-  }
+  };
 
-  this.nodesToJavascript = function() {}
+  this.nodesToJavascript = function() {};
 
-  this._applySettings = function(settings) {}
-}
+  this._applySettings = function(settings) {};
+};

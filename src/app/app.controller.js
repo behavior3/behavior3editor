@@ -48,7 +48,7 @@
             null)
           .then(function() {
             win.close(true);
-          })
+          });
         return false;
       } else {
         win.close(true);
@@ -57,4 +57,4 @@
     }
   }
 
-})()
+})();

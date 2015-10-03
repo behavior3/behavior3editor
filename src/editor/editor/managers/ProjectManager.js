@@ -13,7 +13,7 @@ b3e.editor.ProjectManager = function(editor) {
     editor.trigger('projectcreated', editor._project);
     
     editor._project.trees.add();
-  }
+  };
 
   /**
    * Loads a project from data.
@@ -28,7 +28,7 @@ b3e.editor.ProjectManager = function(editor) {
     editor.import.projectAsData(data);
     editor.trigger('projectopened', editor._project);
     editor.clearDirty();
-  }
+  };
 
   /**
    * Exit the current project.
@@ -39,19 +39,19 @@ b3e.editor.ProjectManager = function(editor) {
       editor.removeChild(project);
       editor.trigger('projectclosed', project);
     }
-  }
+  };
 
   /**
    * Gets the current project. Returns `null` if none.
    */
   this.get = function() {
     return editor._project;
-  }
+  };
 
 
   this._applySettings = function(settings) {
     if (editor._project) {
       editor._project._applySettings(settings);
     }
-  }
-}
+  };
+};

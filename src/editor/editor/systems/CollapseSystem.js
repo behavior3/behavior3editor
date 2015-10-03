@@ -3,5 +3,5 @@ b3e.editor.CollapseSystem = function(editor) {
 
   this.update = function(delta) {
 
-  }
-}
+  };
+};

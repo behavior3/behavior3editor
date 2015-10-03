@@ -34,6 +34,6 @@
       n.properties  = this.properties;
       
       return n;
-    }
-  }
-})()
+    };
+  };
+})();

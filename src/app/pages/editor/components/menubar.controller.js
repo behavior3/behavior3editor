@@ -56,7 +56,7 @@
 
     function _shortcut_projectclose(f) {
       if (!$scope.$$phase) { 
-        $scope.$apply(function() { onCloseProject(); })
+        $scope.$apply(function() { onCloseProject(); });
       } else {
         onCloseProject();
       }
@@ -64,7 +64,7 @@
     }
     function _shortcut_projectsave(f) {
       if (!$scope.$$phase) { 
-        $scope.$apply(function() { onSaveProject(); })
+        $scope.$apply(function() { onSaveProject(); });
       } else {
         onSaveProject();
       }
@@ -146,7 +146,7 @@
             'Leave without saving?', 
             'If you proceed you will lose all unsaved modifications.', 
             null)
-          .then(doClose)
+          .then(doClose);
       } else {
         doClose();
       }
@@ -160,13 +160,13 @@
           notificationService.success(
             'Project saved',
             'The project has been saved'
-          )
+          );
         }, function() {
           notificationService.error(
             'Error',
             'Project couldn\'t be saved'
-          )
-        })
+          );
+        });
       return false;
     }
     function onNewTree() {

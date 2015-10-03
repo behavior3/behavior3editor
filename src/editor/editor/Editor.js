@@ -14,7 +14,7 @@
     this._dirty = 0;
 
     // Systems
-    this._systems = []
+    this._systems = [];
 
     // Managers
     this.project = null;
@@ -23,7 +23,7 @@
     this.shortcuts = null;
 
     this._createGame();
-  }
+  };
   var p = createjs.extend(Editor, createjs.Container);
   
   p._createGame = function() {
@@ -33,7 +33,7 @@
     });
 
     this._initialize();
-  }
+  };
 
   /**
    * Initializes DOM, DOM events, managers and display objects.
@@ -45,7 +45,7 @@
     var resize = function() {
       self._game.canvas.width = window.innerWidth;
       self._game.canvas.height = window.innerHeight;
-    }
+    };
     window.onresize = resize;
     resize();
 
@@ -68,7 +68,7 @@
     
     // SETTINGS
     this.applySettings('default');
-  }
+  };
 
   /**
    * Called by creatine game.
@@ -77,17 +77,17 @@
     var delta = this._game.time.delta;
     this._systems.forEach(function(system) {
       system.update(delta);
-    })
-  }
+    });
+  };
 
   p.trigger = function(name, target, variables) {
     variables = variables || {};
 
-    var event = new createjs.Event(name)
+    var event = new createjs.Event(name);
     event._target = target;
     event._data = variables;
     this.dispatchEvent(event);
-  }
+  };
 
   p.applySettings = function(settings) {
     if (settings === 'default') {
@@ -106,7 +106,7 @@
     this.export._applySettings(this._settings);
     this.import._applySettings(this._settings);
     this.shortcuts._applySettings(this._settings);
-  }
+  };
 
   p.preview = function(name) {
     var canvas = document.createElement('canvas');
@@ -134,15 +134,15 @@
     img.src = canvas.toDataURL();
 
     return img;
-  }
+  };
 
   p.isDirty = function() {
     return this._dirty !== 0;
-  }
+  };
 
   p.clearDirty = function() {
     this._dirty = 0;
-  }
+  };
 
   b3e.editor.Editor = createjs.promote(Editor, 'Container');
 })();

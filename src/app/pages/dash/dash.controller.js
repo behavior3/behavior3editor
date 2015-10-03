@@ -20,6 +20,6 @@
     }
     $scope.$on('dash-projectchanged', function() {
       _activate();
-    })
+    });
   }
 })();

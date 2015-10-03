@@ -141,6 +141,6 @@
     'Priority'    : b3e.draw.prioritySymbol,
     'MemSequence' : b3e.draw.memsequenceSymbol,
     'MemPriority' : b3e.draw.memprioritySymbol,
-  }
+  };
 
 }());

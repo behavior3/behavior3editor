@@ -17,30 +17,31 @@
       controller       : tabsetController,
     };
     return directive;
+  }
 
-    function tabsetController() {
-      // HEAD //
-      var vm = this;
-      vm.tabs = [];
-      vm.add = add;
-      vm.select = select;
+  function tabsetController() {
+    // HEAD //
+    /* jshint validthis: true */
+    var vm = this;
+    vm.tabs = [];
+    vm.add = add;
+    vm.select = select;
 
-      // BODY //
-      function add(tab) {
-        vm.tabs.push(tab);
-      }
+    // BODY //
+    function add(tab) {
+      vm.tabs.push(tab);
+    }
 
-      function select(tab) {
-        angular.forEach(vm.tabs, function(t) {
-          if (t.active && t !== tab) {
-            t.active = false;
-          }
-        })
+    function select(tab) {
+      angular.forEach(vm.tabs, function(t) {
+        if (t.active && t !== tab) {
+          t.active = false;
+        }
+      });
 
-        tab.active = true;
-      }
-
+      tab.active = true;
     }
   }
+  
 
 })();

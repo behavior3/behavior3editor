@@ -33,7 +33,7 @@
           title       : vm.original.title,
           description : vm.original.description,
           properties  : tine.merge({}, vm.original.properties)
-        }
+        };
       } else {
         vm.original = false;
         vm.block = false;

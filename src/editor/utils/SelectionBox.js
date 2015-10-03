@@ -13,7 +13,7 @@
     this._settings = null;
     this.alpha = 0.3;
     this.visible = false;
-  }
+  };
   var p = createjs.extend(SelectionBox, createjs.Shape);
 
   /**
@@ -26,7 +26,7 @@
   p._applySettings = function(settings) {
     this._settings = settings;
     this._redraw();
-  }
+  };
 
   /**
    * Redraw the box.
@@ -47,7 +47,7 @@
     graphics.beginFill(color);
     graphics.drawRect(x, y, w, h);
     graphics.endFill();
-  }
+  };
 
   b3e.SelectionBox = createjs.promote(SelectionBox, 'Shape');
 })();

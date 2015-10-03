@@ -22,7 +22,6 @@
    * @constructor
    */
   b3e.Command = function(undo, redo) {
-    "use strict";
 
     if (undo.length !== 3) throw 'Invalid undo command, must have [target, method, args]';
     if (redo.length !== 3) throw 'Invalid redo command, must have [target, method, args]';
@@ -46,7 +45,7 @@
      */
     this.redo = function() {
       execute(redo[0], redo[1], redo[2]);
-    }
+    };
 
     /**
      * Execute the undo command.
@@ -55,8 +54,8 @@
      */
     this.undo = function() {
       execute(undo[0], undo[1], undo[2]);
-    }
-  }
+    };
+  };
 
   /**
    * A list of commands created by the history manager.
@@ -67,7 +66,6 @@
    * @constructor
    */
   b3e.Commands = function(commands) {
-    "use strict";
 
     /**
      * The tree that is selected in the moment of command is added to the 
@@ -86,7 +84,7 @@
       for (var i=0; i<commands.length; i++) {
         commands[i].redo();
       }
-    }
+    };
     
     /**
      * Execute the undo command.
@@ -97,6 +95,6 @@
       for (var i=commands.length-1; i>=0; i--) {
         commands[i].undo();
       }
-    }
-  }
+    };
+  };
 })();

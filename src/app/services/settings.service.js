@@ -32,9 +32,10 @@
     function getSettings() {
       return $q(function(resolve, reject) {
         if (!settingsCache) {
+          var data;
           var defaultData = editorService.getDefaultSettings();
           try {
-            var data = storageService.load(settingsPath);
+            data = storageService.load(settingsPath);
             editorService.applySettings(data);
           } catch (e) {}
 
@@ -48,7 +49,7 @@
         }
 
         resolve(settingsCache);
-      })
+      });
     }
     function saveSettings(settings) {
       return $q(function(resolve, reject) {
@@ -56,7 +57,7 @@
         storageService.save(settingsPath, settings);
         settingsCache = settings;
         resolve();
-      })
+      });
     }
     function resetSettings() {
       return $q(function(resolve, reject) {
@@ -65,7 +66,7 @@
         settingsCache = settings;
         editorService.applySettings(settings);
         resolve();
-      })
+      });
     }
   }
 })();

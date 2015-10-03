@@ -110,8 +110,8 @@ gulp.task('_preload', ['_preload_js', '_preload_css']);
 // TASKS (APP) ================================================================
 gulp.task('_app_js', function() {
   return gulp.src(app_js)
-             // .pipe(jshint())
-             // .pipe(jshint.reporter(stylish))
+             .pipe(jshint())
+             .pipe(jshint.reporter(stylish))
              .pipe(uglify())
              .pipe(concat('app.min.js'))
              .pipe(gulp.dest('build/js'))

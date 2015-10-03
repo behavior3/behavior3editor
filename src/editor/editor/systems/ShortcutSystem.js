@@ -10,5 +10,5 @@ b3e.editor.ShortcutSystem = function(editor) {
 
     var kb = editor._game.keyboard;
     var k = tine.keys;
-  }
-}
+  };
+};

@@ -7,7 +7,7 @@
 
   dropNode.$inject = [
     '$window'
-  ]
+  ];
 
   function dropNode($window) {
     var directive = {

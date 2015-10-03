@@ -5,7 +5,7 @@ b3e.editor.DragSystem = function(editor) {
   var dragX0 = 0;
   var dragY0 = 0;
 
-  this.update = function(delta) {}
+  this.update = function(delta) {};
 
   this.onMouseDown = function(e) {
     if (e.nativeEvent.which !== 1 || 
@@ -19,8 +19,8 @@ b3e.editor.DragSystem = function(editor) {
     if (!tree) return;
 
     var point = tree.view.getLocalPoint();
-    var x = point.x
-    var y = point.y
+    var x = point.x;
+    var y = point.y;
     var block = tree.blocks.getUnderPoint(x, y);
 
     // if mouse not on block
@@ -38,12 +38,12 @@ b3e.editor.DragSystem = function(editor) {
     dragY0 = y;
 
     for (var i=0; i<tree._selectedBlocks.length; i++) {
-      var block = tree._selectedBlocks[i];
+      block = tree._selectedBlocks[i];
       block._isDragging = true;
       block._dragOffsetX = x - block.x;
       block._dragOffsetY = y - block.y;
     }
-  }
+  };
 
   this.onMouseMove = function(e) {
     if (!isDragging) return;
@@ -55,8 +55,8 @@ b3e.editor.DragSystem = function(editor) {
     if (!tree) return;
 
     var point = tree.view.getLocalPoint();
-    var x = point.x
-    var y = point.y
+    var x = point.x;
+    var y = point.y;
 
     for (var i=0; i<tree._selectedBlocks.length; i++) {
       var block = tree._selectedBlocks[i];
@@ -76,7 +76,7 @@ b3e.editor.DragSystem = function(editor) {
         block._outConnections[j]._redraw();
       }
     }
-  }
+  };
 
   this.onMouseUp = function(e) {
     if (e.nativeEvent.which !== 1 || !isDragging) return;
@@ -89,8 +89,8 @@ b3e.editor.DragSystem = function(editor) {
 
     isDragging = false;
     var point = tree.view.getLocalPoint();
-    var x = point.x
-    var y = point.y
+    var x = point.x;
+    var y = point.y;
 
 
     project.history._beginBatch();
@@ -109,9 +109,9 @@ b3e.editor.DragSystem = function(editor) {
       ));
     }
     project.history._endBatch();
-  }
+  };
 
   editor._game.stage.on('stagemousedown', this.onMouseDown, this);
   editor._game.stage.on('stagemousemove', this.onMouseMove, this);
   editor._game.stage.on('stagemouseup', this.onMouseUp, this);
-}
+};

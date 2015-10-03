@@ -10,7 +10,7 @@ angular.module('app', [
 
     $rootScope.go = function(state, params) {
       $state.go(state, params);
-    }
+    };
   }
 ])
 
@@ -24,7 +24,7 @@ angular.module('app', [
                    projectService) {
 
     // reset path
-    $location.path('/')
+    $location.path('/');
 
     // add drop to canvas
     angular
@@ -43,7 +43,7 @@ angular.module('app', [
             $animate.addClass(element, 'preload-fade')
               .then(function() {
                 element.remove();
-              })
+              });
           }, 500);
         }
 
@@ -52,10 +52,10 @@ angular.module('app', [
             .openProject(projects[0].path)
             .then(function() {
               closePreload();
-            })
+            });
         } else {
           closePreload();
         }
-      })
+      });
   }
-])
+]);

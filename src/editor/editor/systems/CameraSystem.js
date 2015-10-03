@@ -36,7 +36,7 @@ b3e.editor.CameraSystem = function(editor) {
         tree.y -= delta;
       }
     }
-  }
+  };
 
   this.onMouseDown = function(e) {
     if (e.nativeEvent.which !== 2) return;
@@ -52,7 +52,7 @@ b3e.editor.CameraSystem = function(editor) {
     isDragging = true;
     offsetX = editor._game.mouse.x - tree.x;
     offsetY = editor._game.mouse.y - tree.y;
-  }
+  };
   this.onMouseMove = function(e) {
     if (!isDragging) return;
 
@@ -64,7 +64,7 @@ b3e.editor.CameraSystem = function(editor) {
 
     tree.x = editor._game.mouse.x - offsetX;
     tree.y = editor._game.mouse.y - offsetY;
-  }
+  };
   this.onMouseUp = function(e) {
     if (e.nativeEvent.which !== 2) return;
 
@@ -74,12 +74,12 @@ b3e.editor.CameraSystem = function(editor) {
     var tree = project.trees.getSelected();
     if (!tree) return;
 
-    editor._game.canvas.className = editor._game.canvas.className.replace(/(?:^|\s)grabbing(?!\S)/g, '')
+    editor._game.canvas.className = editor._game.canvas.className.replace(/(?:^|\s)grabbing(?!\S)/g, '');
 
     isDragging = false;
     offsetX = 0;
     offsetY = 0;
-  }
+  };
   this.onMouseWheel = function(e) {
     var project = editor.project.get();
     if (!project) return;
@@ -94,7 +94,7 @@ b3e.editor.CameraSystem = function(editor) {
         tree.view.zoomOut();
       }
     }
-  }
+  };
 
 
   var self = this;
@@ -102,12 +102,12 @@ b3e.editor.CameraSystem = function(editor) {
   editor._game.stage.on('stagemousemove', this.onMouseMove, this);
   editor._game.stage.on('stagemouseup', this.onMouseUp, this);
   editor._game.canvas.addEventListener('wheel', function(e) {
-    self.onMouseWheel(e)
+    self.onMouseWheel(e);
   }, false);
   editor._game.canvas.addEventListener('mousewheel', function(e) {
-    self.onMouseWheel(e)
+    self.onMouseWheel(e);
   }, false);
   editor._game.canvas.addEventListener('DOMMouseScroll ', function(e) {
-    self.onMouseWheel(e)
+    self.onMouseWheel(e);
   }, false);
-}
+};

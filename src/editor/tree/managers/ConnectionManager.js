@@ -3,10 +3,10 @@ b3e.tree.ConnectionManager = function(editor, project, tree) {
 
   /** Needed to history manager */
   this._remove = function(block) {
-    project.history._lock()
+    project.history._lock();
     this.remove(block._inConnection);
-    project.history._unlock()
-  }
+    project.history._unlock();
+  };
 
   this.add = function(inBlock, outBlock) {
     var connection = new b3e.Connection();
@@ -44,7 +44,7 @@ b3e.tree.ConnectionManager = function(editor, project, tree) {
 
     // editor.trigger('connectionadded', connection);
     return connection;
-  }
+  };
 
   this.remove = function(connection) {
     if (connection._inBlock && connection._outBlock) {
@@ -65,14 +65,14 @@ b3e.tree.ConnectionManager = function(editor, project, tree) {
 
     tree._connections.removeChild(connection);
     editor.trigger('connectionremoved', connection);
-  }
+  };
   this.each = function(callback, thisarg) {
     tree._connections.children.forEach(callback, thisarg);
-  }
+  };
 
   this._applySettings = function(settings) {
     this.each(function(connection) {
       connection._applySettings(settings);
-    })
-  }
-}
+    });
+  };
+};

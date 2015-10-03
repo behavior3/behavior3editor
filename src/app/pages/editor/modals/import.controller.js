@@ -44,7 +44,7 @@
             .loadAsync(path)
             .then(function(data) {
               vm.data = JSON3.stringify(data, null, 2);
-            })
+            });
         });
     }
     function open() {
@@ -66,11 +66,11 @@
         notificationService.error(
           'Invalid data',
           'The provided data is invalid.'
-        )
+        );
       }
 
       $state.go('editor');
     }
   }
 
-})()
+})();

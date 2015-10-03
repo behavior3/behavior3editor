@@ -5,15 +5,17 @@ b3e.project.TreeManager = function(editor, project) {
    * Adds a new tree to the project.
    */
   this.add = function(_id) {
+    var tree;
+
     if (_id instanceof b3e.tree.Tree) {
-      var tree = _id;
+      tree = _id;
       project.addChild(tree);
       editor.trigger('treeadded', tree);
       this.select(tree);
       
     } else {
       project.history._beginBatch();
-      var tree = new b3e.tree.Tree(editor, project);
+      tree = new b3e.tree.Tree(editor, project);
       var root = tree.blocks.getRoot();
       project.addChild(tree);
       editor.trigger('treeadded', tree);
@@ -24,7 +26,7 @@ b3e.project.TreeManager = function(editor, project) {
         name     : tree._id,
         title    : root.title,
         category : 'tree', 
-      }
+      };
       project.nodes.add(node, true);
 
       // select if this is the only tree
@@ -38,7 +40,7 @@ b3e.project.TreeManager = function(editor, project) {
     }
 
     return tree;
-  }
+  };
 
   /**
    * Gets a tree by id.
@@ -55,11 +57,11 @@ b3e.project.TreeManager = function(editor, project) {
     }
 
     return tree;
-  }
+  };
 
   this.getSelected = function() {
     return project._selectedTree;
-  }
+  };
 
   /**
    * Select a tree.
@@ -77,7 +79,7 @@ b3e.project.TreeManager = function(editor, project) {
     tree.visible = true;
     project._selectedTree = tree;
     editor.trigger('treeselected', tree);
-  }
+  };
 
   /**
    * Removes a tree from the project.
@@ -95,26 +97,26 @@ b3e.project.TreeManager = function(editor, project) {
     if (project.children.length === 0) {
       this.add();
     } else if (tree === project._selectedTree) {
-      this.select(idx==0?project.children[idx]:project.children[idx-1]);
+      this.select(idx===0?project.children[idx]:project.children[idx-1]);
     }
 
     var _old = [this, this.add, [tree]];
     var _new = [this, this.remove, [tree]];
     project.history._add(new b3e.Command(_old, _new));
     project.history._endBatch();
-  }
+  };
 
   /**
    * Iterates over tree list.
    */
   this.each = function(callback, thisarg) {
     project.children.forEach(callback, thisarg);
-  }
+  };
 
 
   this._applySettings = function(settings) {
     this.each(function(tree) {
       tree._applySettings(settings);
-    })
-  }
-}
+    });
+  };
+};
