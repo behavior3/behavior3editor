@@ -37,8 +37,7 @@
    * @protected
    */
   p._redraw = function(x1, y1, x2, y2) {
-    if (!this._inBlock && (x1===null&&y1===null) ||
-        !this._outBlock && (x2===null&&y2===null)) {
+    if (! ((this._inBlock||x1||y1) && (this._outBlock||x2||y2)) ) {
       return;
     }
 
