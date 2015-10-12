@@ -8,10 +8,16 @@ var connect       = require('gulp-connect');
 var less          = require('gulp-less');
 var jshint        = require('gulp-jshint');
 var templateCache = require('gulp-angular-templatecache');
+var replace       = require('gulp-replace');
 var stylish       = require('jshint-stylish');
 var exec          = require('child_process').exec;
+var fs            = require('fs');
 var merge         = require('merge-stream');
 
+// VARIABLES ==================================================================
+var project       = JSON.parse(fs.readFileSync('package.json', 'utf8'));
+var build_version = project.version;
+var build_date    = (new Date()).toISOString().replace(/T.*/, '');
 
 // FILES ======================================================================
 var vendor_js = [
@@ -133,6 +139,8 @@ gulp.task('_app_less', function() {
 gulp.task('_app_html', function() {
   return gulp.src(app_html)
              .pipe(minifyHTML({empty:true})) 
+             .pipe(replace('[BUILD_VERSION]', build_version))
+             .pipe(replace('[BUILD_DATE]', build_date))
              .pipe(templateCache('templates.min.js', {standalone:true}))
              .pipe(gulp.dest('build/js'))
              .pipe(connect.reload())
@@ -141,6 +149,8 @@ gulp.task('_app_html', function() {
 gulp.task('_app_entry', function() {
   return gulp.src(app_entry)
              .pipe(minifyHTML({empty:true})) 
+             .pipe(replace('[BUILD_VERSION]', build_version))
+             .pipe(replace('[BUILD_DATE]', build_date))
              .pipe(gulp.dest('build'))
              .pipe(connect.reload())
 });

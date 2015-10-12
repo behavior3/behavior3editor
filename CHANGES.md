@@ -1,8 +1,9 @@
 
 ## Version 0.3.0 [NEXT]
 
+- mod: services splitted into models and services.
 - mod: new building system and dependence organization.
-
+- mod: version and building date automatically inserted into code.
 
 
 ## Version 0.2.0 [Not released]
