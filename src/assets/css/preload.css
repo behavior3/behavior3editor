@@ -2,6 +2,7 @@ html, body {
   padding: 0px;
   margin: 0px;
   overflow: hidden;
+  line-height: 1.42857143;
 }
 
 .preloading {
