@@ -62,6 +62,9 @@ var app_js = [
 var app_less = [
   'src/assets/less/index.less',
 ];
+var app_imgs = [
+  'src/assets/imgs/**/*',
+];
 var app_html = [
   'src/app/**/*.html',
 ];
@@ -135,6 +138,11 @@ gulp.task('_app_less', function() {
              .pipe(connect.reload())
 });
 
+gulp.task('_app_imgs', function() {
+  return gulp.src(app_imgs)
+             .pipe(gulp.dest('build/imgs'))
+});
+
 gulp.task('_app_html', function() {
   return gulp.src(app_html)
              .pipe(minifyHTML({empty:true})) 
@@ -154,7 +162,13 @@ gulp.task('_app_entry', function() {
              .pipe(connect.reload())
 });
 
-gulp.task('_app', ['_app_js', '_app_less', '_app_html', '_app_entry']);
+gulp.task('_app', [
+  '_app_js',
+  '_app_less',
+  '_app_imgs',
+  '_app_html',
+  '_app_entry'
+]);
 
 
 // TASKS (LIVE RELOAD) ========================================================
