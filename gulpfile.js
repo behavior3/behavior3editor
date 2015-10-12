@@ -123,6 +123,8 @@ gulp.task('_app_js', function() {
   return gulp.src(app_js)
              .pipe(jshint())
              .pipe(jshint.reporter(stylish))
+             .pipe(replace('[BUILD_VERSION]', build_version))
+             .pipe(replace('[BUILD_DATE]', build_date))
              .pipe(uglify())
              .pipe(concat('app.min.js'))
              .pipe(gulp.dest('build/js'))
@@ -145,7 +147,7 @@ gulp.task('_app_imgs', function() {
 
 gulp.task('_app_html', function() {
   return gulp.src(app_html)
-             .pipe(minifyHTML({empty:true})) 
+             .pipe(minifyHTML({empty:true}))
              .pipe(replace('[BUILD_VERSION]', build_version))
              .pipe(replace('[BUILD_DATE]', build_date))
              .pipe(templateCache('templates.min.js', {standalone:true}))
