@@ -46,7 +46,6 @@ var preload_js = [
 
 var preload_css = [
   'bower_components/fontawesome/css/font-awesome.min.css',
-  'src/assets/css/fonts.css',
   'src/assets/css/preload.css',
 ];
 
