@@ -15,8 +15,9 @@ b3e.tree.EditManager = function(editor, project, tree) {
 
   this.cut = function() {
     project._clipboard = [];
+
     project.history._beginBatch();
-    for (var i=0; i<tree._selectedBlocks.length; i++) {
+    for (var i=tree._selectedBlocks.length-1; i>=0; i--) {
       var block = tree._selectedBlocks[i];
 
       if (block.category != 'root') {
@@ -25,7 +26,7 @@ b3e.tree.EditManager = function(editor, project, tree) {
       }
     }
     project.history._endBatch();
-    // tree._selectedBlocks = [];
+    tree._selectedBlocks = [];
   };
 
   this.paste = function() {
