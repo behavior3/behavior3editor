@@ -4,7 +4,7 @@
 - mod: services splitted into models and services.
 - mod: new building system and dependence organization.
 - mod: version and building date automatically inserted into code.
-- mod: loading screen minor presentation changes.
+- mod: minor presentation changes on loading screen and dash home.
 
 
 ## Version 0.2.0 [Not released]
