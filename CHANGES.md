@@ -5,6 +5,7 @@
 - mod: new building system and dependence organization.
 - mod: version and building date automatically inserted into code.
 - mod: minor presentation changes on loading screen and dash home.
+- fix: cut now remove all nodes, and consider connections too (see #9).
 
 
 ## Version 0.2.0 [Not released]
