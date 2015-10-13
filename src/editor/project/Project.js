@@ -8,7 +8,7 @@
     this._id = b3.createUUID();
     this._editor = editor;
     this._selectedTree = null;
-    this._clipboard = [];
+    this._clipboard = null;
     this._nodes = {};
 
     // Managers

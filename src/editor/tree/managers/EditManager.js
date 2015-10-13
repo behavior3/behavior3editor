@@ -1,72 +1,108 @@
 b3e.tree.EditManager = function(editor, project, tree) {
   "use strict";
 
-  this.copy = function() {
-    project._clipboard = [];
+  this._selectionToClipboard = function() {
+    var clipboard = {blocks:{}, connections:[]};
+    var blocks = tree._selectedBlocks;
+    var i, j, block, other;
 
-    for (var i=0; i<tree._selectedBlocks.length; i++) {
-      var block = tree._selectedBlocks[i];
+    // Copy block
+    for (i=0; i<blocks.length; i++) {
+      block = blocks[i];
+      if (block.category === 'root') continue;
+      
+      var cp = {};
+      cp.id = block.id;
+      cp.node = block.node;
+      cp.name = block.name;
+      cp.title = block.title;
+      cp.category = block.category;
+      cp.description = block.description;
+      cp.properties = block.properties;
+      cp._settings = block._settings;
+      cp.x = block.x;
+      cp.y = block.y;
+      clipboard.blocks[block.id] = cp;
+    }
 
-      if (block.category != 'root') {
-        project._clipboard.push(block);
+    // Copy connections
+    for (i=0; i<blocks.length; i++) {
+      block = blocks[i];
+      
+      if (block.category === 'root') continue;
+      
+      for (j=0; j<block._outConnections.length; j++) {
+        other = block._outConnections[j]._outBlock;
+        
+        if (clipboard.blocks[other.id]) {
+          clipboard.connections.push([block.id, other.id]);
+        }
       }
     }
+
+    project._clipboard = clipboard;
+  };
+
+  this.copy = function() {
+    this._selectionToClipboard();
   };
 
   this.cut = function() {
-    project._clipboard = [];
+    this._selectionToClipboard();
 
     project.history._beginBatch();
     for (var i=tree._selectedBlocks.length-1; i>=0; i--) {
       var block = tree._selectedBlocks[i];
 
       if (block.category != 'root') {
-        tree.blocks.remove(block);
-        project._clipboard.push(block);
+        tree.blocks.remove(tree._selectedBlocks[i]);
       }
     }
     project.history._endBatch();
     tree._selectedBlocks = [];
+
+    console.log(project._clipboard);
   };
 
   this.paste = function() {
+    if (project._clipboard === null) return;
+
+    var i;
+    var table = {};
+    var blocks = [];
+
     project.history._beginBatch();
-    var i, newBlock;
-    var newBlocks = [];
-    for (i=0; i<project._clipboard.length; i++) {
-      var block = project._clipboard[i];
 
-      // Copy the block
-      newBlock = block._copy();
-      newBlock.x += 50;
-      newBlock.y += 50;
+    // copy blocks
+    for (var key in project._clipboard.blocks) {
+      var spec = project._clipboard.blocks[key];
+      var block = new b3e.Block(spec);
 
-      // Add block to container
-      tree.blocks.add(newBlock);
-      newBlocks.push(newBlock);
+      spec.x += 50;
+      spec.y += 50;
+      block._applySettings(spec._settings);
+      block.x = spec.x;
+      block.y = spec.y;
+
+      tree.blocks.add(block);
+      table[key] = block;
+      blocks.push(block);
     }
 
-    // Copy connections
-    // TODO: cubic complexity here! How to make it better?
-    for (i=0; i<project._clipboard.length; i++) {
-      var oldBlock = project._clipboard[i];
-      newBlock = newBlocks[i];
-
-      for (var j=0; j<oldBlock._outConnections.length; j++) {
-        for (var k=0; k<project._clipboard.length; k++) {
-          if (oldBlock._outConnections[j]._outBlock === project._clipboard[k]) {
-            tree.connections.add(newBlock, newBlocks[k]);
-            break;
-          }
-        }
-      }
+    // copy connections
+    for (i=0; i<project._clipboard.connections.length; i++) {
+      var connection = project._clipboard.connections[i];
+      var inBlock = table[connection[0]];
+      var outBlock = table[connection[1]];
+      tree.connections.add(inBlock, outBlock);
     }
 
-    // Deselect old blocks and select the new ones
+    // select the new nodes    
     tree.selection.deselectAll();
-    for (i=0; i<newBlocks.length; i++) {
-      tree.selection.select(newBlocks[i]);
+    for (i=0; i<blocks.length; i++) {
+      tree.selection.select(blocks[i]);
     }
+
     project.history._endBatch();
   };
 
@@ -141,5 +177,6 @@ b3e.tree.EditManager = function(editor, project, tree) {
     project.history._endBatch();
   };
 
-  this._applySettings = function(settings) {};
+  this._applySettings = function(settings) {
+  };
 };
