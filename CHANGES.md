@@ -6,6 +6,7 @@
 - mod: version and building date automatically inserted into code.
 - mod: minor presentation changes on loading screen and dash home.
 - fix: cut now remove all nodes, and consider connections too (see #9).
+- fix: ctrl+z does not affect property inputs anymore (see #10).
 
 
 ## Version 0.2.0 [Not released]
