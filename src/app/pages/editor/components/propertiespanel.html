@@ -15,6 +15,7 @@
                class="form-control"
                name="title"
                placeholder="Title"
+               ng-keydown="propertiespanel.keydown($event)"
                ng-model="propertiespanel.block.title"
                ng-change="propertiespanel.update()">
       </div>
@@ -25,6 +26,7 @@
                   rows="4"
                   class="form-control"
                   placeholder="Description"
+                  ng-keydown="propertiespanel.keydown($event)"
                   ng-model="propertiespanel.block.description"
                   ng-change="propertiespanel.update()">
 

@@ -16,6 +16,7 @@
     vm.original = null;
     vm.block = null;
     vm.update = update;
+    vm.keydown = keydown;
 
     _create();
     _activate();
@@ -56,6 +57,14 @@
       $window.editor.off('blockremoved', _event);
       $window.editor.off('treeselected', _event);
       $window.editor.off('nodechanged', _event);
+    }
+
+    function keydown(e) {
+      if (e.ctrlKey && e.keyCode == 90) {
+        e.preventDefault();
+      }
+
+      return false;
     }
 
     function update() {
