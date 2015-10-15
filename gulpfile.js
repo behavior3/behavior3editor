@@ -7,6 +7,7 @@ var minifyHTML    = require('gulp-minify-html');
 var connect       = require('gulp-connect');
 var less          = require('gulp-less');
 var jshint        = require('gulp-jshint');
+var electron      = require('gulp-atom-shell');
 var templateCache = require('gulp-angular-templatecache');
 var replace       = require('gulp-replace');
 var stylish       = require('jshint-stylish');
@@ -71,9 +72,8 @@ var app_html = [
 var app_entry = [
   'src/index.html',
   'src/package.json',
+  'src/desktop.js',
 ]
-
-var build_platforms = ['win32'];//, 'linux32', 'osx32'];
 
 // TASKS (VENDOR) =============================================================
 gulp.task('_vendor_js', function() {
@@ -157,7 +157,7 @@ gulp.task('_app_html', function() {
 
 gulp.task('_app_entry', function() {
   return gulp.src(app_entry)
-             .pipe(minifyHTML({empty:true})) 
+             // .pipe(minifyHTML({empty:true})) 
              .pipe(replace('[BUILD_VERSION]', build_version))
              .pipe(replace('[BUILD_DATE]', build_date))
              .pipe(gulp.dest('build'))
@@ -193,17 +193,21 @@ gulp.task('_watch', ['_livereload'], function() {
 
 
 // TASKS (NODE WEBKIT) ========================================================
-gulp.task('_nw', ['build'], function() {
-  exec('cd build & nw .');
+gulp.task('_electron_win', ['build'], function() {
+  var name = project.name+'-'+project.version+'-win32.zip'
+  return gulp.src('build/**')
+             .pipe(electron({version: '0.33.8', platform: 'win32'}))
+             .pipe(electron.zfsdest('dist/'+name));
 });
-
-gulp.task('_dist', ['build'], function() {
-  exec('nwbuild -o dist/ -p '+build_platforms.join(',')+' -v 0.12.2 build');
-});
+// gulp.task('_electron_linux', function() {
+//   var name = project.name+'-'+project.version+'-linux.zip'
+//   return gulp.src('build/**')
+//              .pipe(electron({version: '0.33.8', platform: 'linux'}))
+//              .pipe(electron.zfsdest('dist/'+name));
+// });
 
 
 // COMMANDS ===================================================================
 gulp.task('build', ['_vendor', '_preload', '_app']);
 gulp.task('serve', ['build', '_watch']);
-gulp.task('nw',    ['_nw']);
-gulp.task('dist',  ['_dist'])
+gulp.task('dist',  ['_electron_win'])

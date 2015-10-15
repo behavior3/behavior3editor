@@ -1,15 +1,15 @@
 {
   "name"    : "behavior3editor",
-  "version" : "0.3.0",
-  "main"    : "index.html",
+  "version" : "[BUILD_VERSION]",
+  "main"    : "desktop.js",
   "window": {
-    "title"      : "Behavior3 Editor (v0.3.0) - http://behavior3.com",
+    "title"      : "Behavior3 Editor (v[BUILD_VERSION]) http://behavior3.com",
     "position"   : "center",
     "toolbar"    : true,
     "frame"      : true,
-    "width"      : 800,
-    "height"     : 600,
-    "min_width"  : 800,
-    "min_height" : 600
+    "width"      : 1000,
+    "height"     : 800,
+    "min_width"  : 1000,
+    "min_height" : 800
   }
 }

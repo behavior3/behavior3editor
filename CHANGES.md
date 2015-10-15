@@ -5,6 +5,7 @@
 - mod: new building system and dependence organization.
 - mod: version and building date automatically inserted into code.
 - mod: minor presentation changes on loading screen and dash home.
+- mod: desktop version now uses electron (see #14).
 - fix: cut now remove all nodes, and consider connections too (see #9).
 - fix: ctrl+z does not affect property inputs anymore (see #10).
 
