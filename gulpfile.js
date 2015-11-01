@@ -7,7 +7,8 @@ var minifyHTML    = require('gulp-minify-html');
 var connect       = require('gulp-connect');
 var less          = require('gulp-less');
 var jshint        = require('gulp-jshint');
-var electron      = require('gulp-atom-shell');
+// var electron      = require('gulp-atom-shell');
+var packager      = require('electron-packager');
 var templateCache = require('gulp-angular-templatecache');
 var replace       = require('gulp-replace');
 var stylish       = require('jshint-stylish');
@@ -210,21 +211,21 @@ gulp.task('_watch', ['_livereload'], function() {
 
 
 // TASKS (NODE WEBKIT) ========================================================
-gulp.task('_electron_win', ['build'], function() {
-  var name = project.name+'-'+project.version+'-win32.zip'
-  return gulp.src('build/**')
-             .pipe(electron({version: '0.33.8', platform: 'win32'}))
-             .pipe(electron.zfsdest('dist/'+name));
+gulp.task('_electron', ['build'], function() {
+  packager({
+    dir: 'build',
+    out: 'dist',
+    name: project.name,
+    platform: 'linux,win32',
+    arch: 'all',
+    version: '0.34.2',
+    asar: true
+  })
 });
-// gulp.task('_electron_linux', function() {
-//   var name = project.name+'-'+project.version+'-linux.zip'
-//   return gulp.src('build/**')
-//              .pipe(electron({version: '0.33.8', platform: 'linux'}))
-//              .pipe(electron.zfsdest('dist/'+name));
-// });
 
 
 // COMMANDS ===================================================================
 gulp.task('build', ['_vendor', '_preload', '_app_build']);
+gulp.task('dev',   ['_vendor', '_preload', '_app_dev']);
 gulp.task('serve', ['_vendor', '_preload', '_app_dev', '_watch']);
-gulp.task('dist',  ['_electron_win'])
+gulp.task('dist',  ['_electron'])
