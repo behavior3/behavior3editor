@@ -211,15 +211,18 @@ gulp.task('_watch', ['_livereload'], function() {
 
 
 // TASKS (NODE WEBKIT) ========================================================
-gulp.task('_electron', ['build'], function() {
+gulp.task('_electron', ['build'], function(cb) {
   packager({
-    dir: 'build',
-    out: 'dist',
-    name: project.name,
-    platform: 'linux,win32',
-    arch: 'all',
-    version: '0.34.2',
-    asar: true
+    dir       : 'build',
+    out       : 'dist',
+    name      : project.name,
+    platform  : 'linux,win32',
+    arch      : 'all',
+    version   : '0.34.2',
+    overwrite : true,
+    asar      : true
+  }, function done (err, appPath) {
+    cb(err);
   })
 });
 
@@ -228,4 +231,4 @@ gulp.task('_electron', ['build'], function() {
 gulp.task('build', ['_vendor', '_preload', '_app_build']);
 gulp.task('dev',   ['_vendor', '_preload', '_app_dev']);
 gulp.task('serve', ['_vendor', '_preload', '_app_dev', '_watch']);
-gulp.task('dist',  ['_electron'])
+gulp.task('dist',  ['_electron']);
