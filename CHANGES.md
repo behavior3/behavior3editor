@@ -8,6 +8,7 @@
 - mod: desktop version now uses electron (see #14).
 - fix: cut now remove all nodes, and consider connections too (see #9).
 - fix: ctrl+z does not affect property inputs anymore (see #10).
+- fix: preview not showing in the first drag on Firefox (see #16).
 
 
 ## Version 0.2.0 [Not released]
