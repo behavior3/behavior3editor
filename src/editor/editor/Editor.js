@@ -130,10 +130,7 @@
     stage.addChild(block);
     stage.update();
 
-    var img = document.createElement("img");
-    img.src = canvas.toDataURL();
-
-    return img;
+    return canvas;
   };
 
   p.isDirty = function() {
