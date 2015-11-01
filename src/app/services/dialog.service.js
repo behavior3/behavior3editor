@@ -2,9 +2,9 @@ angular
   .module('app')
   .factory('dialogService', dialogService);
 
-dialogService.$inject = ['$window', '$q', '$document'];
+dialogService.$inject = ['$window', '$q', '$document', 'nodejsService'];
 
-function dialogService($window, $q, $document) {
+function dialogService($window, $q, $document, nodejsService) {
   var service = {
     alert         : alert,
     confirm       : confirm,
@@ -71,37 +71,57 @@ function dialogService($window, $q, $document) {
     });
   }
   function saveAs(placeholder, types) {
-    var dialog = $document[0].createElement('input');
-    dialog.type = 'file';
-    dialog.nwsaveas = placeholder || '';
-    if (angular.isArray(types)) {
-      dialog.accept = types.join(',');
-    } else if (angular.isString(types)) {
-      dialog.accept = types;
-    }
-    
-    return _callFileDialog(dialog);
+    return $q(function(resolve, reject) {
+      var value = nodejsService.dialog.showSaveDialog({
+        title: 'Save project as...',
+        defaultPath: placeholder + '.b3',
+        filters : [
+          {name: 'Behavior3 File', extensions: ['b3', 'json']},
+          {name: 'All Files', extensions: ['*']}
+        ]
+      });
+      if (value) {
+        resolve(value);
+      } else {
+        reject();
+      }
+    });
   }
   function openFile(multiple, types) {
-    var dialog = $document[0].createElement('input');
-    dialog.type = 'file';
-    if (multiple) {
-      dialog.multiple = 'multiple';
-    }
+    return $q(function(resolve, reject) {
+      var value = nodejsService.dialog.showOpenDialog({
+        title: 'Open file...',
+        multiSelections: multiple,
+        properties: ['openFile'],
+        filters : [
+          {name: 'Behavior3 File', extensions: ['b3', 'json']},
+          {name: 'All Files', extensions: ['*']}
+        ]
+      });
 
-    if (angular.isArray(types)) {
-      dialog.accept = types.join(',');
-    } else if (angular.isString(types)) {
-      dialog.accept = types;
-    }
-
-    return _callFileDialog(dialog);
+      if (value) {
+        if (!multiple) {
+          value = value[0];
+        }
+        console.log(value);
+        resolve(value);
+      } else {
+        reject();
+      }
+    });
   }
   function openDirectory() {
-    var dialog = $document[0].createElement('input');
-    dialog.type = 'file';
-    dialog.nwdirectory = 'nwdirectory';
-    return _callFileDialog(dialog);
+    return $q(function(resolve, reject) {
+      var value = nodejsService.dialog.showOpenDialog({
+        title: 'Open directory...',
+        properties: ['openDirectory']
+      });
+      if (value) {
+        resolve(value);
+      } else {
+        reject();
+      }
+    });
   }
   
 }
