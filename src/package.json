@@ -5,7 +5,7 @@
   "window": {
     "title"      : "Behavior3 Editor (v[BUILD_VERSION]) http://behavior3.com",
     "position"   : "center",
-    "toolbar"    : true,
+    "toolbar"    : false,
     "frame"      : true,
     "width"      : 1000,
     "height"     : 800,
