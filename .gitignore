@@ -39,3 +39,4 @@ src/vendor
 cache
 teste.py
 
+ignore-*
