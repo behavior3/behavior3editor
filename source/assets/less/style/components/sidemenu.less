@@ -1,0 +1,31 @@
+
+.b3-sidemenu {
+  position: fixed;
+  z-index: @z-index-sidemenu;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  width: @sidemenu-width;
+  background-color: @color-deep-3;
+  border-right: 1px solid lighten(@color-deep-3, 2%);
+  box-shadow: 1px 0px 5px 0px fadeout(@color-deep-3, 90%);
+
+  &-item {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: @color-white;
+    height: @sidemenu-width;
+    transition: .2s ease-out;
+
+    &:not(.active):hover {
+      background-color: @color-deep-3-light;
+    }
+
+    &.active {
+      background-color: @color-main;
+      position: relative;
+      margin-right: -1px;
+    }
+  }
+}

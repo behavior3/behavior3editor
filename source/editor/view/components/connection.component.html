@@ -1,0 +1,50 @@
+<dom-module id="dom-connection">
+  <style>
+    :host {
+      --dom-connection-y: 0;
+      --dom-connection-x: 0;
+
+      top: var(--dom-connection-y);
+      left: var(--dom-connection-x);
+    }
+  </style>
+
+  <template>
+    <svg id="connection" class="connection"></svg>
+  </template>
+
+  <script>
+    Polymer({
+      is: 'dom-connection',
+
+      properties: {
+        x1 : Number,
+        y1 : Number,
+        x2 : Number,
+        y2 : Number,
+      },
+
+      ready: function() {
+      },
+
+      update: function(data) {
+        if (typeof data.x1 !== 'undefined') {
+          this.x1 = data.x1
+        }
+
+        if (typeof data.y1 !== 'undefined') {
+          this.y1 = data.y1
+        }
+
+        if (typeof data.x2 !== 'undefined') {
+          this.x2 = data.x2
+        }
+
+        if (typeof data.y2 !== 'undefined') {
+          this.y2 = data.y2
+        }
+
+      },
+    });
+  </script>
+</dom-module>

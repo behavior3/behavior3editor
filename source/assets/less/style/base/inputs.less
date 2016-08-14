@@ -1,0 +1,119 @@
+// Reset default styles
+input[type=number]::-webkit-inner-spin-button,
+input[type=number]::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+input::-ms-clear {
+  display: none;
+}
+
+// The general input container
+.b3-input {
+  display: flex;
+  position: relative;
+  background: @color-white;
+  border: 1px solid @color-gray-1;
+  min-height: @input-height;
+}
+
+.b3-input .b3-button {
+  border-radius: 0;
+  position: relative;
+  height: @input-height - 2;
+  line-height: @input-height - 2;
+}
+
+/**
+ * ADDONS
+ **/
+ .b3-input .b3-input-addon {
+   display: flex;
+   align-items: center;
+   justify-content: center;
+   width: @input-height;
+ }
+ .b3-input .b3-input-addon+input,
+ .b3-input .b3-input-addon+textarea {
+   padding-left: 0;
+ }
+
+
+/**
+ * COMMON INPUT
+ **/
+.b3-input input {
+  flex-grow: 1;
+  border: none;
+  outline: none;
+  padding-left: .5rem;
+  transition: .2s ease-out;
+
+  &:focus, &.focus {
+    box-shadow: 0 0 1px 2px @color-main;
+  }
+
+  &:disabled, &.disabled {
+    background-color: @color-gray-4;
+  }
+}
+
+/**
+ * TEXTAREA
+ **/
+.b3-input textarea {
+  flex-grow: 1;
+  border: none;
+  outline: none;
+  padding: .5rem 0 .5rem .5rem;
+  line-height: 1.4rem;
+  transition: .2s ease-out;
+  min-height: @input-height*2;
+
+  &:focus, &.focus {
+    box-shadow: 0 0 1px 2px @color-main;
+  }
+
+  &:disabled, &.disabled {
+    background-color: @color-gray-4;
+  }
+}
+
+/**
+ * SELECT
+ */
+.b3-input select {
+  flex-grow: 1;
+  border: none;
+  outline: none;
+  padding-left: .5rem;
+  line-height: @input-height;
+  transition: .2s ease-out;
+
+  &:focus, &.focus {
+    box-shadow: 0 0 1px 2px @color-main;
+  }
+
+  &:disabled, &.disabled {
+    background-color: @color-gray-4;
+  }
+}
+
+/**
+ * RADIO AND CHECKBOXES
+ **/
+.b3-input input[type="radio"],
+.b3-input input[type="chekbox"] {
+
+}
+.b3-input label {
+  display: flex;
+  flex-grow: 1;
+  align-items: center;
+  justify-content: center;
+
+  & input {
+    flex-grow: 0;
+    margin-right: 5px;
+  }
+}

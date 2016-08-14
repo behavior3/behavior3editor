@@ -1,0 +1,99 @@
+<dom-module id="dom-block">
+  <style>
+    :host {
+      --dom-block-y: 0;
+      --dom-block-x: 0;
+
+      top: var(--dom-block-y);
+      left: var(--dom-block-x);
+    }
+  </style>
+
+  <template>
+    <div id="block" class="block">
+      <div class="anchor in-anchor"></div>
+      <div class="anchor out-anchor"></div>
+
+      <div class="inner-block">
+        <div class="header">
+          <!-- <img class="image" src="http://placehold.it/64x64"></img> -->
+          <img class="image" src="{{image}}" width="64px"></img>
+
+          <span class="category">{{category}}</span>
+          <span class="name">{{name}}</span>
+          <span class="title">{{title}}</span>
+        </div>
+
+        <div class="body">
+          <div class="property">
+            <span class="key">First property</span>
+            <span class="value range">3 ... 4</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </template>
+
+  <script>
+    Polymer({
+      is: 'dom-block',
+
+      properties: {
+        title      : String,
+        name       : String,
+        image      : String,
+        category   : String,
+        selected   : Boolean,
+        x          : Number,
+        y          : Number,
+        properties : Array
+      },
+
+      ready: function() {
+      },
+
+      moveTo: function(x, y) {
+        this.x = x
+        this.y = y
+        this.customStyle['--dom-block-y'] = (y||0)+'px'
+        this.customStyle['--dom-block-x'] = (x||0)+'px'
+        this.updateStyles()
+      },
+
+      update: function(data) {
+        if (typeof data.title !== 'undefined') {
+          this.title = data.title
+        }
+
+        if (typeof data.name !== 'undefined') {
+          this.name = data.name
+        }
+
+        if (typeof data.image !== 'undefined') {
+          this.image = data.image
+        }
+
+        if (typeof data.category !== 'undefined') {
+          this.category = data.category
+        }
+
+        if (typeof data.x !== 'undefined') {
+          this.moveTo(data.x, this.y)
+        }
+
+        if (typeof data.y !== 'undefined') {
+          this.moveTo(this.x, data.y)
+        }
+      },
+
+      select: function() {
+        this.selected = true
+        this.toggleClass('selected', this.selected, this.$.block)
+      },
+      deselect: function() {
+        this.selected = false
+        this.toggleClass('selected', this.selected, this.$.block)
+      },
+    });
+  </script>
+</dom-module>

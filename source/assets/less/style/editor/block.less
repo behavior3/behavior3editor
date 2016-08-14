@@ -1,0 +1,128 @@
+@_block-width: 300px;
+@_block-border-color: @color-deep-3;
+@_header-height: 64px;
+@_header-image: 64px;
+@_header-text-width: 82%;
+@_header-color: @color-gray-4;
+@_body-color: @color-white;
+@_body-key-width: 60%;
+@_body-value-width: 30%;
+@_anchor-size: 20px;
+
+._m_after(@color) {
+  &::after {
+    content: "";
+    display: inline-block;
+    position: absolute;
+    right: 0;
+
+    height: 100%;
+    width: 30px;
+    background: linear-gradient(to right, fadeout(@color, 100%) 0%, @color 100%);
+  }
+}
+
+dom-block {
+  display: inline-block;
+  width: @_block-width;
+  pointer-events: none;
+  position: absolute;
+
+  .block {
+    background-color: @color-white;
+    border-radius: 5px;
+    overflow: hidden;
+
+    &.selected {
+      background: @color-main;
+    }
+
+    .header {
+      position: relative;
+      height: @_header-height;
+      background-color: @_header-color;
+      overflow: hidden;
+      padding: 12px 10px;
+
+      .name {
+        position: relative;
+        font-style: italic;
+        display: block;
+        color: fadeout(@color-black, 25%);
+        white-space: nowrap;
+        overflow: hidden;
+        width: @_header-text-width;
+
+        ._m_after(@_header-color);
+      }
+      .title {
+        position: relative;
+        font-size: 1.2rem;
+        line-height: 130%;
+        margin: 0;
+        display: block;
+        white-space: nowrap;
+        overflow: hidden;
+        font-weight: bold;
+        width: @_header-text-width;
+
+        ._m_after(@_header-color);
+      }
+      .category {
+        font-size: 0.7rem;
+        display: none;
+      }
+      .image {
+        position: absolute;
+        top: 0;
+        right: 0;
+        opacity: 0.1;
+      }
+    }
+
+    .body {
+      padding: 12px 10px 6px 10px;
+
+      .property {
+        display: flex;
+        justify-content: space-between;
+        padding-bottom: 6px;
+
+        .key {
+          width: @_body-key-width;
+          overflow: hidden;
+          white-space: nowrap;
+          position: relative;
+
+          ._m_after(@_body-color);
+        }
+        .value {
+          width: @_body-value-width;
+          text-align: right;
+          overflow: hidden;
+          white-space: nowrap;
+        }
+      }
+    }
+
+  }
+  .anchor {
+    width: @_anchor-size;
+    height: @_anchor-size;
+    position: absolute;
+    display: inline-block;
+    background-color: @color-white;
+    top: 50%;
+    transform: translate(0%, -50%);
+
+    &.in-anchor {
+      left: -@_anchor-size*0.7;
+      border-radius: 100% 0 0 100%;
+    }
+
+    &.out-anchor {
+      right: -@_anchor-size*0.7;
+      border-radius: 0 100% 100% 0;
+    }
+  }
+}

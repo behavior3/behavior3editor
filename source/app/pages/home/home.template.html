@@ -1,0 +1,216 @@
+
+<nav class="b3-sidemenu">
+  <a href="" class="b3-sidemenu-item"><i class="fa fa-fw fa-home"></i></a>
+  <a href="" class="b3-sidemenu-item active"><i class="fa fa-fw fa-pencil-square"></i></a>
+  <a href="" class="b3-sidemenu-item"><i class="fa fa-fw fa-folder-open"></i></a>
+  <a href="" class="b3-sidemenu-item"><i class="fa fa-fw fa-cogs"></i></a>
+  <a href="" class="b3-sidemenu-item"><i class="fa fa-fw fa-question-circle"></i></a>
+  <a href="" class="b3-sidemenu-item"><i class="fa fa-fw fa-bug"></i></a>
+</nav>
+
+<nav class="b3-sidepanel">
+  <div class="b3-sidepanel-header">
+    <input type="text" placeholder="Search node or tree">
+  </div>
+
+  <div class="b3-panel-list">
+    <a href=""
+       class="b3-panel-list-section-title"
+       ng-class="{'collapsed': toogle_behaviortrees}"
+       ng-click="toogle_behaviortrees = !toogle_behaviortrees;">
+      Behavior trees
+    </a>
+
+    <div class="b3-panel-list-section" ng-hide="toogle_behaviortrees">
+      <a href="" class="b3-panel-list-item">Main</a>
+      <a href="" class="b3-panel-list-item">Warrior</a>
+      <a href="" class="b3-panel-list-item">Wizard</a>
+      <a href="" class="b3-panel-list-item">Bard</a>
+    </div>
+  </div>
+
+  <div class="b3-panel-group">
+    <a href=""
+       class="b3-panel-list-section-title"
+       ng-class="{'collapsed': toogle_nodes}"
+       ng-click="toogle_nodes = !toogle_nodes;">
+      Nodes
+    </a>
+
+    <div class="b3-panel-list-section" ng-hide="toogle_nodes">
+      <a href="" class="b3-panel-list-subsection-title">Composites</a>
+
+      <div class="b3-panel-list-subsection">
+        <a href=""
+           ng-repeat="node in c_home.stub_biglist track by $index"
+           class="b3-panel-list-item">{{node}}</a>
+      </div>
+    </div>
+
+        <div class="b3-panel-list-section" ng-hide="toogle_nodes">
+      <a href="" class="b3-panel-list-subsection-title">Decorators</a>
+
+      <div class="b3-panel-list-subsection">
+        <a href=""
+           ng-repeat="node in c_home.stub_biglist track by $index"
+           class="b3-panel-list-item">{{node}}</a>
+      </div>
+    </div>
+
+        <div class="b3-panel-list-section" ng-hide="toogle_nodes">
+      <a href="" class="b3-panel-list-subsection-title">Conditions</a>
+
+      <div class="b3-panel-list-subsection">
+        <a href=""
+           ng-repeat="node in c_home.stub_biglist track by $index"
+           class="b3-panel-list-item">{{node}}</a>
+      </div>
+    </div>
+
+        <div class="b3-panel-list-section" ng-hide="toogle_nodes">
+      <a href="" class="b3-panel-list-subsection-title">Actions</a>
+
+      <div class="b3-panel-list-subsection">
+        <a href=""
+           ng-repeat="node in c_home.stub_biglist track by $index"
+           class="b3-panel-list-item">{{node}}</a>
+      </div>
+    </div>
+  </div>
+</nav>
+
+<nav class="b3-topmenu">
+  <ul>
+    <li>
+      <a href="">
+        <span class="b3-topmenu-label">Project</span>
+      </a>
+
+      <ul>
+        <li>
+          <a href="">
+            <span class="b3-topmenu-label">New project</span>
+            <span class="b3-topmenu-shortcut">ctrl+n</span>
+          </a>
+        </li>
+        <li>
+          <a href="">
+            <span class="b3-topmenu-label">Open project</span>
+          </a>
+        </li>
+        <li>
+          <a href="">
+            <span class="b3-topmenu-label">Save project</span>
+            <span class="b3-topmenu-shortcut">ctrl+s</span>
+          </a>
+        </li>
+        <li class="b3-topmenu-divider"></li>
+        <li>
+          <a href="">
+            <span class="b3-topmenu-label">Export</span>
+          </a>
+
+          <ul>
+            <li>
+              <a href="">
+                <span class="b3-topmenu-label">Export project</span>
+                <span class="b3-topmenu-shortcut">ctrl+e</span>
+              </a>
+            </li>
+            <li>
+              <a href="">
+                <span class="b3-topmenu-label">Export tree</span>
+              </a>
+            </li>
+          </ul>
+        </li>
+        <li>
+          <a href="">
+            <span class="b3-topmenu-label">Import</span>
+          </a>
+
+          <ul>
+            <li>
+              <a href="">
+                <span class="b3-topmenu-label">Import project</span>
+                <span class="b3-topmenu-shortcut">ctrl+e</span>
+              </a>
+            </li>
+            <li>
+              <a href="">
+                <span class="b3-topmenu-label">Import tree</span>
+              </a>
+            </li>
+          </ul>
+        </li>
+      </ul>
+    </li>
+
+    <li>
+      <a href="">
+        <span class="b3-topmenu-label">Edit</span>
+      </a>
+
+      <ul>
+        <li>
+          <a href="">
+            <span class="b3-topmenu-label">New project</span>
+            <span class="b3-topmenu-shortcut">ctrl+n</span>
+          </a>
+        </li>
+        <li>
+          <a href="">
+            <span class="b3-topmenu-label">Open project</span>
+          </a>
+        </li>
+        <li>
+          <a href="">
+            <span class="b3-topmenu-label">Save project</span>
+            <span class="b3-topmenu-shortcut">ctrl+s</span>
+          </a>
+        </li>
+        <li class="b3-topmenu-divider"></li>
+        <li>
+          <a href="">
+            <span class="b3-topmenu-label">Export</span>
+          </a>
+
+          <ul>
+            <li>
+              <a href="">
+                <span class="b3-topmenu-label">Export project</span>
+                <span class="b3-topmenu-shortcut">ctrl+e</span>
+              </a>
+            </li>
+            <li>
+              <a href="">
+                <span class="b3-topmenu-label">Export tree</span>
+              </a>
+            </li>
+          </ul>
+        </li>
+      </ul>
+    </li>
+
+    <li>
+      <a href="">
+        <span class="b3-topmenu-label">View</span>
+      </a>
+    </li>
+    <li>
+      <a href="">
+        <span class="b3-topmenu-label">Selection</span>
+      </a>
+    </li>
+    <li>
+      <a href="">
+        <span class="b3-topmenu-label">Connections</span>
+      </a>
+    </li>
+    <li>
+      <a href="">
+        <span class="b3-topmenu-label">Organization</span>
+      </a>
+    </li>
+  </ul>
+</nav>

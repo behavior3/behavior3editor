@@ -1,0 +1,44 @@
+
+.b3-sidepanel-header {
+  position: fixed;
+  top: 0;
+  z-index: @z-index-sidepanel;
+  width: @sidepanel-width;
+  height: @sidemenu-width;
+  background-color: @color-deep-2-light;
+
+  input {
+    background: transparent;
+    outline: none;
+    border: none;
+    color: @color-white;
+    height: 100%;
+    width: 100%;
+    padding: 0 1rem;
+  }
+}
+
+
+.b3-sidepanel {
+  position: fixed;
+  z-index: @z-index-sidepanel;
+  left: @sidemenu-width;
+  top: @sidemenu-width;
+  bottom: 0;
+  width: @sidepanel-width;
+  border-right: 1px solid lighten(@color-deep-2, 2%);
+  background-color: @color-deep-2;
+  overflow-y: auto;
+
+  &::-webkit-scrollbar {
+    width: 5px;
+    height: 5px;
+    background: transparent;
+  }
+
+  &::-webkit-scrollbar-thumb {
+    // background: fadeout(@color-white, 90%);
+    background-color: @color-main;
+  }
+
+}

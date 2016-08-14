@@ -1,0 +1,74 @@
+// Adjusts the font-awesome icon margin inside the button
+.fa.left-icon { margin-right: 10px; }
+.fa.right-icon { margin-left: 10px; }
+
+// Internal functions
+._button_color(@color, @ligthen:5%) {
+  color: @color-white;
+  background-color: @color;
+  &:hover, &.hover {
+    color: @color-white;
+    background-color: lighten(@color, @ligthen);
+  }
+  &:disabled, &.disabled {
+    background-color: screen(@color, @color-gray-3);
+    cursor: default;
+    index: 0;
+  }
+  &:focus, &.focus {
+    box-shadow: 0 0 2px 2px darken(@color, 10%);
+  }
+}
+
+
+.b3-button {
+  border: none;
+  outline: none;
+  display: inline-block;
+  cursor: pointer;
+  text-align: center;
+  white-space: nowrap;
+
+  border-radius: 2px;
+  height: @input-height;
+  line-height: @input-height;
+  padding: 0 1rem;
+  transition: .3s ease-out;
+  //
+  // &:focus, &.focus {
+  //   // box-shadow: inset 0 0 0 3px fadeout(@color-white, 25%);
+  //   box-shadow: 0 0 1px 2px @color-main;
+  //   // transform: scale(1);
+  // }
+
+  // VARIATIONS
+  &.rounded {
+    padding: 0;
+    width: @input-height;
+    border-radius: 100%;
+  }
+
+
+  // COLORS
+  ._button_color(@color-main);
+  &.positive { ._button_color(@color-positive); }
+  &.info     { ._button_color(@color-info, 10%); }
+  &.negative { ._button_color(@color-negative, 10%); }
+  &.warning  { ._button_color(@color-warning, 15%); }
+  &.flat {
+    color: @color-main;
+    background-color: transparent;
+
+    &:hover, &.hover {
+      color: lighten(@color-main, 10%);
+      background-color: transparent;
+    }
+    &:disabled, &.disabled {
+      color: @color-gray-3 !important;
+      background-color: transparent !important;
+    }
+    &:focus, &.focus {
+      box-shadow: 0 0 1px 2px @color-main;
+    }
+  }
+}
