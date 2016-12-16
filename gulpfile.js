@@ -261,7 +261,7 @@ gulp.task('_run_electron', ['_electron'], function() {
 
   var command = path.join(".temp-dist", "behavior3editor-" + plat + "-" + arch, "behavior3editor");
 
-  if (isWin) {
+  if (is_win) {
     command = command + ".exe";
   }
 
