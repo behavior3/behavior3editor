@@ -17,11 +17,15 @@ var exec          = require('child_process').exec;
 var fs            = require('fs');
 var rimraf        = require('rimraf');
 var merge         = require('merge-stream');
+var os            = require('os');
+var path          = require('path');
 
 // VARIABLES ==================================================================
 var project       = JSON.parse(fs.readFileSync('package.json', 'utf8'));
 var build_version = project.version;
 var build_date    = (new Date()).toISOString().replace(/T.*/, '');
+var is_win = /^win/.test(process.platform);
+var is_ia32 = os.arch() == "ia32";
 
 // FILES ======================================================================
 var vendor_js = [
@@ -239,8 +243,34 @@ gulp.task('_electron_zip', ['_electron'], function() {
              }));
 });
 
+gulp.task('_run_electron', ['_electron'], function() {
+  var plat;
+  var arch;
+
+  if (is_win) {
+    plat = "win32";
+  } else {
+    plat = "linux";
+  }
+
+  if (is_ia32) {
+    arch = "ia32";
+  } else {
+    arch = "x64";
+  }
+
+  var command = path.join(".temp-dist", "behavior3editor-" + plat + "-" + arch, "behavior3editor");
+
+  if (is_win) {
+    command = command + ".exe";
+  }
+
+  exec(command);
+});
+
 // COMMANDS ===================================================================
 gulp.task('build', ['_vendor', '_preload', '_app_build']);
 gulp.task('dev',   ['_vendor', '_preload', '_app_dev']);
 gulp.task('serve', ['_vendor', '_preload', '_app_dev', '_watch']);
 gulp.task('dist',  ['_electron_zip']);
+gulp.task('nw', ['_run_electron']);
