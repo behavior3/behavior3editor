@@ -224,7 +224,7 @@ gulp.task('_electron', ['build'], function(cb) {
     name      : project.name,
     platform  : 'linux,win32',
     arch      : 'all',
-    version   : '0.34.2',
+    version   : '1.4.13',
     overwrite : true,
     asar      : true
   }, function done(err, appPath) {

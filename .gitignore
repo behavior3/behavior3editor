@@ -40,3 +40,7 @@ cache
 teste.py
 
 ignore-*
+
+# Vim temporary files
+*.swp
+*~
