@@ -37,6 +37,9 @@ angular.module('app', [
     projectModel
       .getRecentProjects()
       .then(function(projects) {
+          // BOBE EDIT
+
+		console.log("Doing something with projects...\n");
         
         function closePreload() {
           $timeout(function() {
@@ -53,10 +56,16 @@ angular.module('app', [
             .openProject(projects[0].path)
             .then(function() {
               closePreload();
+            })
+            .catch(function(exception) {
+              console.log("Jup, definitely something went wrong!\n");  
+              closePreload();
             });
         } else {
           closePreload();
         }
+
+        console.log("Finished something with projects...\n");
       });
   }
 ]);

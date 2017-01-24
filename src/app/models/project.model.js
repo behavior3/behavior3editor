@@ -134,6 +134,8 @@
           _setProject(project);
           resolve();
         } catch (e) {
+          // BOBE EDIT
+          console.log("WHOOPS! Error while opening project!\n");
           reject(e);
         }
       });
