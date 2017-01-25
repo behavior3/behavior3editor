@@ -12,7 +12,8 @@ function fileStorageService(nodejsService) {
     ok     : ok,
     save   : save,
     load   : load,
-    remove : remove
+    remove : remove,
+    exists : exists
   };
   return service;
 
@@ -29,11 +30,26 @@ function fileStorageService(nodejsService) {
     fs.rename(path+'~', path);
   }
   function load(path) {
-    var data = fs.readFileSync(path, 'utf-8');
-    try { data = JSON3.parse(data); } catch (e) {}
-    return data;
+    try {
+        var data = fs.readFileSync(path, 'utf-8');
+
+        try {
+            data = JSON3.parse(data); 
+        } catch (e) {
+            console.log("Couldn't parse arbitrary data! Exception: " + e);    
+            return {};
+        }
+
+        return data;
+    } catch (e) {
+        console.log("Couldn't read arbitrary data! Exception: " + e);    
+        return {};
+    }
   }
   function remove(path) {
     
+  }
+  function exists(path) {
+    return fs.existsSync(path);
   }
 }

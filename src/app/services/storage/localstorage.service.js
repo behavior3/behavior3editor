@@ -9,7 +9,8 @@ function localStorageService($window) {
     ok     : !!$window.localStorage,
     save   : save,
     load   : load,
-    remove : remove
+    remove : remove,
+    exists : exists
   };
   return service;
 
@@ -24,5 +25,8 @@ function localStorageService($window) {
   }
   function remove(path) {
     delete $window.localStorage[path];
+  }
+  function exists(path) {
+    return path in $window.localStorage;
   }
 }

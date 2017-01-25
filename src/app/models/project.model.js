@@ -90,6 +90,19 @@
           }
 
           recentCache = data;
+
+          console.log("Recent cache: " + JSON.stringify(recentCache, null, 2) + "\n");
+
+          var recentCacheFiltered = [];
+
+          for (var i = 0; i < recentCache.length; i++) {
+            var recentProject = recentCache[i];
+            if (storageService.exists(recentProject)) {
+              recentCacheFiltered.push(recentProject);
+            }
+          }
+
+          recentCache = recentCacheFiltered;
         }
         resolve(recentCache);
       });
@@ -136,6 +149,7 @@
         } catch (e) {
           // BOBE EDIT
           console.log("WHOOPS! Error while opening project!\n");
+          console.log("Exception: " + e + "\n");
           reject(e);
         }
       });

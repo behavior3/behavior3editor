@@ -14,6 +14,7 @@ function storageService($q, localStorageService, fileStorageService) {
     loadAsync   : loadAsync,
     remove      : remove,
     removeAsync : removeAsync,
+    exists      : exists,
   };
   return service;
 
@@ -55,5 +56,9 @@ function storageService($q, localStorageService, fileStorageService) {
         reject(e);
       }
     });
+  }
+
+  function exists(path) {
+    return storage.exists(path);
   }
 }
