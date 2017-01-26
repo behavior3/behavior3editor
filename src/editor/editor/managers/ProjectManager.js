@@ -31,6 +31,9 @@ b3e.editor.ProjectManager = function(editor) {
     var project = new b3e.project.Project(editor);
     editor.addChild(project);
     editor._project = project;
+
+    console.log("Importing...\n");
+    console.log("Data: " + JSON.stringify(data, null, 2));
     
     editor.import.projectAsData(data);
     editor.trigger('projectopened', editor._project);
