@@ -91,18 +91,12 @@
 
           recentCache = data;
 
-          console.log("Recent cache: " + JSON.stringify(recentCache, null, 2) + "\n");
-
           var recentCacheFiltered = [];
 
           for (var i = 0; i < recentCache.length; i++) {
             var recentProject = recentCache[i].path;
-            console.log("Considering recent project: " + recentProject);
             if (storageService.exists(recentProject)) {
               recentCacheFiltered.push(recentCache[i]);
-              console.log("Exists!\n");
-            } else {
-              console.log("Does not exist!\n");
             }
           }
 
@@ -146,20 +140,14 @@
     function openProject(path) {
       return $q(function(resolve, reject) {
         try {
-          console.log("Opening project...\n");
           var project = storageService.load(path);
 
-          console.log("JSON: " + JSON.stringify(project, null, 2));
-
-          console.log("Path: " + project.path);
           project.path = path;
-          console.log("New path: " + project.path);
 
           editorService.openProject(project.data);
           _setProject(project);
           resolve();
         } catch (e) {
-          // BOBE EDIT
           console.log("WHOOPS! Error while opening project!\n");
           console.log("Exception: " + e + "\n");
           reject(e);
