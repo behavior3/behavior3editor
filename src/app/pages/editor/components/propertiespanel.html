@@ -10,6 +10,13 @@
   <div ng-show="propertiespanel.block" class="properties">
     <form>
       <div class="form-group">
+        <label for="name">Name</label>
+        <div name="name"
+             ng-bind="propertiespanel.block.name"
+             />
+      </div>
+
+      <div class="form-group">
         <label for="title">Title</label>
         <input type="text" 
                class="form-control"

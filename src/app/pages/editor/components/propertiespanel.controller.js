@@ -24,13 +24,17 @@
     $scope.$on('$destroy', _destroy);
 
     function _activate() {
+      console.log("Activating properties\n");
+
       var p = $window.editor.project.get();
       var t = p.trees.getSelected();
       var s = t.blocks.getSelected();
 
       if (s.length === 1) {
         vm.original = s[0];
+        
         vm.block = {
+          name        : vm.original.name,
           title       : vm.original.title,
           description : vm.original.description,
           properties  : tine.merge({}, vm.original.properties)
