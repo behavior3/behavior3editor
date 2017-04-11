@@ -28,7 +28,7 @@
   
   p._createGame = function() {
     var self = this;
-    this._game = new tine.Game(null, {
+    this._game = new tine.Game({framerate: 10}, {
       update : function() { self._update(); },
     });
 
