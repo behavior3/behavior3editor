@@ -69,14 +69,16 @@
 
     function remove(i) {
       vm.rows.splice(i, 1);
+      change();
     }
 
-    function change() {
+    function change(key) {
       for (var key in vm.model){
         if (vm.model.hasOwnProperty(key)){
           delete vm.model[key];
         }
       }
+
       for (var i=0; i<vm.rows.length; i++) {
         var r = vm.rows[i];
         if (! r.key) continue;
@@ -88,9 +90,17 @@
 
         vm.model[r.key] = value;
         
-        if (vm._onChange) {
-          vm._onChange($scope);
-        }
+        // This used to be here, but I moved it down because it seems it
+        // results in better performance when many keys and values are involved.
+        //if (vm._onChange) {
+          //vm._onChange($scope);
+        //}
+      }
+
+      // This is to make sure if there are no more keys, the empty model
+      // is correctly propagated to the place where the models are stored
+      if (vm._onChange) {
+        vm._onChange($scope);
       }
     }
   }

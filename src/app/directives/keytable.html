@@ -16,14 +16,14 @@
                  value="{{item.key}}"
                  ng-disabled="item.fixed"
                  ng-model="item.key"
-                 ng-change="keytable.change()"/>
+                 ng-change='keytable.change({{$index}})'/>
       </td>
       <td><input type="text" 
                  class="form-control"
                  placeholder="value"
                  value="{{item.value}}"
                  ng-model="item.value"
-                 ng-change="keytable.change()"/>
+                 ng-change="keytable.change({{$index}})"/>
       </td>
       <td class="text-right">
         <input type="button" 
