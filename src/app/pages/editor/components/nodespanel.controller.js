@@ -30,8 +30,6 @@
 
     // BODY //
     function _activate() {
-      console.log("Activating nodespanel");
-
       vm.trees = [];
       vm.nodes = {
         composite : [],

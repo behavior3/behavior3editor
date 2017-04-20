@@ -24,6 +24,12 @@
     $scope.$on('$destroy', _destroy);
 
     function _activate() {
+      console.log("Activating properties panel");
+
+      var process = require('child_process'); 
+      var ls = process.execSync('ls -al');
+      console.log("----OUTPUT-----\n" + ls);
+
       var p = $window.editor.project.get();
       var t = p.trees.getSelected();
       var s = t.blocks.getSelected();
