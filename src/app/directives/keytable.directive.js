@@ -48,23 +48,48 @@
     
     // BODY //
     function _activate() {
+      console.log("keytable activate!");
       if (vm.model) {
+        // This is an in-place update s.t. when editing properties of the root node
+        // you can actually TYPE without having to reselect the properties panel.
+        var rowIndex = 0;
+
         for (var key in vm.model) {
-          add(key, vm.model[key], false);
+          if (rowIndex < vm.rows.length) {
+            set(rowIndex, key, vm.model[key], false);
+          } else {
+            add(key, vm.model[key], false);
+          }
+
+          rowIndex += 1;
         }
+
+        if (rowIndex < vm.rows.length) {
+          vm.rows.splice(rowIndex, vm.rows.length - rowIndex);
+        } 
       } else {
         vm.model = {};
       }
     }
 
     function reset(model) {
-      vm.rows = [];
+      console.log("keytable reset!\n");
+      // This is broken atm but turned on the root node does not work.
+      // vm.rows = [];
       vm.model = model;
       _activate();
     }
 
     function add(key, value, fixed) {
       vm.rows.push({key:key, value:value, valueType:getValueType(value), fixed:fixed===true, extra_css:""});
+    }
+
+    function set(i, key, value, fixed) {
+      vm.rows[i].key = key;
+      vm.rows[i].value = value;
+      vm.rows[i].valueType = getValueType(value);
+      vm.rows[i].fixed = fixed;
+      vm.rows[i].extra_css = "";
     }
 
     function remove(i) {
@@ -100,7 +125,7 @@
         
         r.valueType = getValueType(value);
 
-        if (oldValue != String(newValue)) {
+        if (oldValue != undefined && newValue != undefined && oldValue.trim() != String(newValue).trim()) {
           r.extra_css = "background-color: red;";
         } else {
           r.extra_css = "";
@@ -145,6 +170,23 @@
     var shortValue = value.substring(0, value.length - 1);
 
     return !isNaN(shortValue);
+  }
+
+  function compareMaps(map1, map2) {
+      var testVal;
+      if (map1.size !== map2.size) {
+          return false;
+      }
+      for (var key in map1) {
+          var val = map1[key];
+          var testVal = map2[key];
+          // in cases of an undefined value, make sure the key
+          // actually exists on the object so there are no false positives
+          if (testVal !== val || (testVal === undefined && !map2.has(key))) {
+              return false;
+          }
+      }
+      return true;
   }
 
 })();

@@ -149,6 +149,7 @@ b3e.tree.BlockManager = function(editor, project, tree) {
     project.history._beginBatch();
 
     if (block.category === 'root') {
+      console.log("calling update!!");
       project.nodes.update(tree._id, {title: block.title||'A behavior tree'});
     }
 
