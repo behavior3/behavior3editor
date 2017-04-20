@@ -24,8 +24,6 @@
     $scope.$on('$destroy', _destroy);
 
     function _activate() {
-      console.log("Activating properties\n");
-
       var p = $window.editor.project.get();
       var t = p.trees.getSelected();
       var s = t.blocks.getSelected();

@@ -48,7 +48,6 @@
     
     // BODY //
     function _activate() {
-      console.log("keytable activate!");
       if (vm.model) {
         // This is an in-place update s.t. when editing properties of the root node
         // you can actually TYPE without having to reselect the properties panel.
@@ -73,7 +72,6 @@
     }
 
     function reset(model) {
-      console.log("keytable reset!\n");
       // This is broken atm but turned on the root node does not work.
       // vm.rows = [];
       vm.model = model;
@@ -98,9 +96,9 @@
     }
 
     function change(key) {
-      for (var key in vm.model){
-        if (vm.model.hasOwnProperty(key)){
-          delete vm.model[key];
+      for (var modelKey in vm.model){
+        if (vm.model.hasOwnProperty(modelKey)){
+          delete vm.model[modelKey];
         }
       }
 
@@ -125,7 +123,7 @@
         
         r.valueType = getValueType(value);
 
-        if (oldValue != undefined && newValue != undefined && oldValue.trim() != String(newValue).trim()) {
+        if (oldValue !== undefined && newValue !== undefined && oldValue.trim() != String(newValue).trim()) {
           r.extra_css = "background-color: red;";
         } else {
           r.extra_css = "";
@@ -146,11 +144,7 @@
     } else if (value == "false") {
       return "BOL";
 
-    } else if (((typeof value) === "string")
-              && value.length > 0
-              && value.slice(-1) == "d"
-              && numberBeforeD(value)
-              ) {
+    } else if (((typeof value) === "string") && (value.length > 0) && (value.slice(-1) == "d") && (numberBeforeD(value))) {
       return "DBL";
     } else if (!isNaN(value) && value !== '') {
       var valuePrime = parseFloat(value);
@@ -173,7 +167,6 @@
   }
 
   function compareMaps(map1, map2) {
-      var testVal;
       if (map1.size !== map2.size) {
           return false;
       }

@@ -7,9 +7,6 @@ b3e.tree.SelectionManager = function(editor, project, tree) {
     block._select();
     tree._selectedBlocks.push(block);
 
-    // @Bobe
-    console.log("Selecting something!\n");
-
     editor.trigger('blockselected', block);
   };
 

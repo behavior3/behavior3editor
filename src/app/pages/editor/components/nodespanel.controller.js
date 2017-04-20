@@ -30,6 +30,8 @@
 
     // BODY //
     function _activate() {
+      console.log("Activating nodespanel");
+
       vm.trees = [];
       vm.nodes = {
         composite : [],
@@ -51,6 +53,40 @@
         });
       });
 
+      function compareLowerStrings(a, b) {
+        a = a.toLowerCase();
+        b = b.toLowerCase();
+
+        if (a < b) {
+          return -1;
+        }
+        if (a > b) {
+          return 1;
+        }
+
+        // a must be equal to b
+        return 0;   
+      }
+
+      function compareNodeTemplates(a, b) {
+        a = a.name;
+        b = b.name;
+        return compareLowerStrings(a, b);
+      }
+
+      function compareTrees(a, b) {
+        a = a.name;
+        b = b.name;
+
+        return compareLowerStrings(a, b);
+      }   
+
+      for(var category in vm.nodes) {
+        var list = vm.nodes[category];
+        if (!list) continue;
+        list.sort(compareNodeTemplates);
+      }
+
       var selected = p.trees.getSelected();
       p.trees.each(function(tree) {
         var root = tree.blocks.getRoot();
@@ -60,6 +96,8 @@
           'active'   : tree===selected,
         });
       });
+
+      vm.trees.sort(compareTrees);
     }
 
     function _event(e) {

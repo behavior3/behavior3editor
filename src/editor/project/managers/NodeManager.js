@@ -108,7 +108,6 @@ b3e.project.NodeManager = function(editor, project) {
     project.history._add(new b3e.Command(_old, _new));
     project.history._endBatch();
 
-    console.log("Triggering nodechanged");
     editor.trigger('nodechanged', node);
   };
 
