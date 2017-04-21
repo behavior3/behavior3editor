@@ -1,1 +1,2 @@
 - See Editor.js for FPS settings. Maybe to speed up: check if every update is necessary every frame, and see if they're doing any hard work.
+- Fluid development for electron: `gulp serve`, en als die alles heeft gecompiled `electron ./build`
