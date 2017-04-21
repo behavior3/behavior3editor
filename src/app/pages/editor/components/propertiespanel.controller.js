@@ -90,7 +90,7 @@
 
       console.log("Initializing RTT introspection");
 
-      window.rtt = {}
+      window.rtt = {};
 
       window.rtt.process = require('child_process');
 
