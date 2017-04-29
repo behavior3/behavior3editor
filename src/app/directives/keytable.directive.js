@@ -123,7 +123,7 @@
         
         r.valueType = getValueType(value);
 
-        if (oldValue !== undefined && newValue !== undefined && oldValue.trim() != String(newValue).trim()) {
+        if (oldValue !== undefined && newValue !== undefined && String(oldValue).trim() != String(newValue).trim()) {
           r.extra_css = "background-color: red;";
         } else {
           r.extra_css = "";
