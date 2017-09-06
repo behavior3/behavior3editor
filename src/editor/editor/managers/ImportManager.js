@@ -17,7 +17,7 @@ b3e.editor.ImportManager = function(editor) {
     var project = editor.project.get();
     if (!project) return;
 
-    var tree = project.trees.add(data.id);
+    var tree = project.trees.get(data.id);
     var root = tree.blocks.getRoot();
     var first = null;
 
@@ -98,6 +98,10 @@ b3e.editor.ImportManager = function(editor) {
   };
 
   this.treesAsData = function(data) {
+	var project = editor.project.get();
+	data.forEach(function(tree){
+		project.trees.add(tree.id);
+	});
     for (var i=0; i<data.length; i++) {
       this.treeAsData(data[i]);
     }
