@@ -39,7 +39,9 @@ b3e.editor.CameraSystem = function(editor) {
   };
 
   this.onMouseDown = function(e) {
-    if (e.nativeEvent.which !== 2) return;
+    var middle = e.nativeEvent.which === 2;
+    var leftShift = e.nativeEvent.which === 1 && e.nativeEvent.shiftKey;
+    if (!middle && !leftShift) return;
 
     var project = editor.project.get();
     if (!project) return;
@@ -66,7 +68,9 @@ b3e.editor.CameraSystem = function(editor) {
     tree.y = editor._game.mouse.y - offsetY;
   };
   this.onMouseUp = function(e) {
-    if (e.nativeEvent.which !== 2) return;
+    var middle = e.nativeEvent.which === 2;
+    var leftShift = e.nativeEvent.which === 1 && e.nativeEvent.shiftKey;
+    if (!middle && !leftShift) return;
 
     var project = editor.project.get();
     if (!project) return;
