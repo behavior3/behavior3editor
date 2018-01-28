@@ -16,9 +16,9 @@ b3e.editor.CameraSystem = function(editor) {
     var k = tine.keys;
 
     if (kb.isDown(k.CTRL)) {
-      if (kb.isPressed(k.UP)) {
+      if (kb.isPressed(k.UP) || kb.isPressed(k.EQUAL)) {
         tree.view.zoomIn();
-      } else if (kb.isPressed(k.DOWN)) {
+      } else if (kb.isPressed(k.DOWN) || kb.isPressed(k.DASH)) {
         tree.view.zoomOut();
       }
     }
