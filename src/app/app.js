@@ -53,7 +53,10 @@ angular.module('app', [
             .openProject(projects[0].path)
             .then(function() {
               closePreload();
-            });
+            }, function() {
+              //if rename or delete the exist project file may cause stay in Preload page(Desktop)
+              closePreload();
+          });
         } else {
           closePreload();
         }
