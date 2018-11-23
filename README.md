@@ -4,9 +4,6 @@
 
 **Behavior3 Editor** is the official visual editor for the **Behavior3** libraries. It can be accessed online or you can download it to have handle local projects.
 
-- Info: http://behavior3.com
-- Editor: http://editor.behavior3.com
-
 
 ## Why Behavior3 Editor?
 
@@ -46,13 +43,6 @@ Nothing is perfect =( . Behavior3 Editor focus on Chrome (thus, working pretty w
 
 ## Looking for Behavior Tree Libraries?
 
-See http://behavior3.com for a complete list of libraries.
+- https://github.com/behavior3/behavior3js
+- https://github.com/behavior3/behavior3py
 
-*If you have implemented an library compatible with Behavior3 schematics, tell me and I link it there*.
-
-
-## Want to Contribute?
-
-Take a look at the issue list, suggest new features, report bugs, send me pull requests, write documentation and tutorials. There are many ways to contribute, do what you know and you can make Behavior3 Editor better!
-
-- More info: http://behavior3.com/donation
