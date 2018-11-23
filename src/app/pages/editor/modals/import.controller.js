@@ -57,6 +57,9 @@
           i.projectAsData(data);
         }
         else if (vm.type === 'tree' && vm.format === 'json') {
+          var project = editor.project.get();
+          if (!project) throw new Error("cannot find project");
+          project.trees.add(data.id);
           i.treeAsData(data);
         }
         else if (vm.type === 'nodes' && vm.format === 'json') {

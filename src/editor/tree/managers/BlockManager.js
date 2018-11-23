@@ -110,22 +110,22 @@ b3e.tree.BlockManager = function(editor, project, tree) {
     if (typeof template.name !== 'undefined') {
       block.name = template.name;
     } else {
-      block.name = node.name || block.name;
+      block.name = block.name || node.name;
     }
     if (typeof template.title !== 'undefined') {
       block.title = template.title;
     } else {
-      block.title = node.title || block.title;
+      block.title = block.title || node.title;
     }
     if (typeof template.description !== 'undefined') {
       block.description = template.description;
     } else {
-      block.description = node.description || block.description;
+      block.description = block.description || node.description;
     }
     if (typeof template.properties !== 'undefined') {
       block.properties = tine.merge({}, node.properties, template.properties);
     } else {
-      block.properties = tine.merge({}, node.properties, block.properties);
+      //block.properties = tine.merge({}, node.properties, block.properties);
     }
     block._redraw();
 
