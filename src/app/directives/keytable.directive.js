@@ -68,7 +68,12 @@
     }
 
     function remove(i) {
+      delete vm.model[vm.rows[i].key];
       vm.rows.splice(i, 1);
+      
+      if (vm._onChange) {
+        vm._onChange($scope);
+      }
     }
 
     function change() {
