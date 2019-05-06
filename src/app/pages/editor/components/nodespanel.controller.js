@@ -23,7 +23,9 @@
     vm.newTree = newTree;
     vm.select  = select;
     vm.remove  = remove;
-    
+    vm.search  = search;
+    vm.filter  = "";
+
     _create();
     _activate();
     $scope.$on('$destroy', _destroy);
@@ -39,27 +41,49 @@
       };
 
       var p = $window.editor.project.get();
+      var selected = p.trees.getSelected();
+      p.trees.each(function(tree) {
+        var root = tree.blocks.getRoot();
+        if (_serachFilter(root)) return;
+        vm.trees.push({
+          'id'       : tree._id,
+          'name'     : root.title || 'A behavior tree',
+          'active'   : tree===selected,
+          'index'    : vm.trees.length,
+        });
+      });
+      vm.trees.sort(function(a, b)
+      {
+        return a.name.toLowerCase().charCodeAt(0) - b.name.toLowerCase().charCodeAt(0);
+      });
+
       p.nodes.each(function(node) {
-        if (node.category === 'tree') return;
+        if (node.category === 'tree' || _serachFilter(node)) return;
 
         var list = vm.nodes[node.category];
         if (!list) return;
         list.push({
           name: node.name,
           title: _getTitle(node),
-          isDefault: node.isDefault
+          isDefault: node.isDefault,
+          index: list.length,
         });
       });
-
-      var selected = p.trees.getSelected();
-      p.trees.each(function(tree) {
-        var root = tree.blocks.getRoot();
-        vm.trees.push({
-          'id'       : tree._id,
-          'name'     : root.title || 'A behavior tree',
-          'active'   : tree===selected,
+      for(var key in vm.nodes){
+        vm.nodes[key].sort(function(a, b)
+        {
+          if (a.isDefault == true && b.isDefault == true) {
+            return a.index - b.index;
+          }
+          if (a.isDefault) {
+            return -1;
+          }
+          if (b.isDefault) {
+            return 1;
+          }
+          return a.title.toLowerCase().charCodeAt(0) - b.title.toLowerCase().charCodeAt(0);
         });
-      });
+      }
     }
 
     function _event(e) {
@@ -67,22 +91,22 @@
     }
 
     function _create() {
-      $window.editor.on('nodechanged', _event);
+      $window.editor.on('treenodechanged', _event);
       $window.editor.on('noderemoved', _event);
       $window.editor.on('nodeadded', _event);
       $window.editor.on('treeadded', _event);
-      $window.editor.on('blockchanged', _event);
+      // $window.editor.on('blockchanged', _event);
       $window.editor.on('treeselected', _event);
       $window.editor.on('treeremoved', _event);
       $window.editor.on('treeimported', _event);
     }
 
     function _destroy() {
-      $window.editor.off('nodechanged', _event);
+      $window.editor.off('treenodechanged', _event);
       $window.editor.off('noderemoved', _event);
       $window.editor.off('nodeadded', _event);
       $window.editor.off('treeadded', _event);
-      $window.editor.off('blockchanged', _event);
+      // $window.editor.off('blockchanged', _event);
       $window.editor.off('treeselected', _event);
       $window.editor.off('treeremoved', _event);
       $window.editor.off('treeimported', _event);
@@ -117,6 +141,20 @@
             'The tree has been removed from this project.'
           );
         });
+    }
+
+    function search(){
+      _activate();
+    }
+
+    function _serachFilter(node){
+      if (vm.filter !== null || vm.filter !== undefined ||
+        vm.filter.replace(/(^s*)|(s*$)/g, "").length ==0)
+      {
+        var reg = new RegExp(vm.filter, "i");
+        return _getTitle(node).search(reg) == -1;
+      }
+      return true;
     }
   }
 })();

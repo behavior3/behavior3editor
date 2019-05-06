@@ -86,6 +86,7 @@ b3e.editor.ExportManager = function(editor) {
         var d ={
           id          : block.id,
           name        : block.name,
+          category    : block.category,
           title       : block.title,
           description : block.description,
           properties  : block.properties,

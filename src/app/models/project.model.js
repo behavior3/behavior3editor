@@ -121,7 +121,13 @@
       
       return $q(function(resolve, reject) {
         $window.editor.clearDirty();
-        storageService.save(project.path, project);
+        if (systemService.isDesktop) {
+          storageService.save(project.path, JSON3.stringify(project, null, 2));
+        } else {
+          storageService.save(project.path, project);
+        }
+        
+
         _updateRecentProjects(project);
         resolve();
       });
@@ -130,10 +136,15 @@
       return $q(function(resolve, reject) {
         try {
           var project = storageService.load(path);
+          if (systemService.isDesktop) {
+            project.path = path;
+          }
+          
           editorService.openProject(project.data);
           _setProject(project);
           resolve();
         } catch (e) {
+          console.error(e);
           reject(e);
         }
       });

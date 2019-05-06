@@ -107,6 +107,9 @@ b3e.project.NodeManager = function(editor, project) {
     project.history._endBatch();
 
     editor.trigger('nodechanged', node);
+    if (node.category == 'tree') {
+      editor.trigger('treenodechanged', node);
+    }
   };
 
   /**

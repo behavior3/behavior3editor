@@ -30,14 +30,16 @@
           </div>
           
           <small><em>Current project</em></small>
-          <h3 class="current-project">{{item.name}}</h3>
+          <h3 class="current-project">{{item.name}}  <small><em>{{item.path}}</em></small> 
+          </h3>
         </td>
         <td ng-hide="item.isOpen">
           <div class="btn-group pull-right" role="group" aria-label="...">
             <button type="button" class="btn btn-info btn-sm" ng-click="projects.openProject(item.path)"><i class="fa fa-folder-open-o"></i> Open</button>
             <button type="button" class="btn btn-danger btn-sm" ng-click="projects.removeProject(item.path)"><i class="fa fa-trash-o"></i> Remove</button>
           </div>
-          <p>{{item.name}}</p>
+          <h3>{{item.name}}  <small><em>{{item.path}}</em></small> </h3>
+        
         </td>
       </tr>
     </table>

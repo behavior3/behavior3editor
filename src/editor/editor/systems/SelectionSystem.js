@@ -105,7 +105,25 @@ b3e.editor.SelectionSystem = function(editor) {
     isSelecting = false;
   };
 
+  this.onDblclick = function(e) {
+    var project = editor.project.get();
+    if (!project) return;
+
+    var tree = project.trees.getSelected();
+    if (!tree) return;
+
+    // if clicked on block
+    var point = tree.view.getLocalPoint();
+    var x = point.x;
+    var y = point.y;
+    var block = tree.blocks.getUnderPoint(x, y);
+    if (block.category === 'tree') {
+        project.trees.select(block.name);
+    }
+  };
+
   editor._game.stage.on('stagemousedown', this.onMouseDown, this);
   editor._game.stage.on('stagemousemove', this.onMouseMove, this);
   editor._game.stage.on('stagemouseup', this.onMouseUp, this);
+  editor._game.stage.on('dblclick', this.onDblclick, this);
 };

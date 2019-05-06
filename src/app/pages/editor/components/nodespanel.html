@@ -12,6 +12,10 @@
   
 
   <div class="node-list">
+    <div class="form-group">
+      <input type="text" class="form-control" name="title" placeholder="Search"
+        ng-model="nodespanel.filter" ng-change="nodespanel.search()">
+    </div>
     <div class="title">
       <a class="new btn btn-link btn-xs" 
          style="display:none"
@@ -41,8 +45,9 @@
                data-name="{{tree.id}}"
                ng-class="{active:tree.active}" 
                ng-click="nodespanel.select(tree.id)"
+               ng-bind="tree.name"
+               ng-cloak
                b3-drag-node>
-               {{tree.name}}
             </a>
           </li>
         </ul>
@@ -64,23 +69,25 @@
 
     <div class="node-list-content">
       <div ng-repeat="(category, nodes) in nodespanel.nodes" class="node-list-category">
-        <div ng-click="" class="node-list-title">{{category}}s</div>
+        <div ng-click="" class="node-list-title" ng-cloak>{{category}}s</div>
         <ul>
           <li ng-repeat="node in nodes">
             <a class="edit btn btn-link btn-xs" 
                style="display:none"
                onmouseover="this.style.display='inline-block';"
                onmouseout="this.style.display='none'"
-               ng-hide="{{node.isDefault}}"
+               ng-hide="node.isDefault"
+               ng-cloak
                ui-sref="editor.editnode({name:node.name})">Edit</a>
 
             <a class="no-select"
                data-name="{{node.name}}"
                onmouseover="this.parentElement.firstElementChild.style.display='inline-block';"
                onmouseout="this.parentElement.firstElementChild.style.display='none';"
+               ng-bind="node.title"
+               ng-cloak
                b3-drag-node>
 
-               {{node.title}}
             </a>
           </li>
         </ul>

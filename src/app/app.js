@@ -50,8 +50,10 @@ angular.module('app', [
 
         if (projects.length > 0 && projects[0].isOpen) {
           projectModel
-            .openProject(projects[0].path)
+            .closeProject()
             .then(function() {
+              closePreload();
+            },function() {
               closePreload();
             });
         } else {

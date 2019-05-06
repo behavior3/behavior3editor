@@ -23,6 +23,7 @@
     var vm = this;
     vm.onNewTree           = onNewTree;
     vm.onCloseProject      = onCloseProject;
+    vm.onBackToProject     = onBackToProject;
     vm.onSaveProject       = onSaveProject;
     vm.onExportProjectJson = onExportProjectJson;
     vm.onExportTreeJson    = onExportTreeJson;
@@ -152,6 +153,10 @@
       }
 
       return false;
+    }
+    function onBackToProject() {
+      onSaveProject();
+      $state.go('dash.projects');
     }
     function onSaveProject() {
       projectModel

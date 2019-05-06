@@ -13,11 +13,21 @@ b3e.editor.ImportManager = function(editor) {
     editor.trigger('projectimported');
   };
 
-  this.treeAsData = function(data) {
+  this.addTreeAsData = function(data) {
     var project = editor.project.get();
     if (!project) return;
 
     var tree = project.trees.add(data.id);
+  };
+
+  this.treeAsData = function(data) {
+    var project = editor.project.get();
+    if (!project) return;
+
+    var tree = project.trees.get(data.id);
+    if (!tree) {
+      tree = project.trees.add(data.id);
+    }
     var root = tree.blocks.getRoot();
     var first = null;
 
@@ -98,8 +108,13 @@ b3e.editor.ImportManager = function(editor) {
   };
 
   this.treesAsData = function(data) {
+    // first addTrees prevent tree nest
     for (var i=0; i<data.length; i++) {
-      this.treeAsData(data[i]);
+      this.addTreeAsData(data[i]);
+    }
+    // second addNodes
+    for (var j=0; j<data.length; j++) {
+      this.treeAsData(data[j]);
     }
   };
 

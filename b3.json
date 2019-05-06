@@ -1,0 +1,304 @@
+{
+    "id": "49538d8e-bdba-484f-83a5-7461a45f0649",
+    "title": "A behavior tree",
+    "description": "",
+    "root": "65354838-48a4-4863-85ad-b0d6e1cc6b53",
+    "properties": {},
+    "nodes": {
+      "65354838-48a4-4863-85ad-b0d6e1cc6b53": {
+        "id": "65354838-48a4-4863-85ad-b0d6e1cc6b53",
+        "name": "Priority",
+        "title": "Priority",
+        "description": "1.血不满先找血吃\n2.周围有其他道具先吃\n3.闲逛，偶尔发子弹",
+        "properties": {},
+        "display": {
+          "x": -360,
+          "y": -24
+        },
+        "children": [
+          "1278201e-8eed-4ca3-8e14-3b4f75299200",
+          "4ee987b5-caf8-4297-b170-4bb5b4318cd2",
+          "2603e7e4-af48-4967-a29d-87841f7157e9",
+          "2d71ae4e-cf0e-4e8c-b045-3eb36bcfe7c0"
+        ]
+      },
+      "2603e7e4-af48-4967-a29d-87841f7157e9": {
+        "id": "2603e7e4-af48-4967-a29d-87841f7157e9",
+        "name": "Sequence",
+        "title": "Sequence",
+        "description": "",
+        "properties": {},
+        "display": {
+          "x": -120,
+          "y": 0
+        },
+        "children": [
+          "26abdc07-a648-4b49-987a-64b0bbb618c0",
+          "066f97d6-d8cb-4dd5-ad29-c874083811a7"
+        ]
+      },
+      "4ee987b5-caf8-4297-b170-4bb5b4318cd2": {
+        "id": "4ee987b5-caf8-4297-b170-4bb5b4318cd2",
+        "name": "Sequence",
+        "title": "Sequence",
+        "description": "",
+        "properties": {},
+        "display": {
+          "x": -120,
+          "y": -168
+        },
+        "children": [
+          "de8eb162-63c8-4262-a5ff-7bad56f9d937",
+          "f04fc747-118b-4d4d-ba97-87d83190f2ce",
+          "7059e202-1071-4b97-8d7b-1db6dd7cc0b1"
+        ]
+      },
+      "2d71ae4e-cf0e-4e8c-b045-3eb36bcfe7c0": {
+        "id": "2d71ae4e-cf0e-4e8c-b045-3eb36bcfe7c0",
+        "name": "MemSequence",
+        "title": "MemSequence",
+        "description": "",
+        "properties": {},
+        "display": {
+          "x": -204,
+          "y": 192
+        },
+        "children": [
+          "a9c44814-8cea-4182-a97e-a2959f6d230e",
+          "3d7f244a-5062-4485-bc72-c24dddb1c206",
+          "d49a7907-f03a-4078-a892-06abaa565d04",
+          "c598150e-6187-40e9-9ebe-6d01eaaedb57"
+        ]
+      },
+      "066f97d6-d8cb-4dd5-ad29-c874083811a7": {
+        "id": "066f97d6-d8cb-4dd5-ad29-c874083811a7",
+        "name": "TurnTarget",
+        "title": "TurnTarget(<index>)",
+        "description": "",
+        "properties": {
+          "index": "item"
+        },
+        "display": {
+          "x": 84,
+          "y": 36
+        }
+      },
+      "a4216806-ee9b-4443-8121-c46044d82dab": {
+        "id": "a4216806-ee9b-4443-8121-c46044d82dab",
+        "name": "HaveTarget",
+        "title": "HaveTarget(<index>)",
+        "description": "",
+        "properties": {
+          "index": "item"
+        },
+        "display": {
+          "x": 12,
+          "y": -372
+        }
+      },
+      "1278201e-8eed-4ca3-8e14-3b4f75299200": {
+        "id": "1278201e-8eed-4ca3-8e14-3b4f75299200",
+        "name": "Sequence",
+        "title": "Sequence",
+        "description": "",
+        "properties": {},
+        "display": {
+          "x": -168,
+          "y": -336
+        },
+        "children": [
+          "a4216806-ee9b-4443-8121-c46044d82dab",
+          "55b1b73e-eb9c-40c2-8d91-57dd84006ac0"
+        ]
+      },
+      "55b1b73e-eb9c-40c2-8d91-57dd84006ac0": {
+        "id": "55b1b73e-eb9c-40c2-8d91-57dd84006ac0",
+        "name": "Wait",
+        "title": "Wait <milliseconds>ms",
+        "description": "",
+        "properties": {
+          "milliseconds": 100
+        },
+        "display": {
+          "x": 0,
+          "y": -300
+        }
+      },
+      "26abdc07-a648-4b49-987a-64b0bbb618c0": {
+        "id": "26abdc07-a648-4b49-987a-64b0bbb618c0",
+        "name": "FindItem",
+        "title": "FindItem(<etype>,<range>)",
+        "description": "",
+        "properties": {
+          "etype": 2,
+          "range": 200,
+          "index": "item"
+        },
+        "display": {
+          "x": 60,
+          "y": -36
+        }
+      },
+      "f04fc747-118b-4d4d-ba97-87d83190f2ce": {
+        "id": "f04fc747-118b-4d4d-ba97-87d83190f2ce",
+        "name": "FindItem",
+        "title": "FindItem(<etype>,<range>)",
+        "description": "",
+        "properties": {
+          "etype": 1,
+          "range": 800,
+          "index": "item"
+        },
+        "display": {
+          "x": 60,
+          "y": -180
+        }
+      },
+      "de8eb162-63c8-4262-a5ff-7bad56f9d937": {
+        "id": "de8eb162-63c8-4262-a5ff-7bad56f9d937",
+        "name": "HpLess",
+        "title": "HpLess(<rate>)",
+        "description": "",
+        "properties": {
+          "rate": 1
+        },
+        "display": {
+          "x": 60,
+          "y": -240
+        }
+      },
+      "7059e202-1071-4b97-8d7b-1db6dd7cc0b1": {
+        "id": "7059e202-1071-4b97-8d7b-1db6dd7cc0b1",
+        "name": "TurnTarget",
+        "title": "TurnTarget(<index>)",
+        "description": "",
+        "properties": {
+          "index": "item"
+        },
+        "display": {
+          "x": 60,
+          "y": -120
+        }
+      },
+      "a9c44814-8cea-4182-a97e-a2959f6d230e": {
+        "id": "a9c44814-8cea-4182-a97e-a2959f6d230e",
+        "name": "RandMove",
+        "title": "RandMove",
+        "description": "",
+        "properties": {},
+        "display": {
+          "x": -36,
+          "y": 108
+        }
+      },
+      "c598150e-6187-40e9-9ebe-6d01eaaedb57": {
+        "id": "c598150e-6187-40e9-9ebe-6d01eaaedb57",
+        "name": "RandWait",
+        "title": "RandWait <timemini> to <timemax>",
+        "description": "",
+        "properties": {
+          "timemini": 1000,
+          "timemax": 2000
+        },
+        "display": {
+          "x": -12,
+          "y": 300
+        }
+      },
+      "d49a7907-f03a-4078-a892-06abaa565d04": {
+        "id": "d49a7907-f03a-4078-a892-06abaa565d04",
+        "name": "Shoot",
+        "title": "Shoot",
+        "description": "",
+        "properties": {},
+        "display": {
+          "x": -24,
+          "y": 228
+        }
+      },
+      "3d7f244a-5062-4485-bc72-c24dddb1c206": {
+        "id": "3d7f244a-5062-4485-bc72-c24dddb1c206",
+        "name": "RandWait",
+        "title": "RandWait <timemini> to <timemax>",
+        "description": "",
+        "properties": {
+          "timemini": 2000,
+          "timemax": 3000
+        },
+        "display": {
+          "x": -12,
+          "y": 168
+        }
+      }
+    },
+    "display": {
+      "camera_x": 960,
+      "camera_y": 474.5,
+      "camera_z": 1,
+      "x": -516,
+      "y": -24
+    },
+    "custom_nodes": [
+      {
+        "name": "Shoot",
+        "category": "action",
+        "title": "Shoot",
+        "description": null,
+        "properties": {}
+      },
+      {
+        "name": "FindItem",
+        "category": "action",
+        "title": "FindItem(<etype>,<range>)",
+        "description": null,
+        "properties": {
+          "etype": 0,
+          "range": 10
+        }
+      },
+      {
+        "name": "TurnTarget",
+        "category": "action",
+        "title": "TurnTarget(<index>)",
+        "description": null,
+        "properties": {
+          "index": "null"
+        }
+      },
+      {
+        "name": "RandWait",
+        "category": "action",
+        "title": "RandWait <timemini> to <timemax>",
+        "description": null,
+        "properties": {
+          "timemini": 1000,
+          "timemax": 5000
+        }
+      },
+      {
+        "name": "RandMove",
+        "category": "action",
+        "title": "RandMove",
+        "description": null,
+        "properties": {}
+      },
+      {
+        "name": "HpLess",
+        "category": "condition",
+        "title": "HpLess(<rate>)",
+        "description": null,
+        "properties": {
+          "rate": 1
+        }
+      },
+      {
+        "name": "HaveTarget",
+        "category": "condition",
+        "title": "HaveTarget(<index>)",
+        "description": null,
+        "properties": {
+          "index": "null"
+        }
+      }
+    ]
+  }
