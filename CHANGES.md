@@ -1,3 +1,7 @@
+## 0.4.0
+- subtree支持。
+- 节点过滤。
+- desktop支持工程序列号到标准json，读取工程文件改写path字段。
 
 ## Version 0.3.0 [NEXT]
 
