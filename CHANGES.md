@@ -1,6 +1,6 @@
-# TreeFloderStructure分支
+## TreeFloderStructure分支
 - 修改节点控件为TreeControl，方便折叠，工程较大时方便归类和查找
-
+- 目前没有合并到master
 ## 0.4.0
 - subtree支持。
 - 节点过滤。
