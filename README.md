@@ -40,7 +40,8 @@ Why should you use b3editor? What is different from other editors? Can it compet
 
 Nothing is perfect =( . Behavior3 Editor focus on Chrome (thus, working pretty well on Opera too), so it have some incompatibilities with Firefox, such as the image preview lag when dragging to create a node for the first time, and the ugly scroll bar inside the panels. Not tested on IE!
 
-
+## Update
+  https://github.com/magicsea/behavior3editor/blob/master/CHANGES.md
 ## Looking for Behavior Tree Libraries?
 
 - https://github.com/behavior3/behavior3js
