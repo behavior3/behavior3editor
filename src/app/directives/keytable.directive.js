@@ -64,7 +64,7 @@
     }
 
     function add(key, value, fixed) {
-      vm.rows.push({key:key, value:value, fixed:fixed===true});
+      vm.rows.push({key:key, value:JSON.stringify(value), fixed:fixed===true});
     }
 
     function remove(i) {
@@ -82,8 +82,10 @@
         if (! r.key) continue;
 
         var value = r.value;
-        if (!isNaN(value) && value !== '') {
-          value = parseFloat(value);
+        try {
+          value = JSON.parse(value);
+        } catch (e) {
+          // keep value as string
         }
 
         vm.model[r.key] = value;
