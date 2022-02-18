@@ -40,6 +40,30 @@ Why should you use b3editor? What is different from other editors? Can it compet
 
 Nothing is perfect =( . Behavior3 Editor focus on Chrome (thus, working pretty well on Opera too), so it have some incompatibilities with Firefox, such as the image preview lag when dragging to create a node for the first time, and the ugly scroll bar inside the panels. Not tested on IE!
 
+## Run Behavior3 using Docker
+
+[Install docker](https://docs.docker.com/get-docker/) if you dont have already.
+ 
+Build image
+
+```
+docker build --tag behavior .
+```
+
+Run for the first time
+
+```
+docker run -p 8000:8000 --name behaviorcont behavior
+```
+
+Run afterwards
+
+```
+docker start behaviorcont -i
+```
+
+Goto 
+[http://localhost:8000/](http://localhost:8000/) to use Behavior3 locally
 
 ## Looking for Behavior Tree Libraries?
 
